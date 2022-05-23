@@ -12,7 +12,7 @@ export const Navbar = () => {
           <a className={styles.navLogo}>BVS</a>
         </Link>
         <div className={styles.mobileIcon}>
-          <FaBars />
+          <FaBars className={styles.faBars} />
         </div>
         <ul className={styles.navMenu}>
           <li className={styles.navItem}>

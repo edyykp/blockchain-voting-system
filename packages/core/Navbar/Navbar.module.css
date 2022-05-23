@@ -74,6 +74,10 @@
   align-items: center;
 }
 
+.faBars {
+  color: var(--primary_darker);
+}
+
 @media screen and (max-width: 768px) {
   .mobileIcon {
     display: block;
