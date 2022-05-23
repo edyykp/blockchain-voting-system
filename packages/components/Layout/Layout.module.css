@@ -1,0 +1,19 @@
+.logoWrapper {
+  height: 1em;
+  margin-left: 0.5rem;
+}
+
+/* export const theme = {
+  colors: {
+    primary: '',
+    secondary: '',
+    greys: {
+      white: '#FFFFFF',
+      lighter: '#F2F2F2',
+      light: '#CCCCCC',
+      grey: '#8C8C8C',
+      dark: '#666666',
+      darker: '#333333',
+    },
+  },
+}; */

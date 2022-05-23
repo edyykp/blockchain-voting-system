@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import 'jest-styled-components';
 import { Layout } from './Layout';
 
 const setup = () => {

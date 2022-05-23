@@ -1,15 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Layout→ should render children 1`] = `
-.c0 {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
 <div>
-  <div>
-    hello
-  </div>
+  <nav>
+    <div
+      class="navbarContainer"
+    >
+      <a
+        class="navLogo"
+        href="/"
+      >
+        BVS
+      </a>
+      <div
+        class="mobileIcon"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 448 512"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+          />
+        </svg>
+      </div>
+      <ul
+        class="navMenu"
+      >
+        <li
+          class="navItem"
+        />
+      </ul>
+    </div>
+  </nav>
   <main>
     <div>
       This is a test
@@ -24,7 +52,7 @@ exports[`Layout→ should render children 1`] = `
       Powered by
        
       <div
-        class="c0"
+        class="logoWrapper"
       >
         <span
           style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
