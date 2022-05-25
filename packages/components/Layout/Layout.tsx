@@ -5,17 +5,24 @@ import React from 'react';
 import { Navbar } from '@packages/core';
 
 import styles from './Layout.module.css';
+import { useSiteProperties } from '@packages/config';
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
 export const Layout = ({ children }: LayoutProps) => {
+  const valueOf = useSiteProperties();
+
+  const text = {
+    title: valueOf('site_title'),
+    description: valueOf('site_description'),
+  };
   return (
     <>
       <Head>
-        <title>BVS</title>
-        <meta name="description" content="Blockchain voting system" />
+        <title>{text.title}</title>
+        <meta name="description" content={text.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />

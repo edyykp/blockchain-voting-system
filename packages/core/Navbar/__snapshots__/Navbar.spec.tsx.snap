@@ -2,9 +2,12 @@
 
 exports[`Navbar component renders 1`] = `
 <div>
-  <nav>
+  <nav
+    data-testid="navigation-bar-desktop"
+  >
     <div
       class="navbarContainer"
+      data-testid="navigation-bar-logo"
     >
       <a
         class="navLogo"
@@ -14,8 +17,10 @@ exports[`Navbar component renders 1`] = `
       </a>
       <div
         class="mobileIcon"
+        data-testid="mobile-menu-icon"
       >
         <svg
+          class="faBars"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -31,11 +36,37 @@ exports[`Navbar component renders 1`] = `
       </div>
       <ul
         class="navMenu"
+        data-testid="navigation-bar-menu"
       >
         <li
           class="navItem"
-        />
+        >
+          <a
+            class="navLinks"
+          >
+            About
+          </a>
+        </li>
+        <li
+          class="navItem"
+        >
+          <a
+            class="navLinks"
+          >
+            Data Protection
+          </a>
+        </li>
       </ul>
+      <div
+        class="navBtn"
+        data-testid="navigation-bar-cta"
+      >
+        <a
+          class="navBtnLink"
+        >
+          Sign in
+        </a>
+      </div>
     </div>
   </nav>
 </div>

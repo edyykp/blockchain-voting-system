@@ -1,0 +1,1 @@
+export { useSiteProperties } from './useSiteProperties';
