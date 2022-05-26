@@ -6,17 +6,17 @@ exports[`Navbar component renders 1`] = `
     data-testid="navigation-bar-desktop"
   >
     <div
-      class="navbarContainer"
+      class="container"
       data-testid="navigation-bar-logo"
     >
       <a
-        class="navLogo"
+        class="logo"
         href="/"
       >
         BVS
       </a>
       <div
-        class="mobileIcon"
+        class="mobileMenuIcon"
         data-testid="mobile-menu-icon"
       >
         <svg
@@ -35,34 +35,34 @@ exports[`Navbar component renders 1`] = `
         </svg>
       </div>
       <ul
-        class="navMenu"
+        class="menu"
         data-testid="navigation-bar-menu"
       >
         <li
-          class="navItem"
+          class="menuItem"
         >
           <a
-            class="navLinks"
+            class="menuUrls"
           >
             About
           </a>
         </li>
         <li
-          class="navItem"
+          class="menuItem"
         >
           <a
-            class="navLinks"
+            class="menuUrls"
           >
             Data Protection
           </a>
         </li>
       </ul>
       <div
-        class="navBtn"
+        class="ctaContainer"
         data-testid="navigation-bar-cta"
       >
         <a
-          class="navBtnLink"
+          class="cta"
         >
           Sign in
         </a>

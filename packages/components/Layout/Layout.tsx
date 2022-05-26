@@ -6,6 +6,7 @@ import { Navbar } from '@packages/core';
 
 import styles from './Layout.module.css';
 import { useSiteProperties } from '@packages/config';
+import { Sidebar } from '@packages/core/Sidebar/Sidebar';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ export const Layout = ({ children }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      <Sidebar />
       <main>{children}</main>
       <footer>
         <a

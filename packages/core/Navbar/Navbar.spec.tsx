@@ -13,7 +13,7 @@ describe('Navbar component', () => {
   it('renders', () => {
     const { container, getByTestId } = setup();
 
-    expect(getByTestId('navigation-bar-desktop')).toBeInTheDocument();
+    expect(getByTestId('navigation-bar')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 

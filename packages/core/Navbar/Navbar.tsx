@@ -17,27 +17,25 @@ export const Navbar = () => {
   };
 
   return (
-    <nav data-testid="navigation-bar-desktop">
-      <div className={styles.navbarContainer} data-testid="navigation-bar-logo">
+    <nav data-testid="navigation-bar">
+      <div className={styles.container} data-testid="navigation-bar-logo">
         <Link href="/">
-          <a className={styles.navLogo}>{text.logo}</a>
+          <a className={styles.logo}>{text.logo}</a>
         </Link>
-        <div className={styles.mobileIcon} data-testid="mobile-menu-icon">
+        <div className={styles.mobileMenuIcon} data-testid="mobile-menu-icon">
           <FaBars className={styles.faBars} />
         </div>
-        <ul className={styles.navMenu} data-testid="navigation-bar-menu">
-          {menuItems.map((item, key) => {
-            return (
-              <li className={styles.navItem} key={key}>
-                <LinkS to={item.url} className={styles.navLinks}>
-                  {item.title}
-                </LinkS>
-              </li>
-            );
-          })}
+        <ul className={styles.menu} data-testid="navigation-bar-menu">
+          {menuItems.map((item, key) => (
+            <li className={styles.menuItem} key={key}>
+              <LinkS to={item.url} className={styles.menuUrls}>
+                {item.title}
+              </LinkS>
+            </li>
+          ))}
         </ul>
-        <div className={styles.navBtn} data-testid="navigation-bar-cta">
-          <LinkS to={text.cta_link || ''} className={styles.navBtnLink}>
+        <div className={styles.ctaContainer} data-testid="navigation-bar-cta">
+          <LinkS to={text.cta_link || ''} className={styles.cta}>
             {text.cta_title}
           </LinkS>
         </div>

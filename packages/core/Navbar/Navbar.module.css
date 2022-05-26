@@ -1,4 +1,4 @@
-.navbarContainer {
+.container {
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -8,7 +8,7 @@
   max-width: 1100px;
 }
 
-.navLogo {
+.logo {
   color: var(--primary_darker);
   justify-self: flex-start;
   cursor: pointer;
@@ -20,11 +20,11 @@
   text-decoration: none;
 }
 
-.mobileIcon {
+.mobileMenuIcon {
   display: none;
 }
 
-.navMenu {
+.menu {
   display: flex;
   align-items: center;
   list-style: none;
@@ -32,11 +32,11 @@
   margin-right: -22px;
 }
 
-.navItem {
+.menuItem {
   height: 80px;
 }
 
-.navLinks {
+.menuUrls {
   color: var(--secondary);
   display: flex;
   align-items: center;
@@ -46,11 +46,11 @@
   cursor: pointer;
 }
 
-.navLinks:active {
+.menuUrls:active {
   border-bottom: 3px solid var(--primary);
 }
 
-.navBtnLink {
+.cta {
   border-radius: 50px;
   background: var(--primary);
   white-space: nowrap;
@@ -63,13 +63,13 @@
   transition: all 0.2s ease-in-out;
   text-decoration: none;
 }
-.navBtnLink:hover {
+.cta:hover {
   transition: all 0.2s ease-in-out;
   background: var(--secondary);
   color: var(--primary_darker);
 }
 
-.navBtn {
+.ctaContainer {
   display: flex;
   align-items: center;
 }
@@ -79,7 +79,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .mobileIcon {
+  .mobileMenuIcon {
     display: block;
     position: absolute;
     top: 0;
@@ -89,12 +89,12 @@
     cursor: pointer;
   }
 
-  .navMenu {
+  .menu {
     display: none;
     color: var(--secondary);
   }
 
-  .navBtn {
+  .ctaContainer {
     display: none;
   }
 }

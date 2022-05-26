@@ -22,5 +22,9 @@ describe('Layout→', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render footer', () => {});
+  it('should render navigation bar', () => {
+    const { getByTestId } = setup();
+
+    expect(getByTestId('navigation-bar')).toBeInTheDocument();
+  });
 });
