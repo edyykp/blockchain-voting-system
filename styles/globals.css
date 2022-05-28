@@ -1,9 +1,32 @@
+:root {
+  --primary: #9e2a2b;
+  --primary_darker: #540b0e;
+
+  --secondary: #fff3b0;
+  --secondary_darker: #e09f3e;
+
+  --ternary: #335c67;
+
+  --grey: #0d0d0d;
+  --white: #fff;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+main {
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -13,4 +36,23 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+nav {
+  background: var(--secondary_darker);
+  height: 80px;
+  margin-top: -80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+@media screen and (max-width: 960px) {
+  nav {
+    transition: 0.8s all ease;
+  }
 }

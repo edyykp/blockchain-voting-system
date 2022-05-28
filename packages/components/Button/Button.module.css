@@ -1,0 +1,23 @@
+.button {
+  border-radius: 50px;
+  background: var(--primary);
+  white-space: nowrap;
+  padding: 10px 22px;
+  color: var(--secondary);
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.paddingLarge {
+  padding: 16px 64px !important;
+}
+
+.button:hover {
+  transition: all 0.2s ease-in-out;
+  background: var(--secondary);
+  color: var(--primary_darker);
+}

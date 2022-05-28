@@ -1,0 +1,12 @@
+{
+  "menuItems": [
+    {
+      "title": "About",
+      "url": "about"
+    },
+    {
+      "title": "Data Protection",
+      "url": "data-protection"
+    }
+  ]
+}

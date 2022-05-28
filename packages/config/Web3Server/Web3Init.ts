@@ -30,14 +30,14 @@ export const useContracts = () => {
     };
   }
 
-  return {
-    voters: new web3.eth.Contract(
-      CONTACT_ABI.CONTACT_ABI,
-      CONTACT_ADDRESS.CONTACT_ADDRESS,
-    ),
-    candidate: new web3.eth.Contract(
-      CONTACT_ABI.CONTACT_ABI,
-      CONTACT_ADDRESS.CONTACT_ADDRESS,
-    ),
-  };
+  //   return {
+  //     voters: new web3.eth.Contract(
+  //       CONTACT_ABI.CONTACT_ABI,
+  //       CONTACT_ADDRESS.CONTACT_ADDRESS,
+  //     ),
+  //     candidate: new web3.eth.Contract(
+  //       CONTACT_ABI.CONTACT_ABI,
+  //       CONTACT_ADDRESS.CONTACT_ADDRESS,
+  //     ),
+  //   };
 };
