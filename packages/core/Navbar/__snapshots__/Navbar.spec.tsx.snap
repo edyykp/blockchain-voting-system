@@ -3,7 +3,7 @@
 exports[`Navbar component renders 1`] = `
 <div>
   <nav
-    data-testid="navigation-bar-desktop"
+    data-testid="navigation-bar"
   >
     <div
       class="container"
@@ -62,7 +62,7 @@ exports[`Navbar component renders 1`] = `
         data-testid="navigation-bar-cta"
       >
         <a
-          class="cta"
+          class="button "
         >
           Sign in
         </a>

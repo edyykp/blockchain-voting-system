@@ -3,9 +3,13 @@ import '@testing-library/jest-dom';
 
 import { Navbar } from './Navbar';
 
+const mockProps = {
+  toggle: () => {},
+};
+
 const setup = () => {
   return {
-    ...render(<Navbar />),
+    ...render(<Navbar {...mockProps} />),
   };
 };
 

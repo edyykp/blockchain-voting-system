@@ -17,6 +17,7 @@ export const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
   return (
     <aside
       className={`${styles.container} ${isOpen ? `${styles.isOpen}` : ''}`}
+      data-testid="sidebar"
     >
       <div className={styles.iconContainer}>
         <FaTimes className={styles.icon} onClick={toggle} />

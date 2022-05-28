@@ -3,7 +3,7 @@
 exports[`Layout→ should render children 1`] = `
 <div>
   <nav
-    data-testid="navigation-bar-desktop"
+    data-testid="navigation-bar"
   >
     <div
       class="container"
@@ -62,7 +62,7 @@ exports[`Layout→ should render children 1`] = `
         data-testid="navigation-bar-cta"
       >
         <a
-          class="cta"
+          class="button "
         >
           Sign in
         </a>
@@ -70,7 +70,8 @@ exports[`Layout→ should render children 1`] = `
     </div>
   </nav>
   <aside
-    class="container isOpen"
+    class="container "
+    data-testid="sidebar"
   >
     <div
       class="iconContainer"
@@ -89,6 +90,33 @@ exports[`Layout→ should render children 1`] = `
           d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
         />
       </svg>
+    </div>
+    <div
+      class="menuWrapper"
+    >
+      <ul
+        class="menu"
+      >
+        <a
+          class="link"
+        >
+          About
+        </a>
+        <a
+          class="link"
+        >
+          Data Protection
+        </a>
+      </ul>
+    </div>
+    <div
+      class="ctaWrapper"
+    >
+      <a
+        class="button paddingLarge"
+      >
+        Sign in
+      </a>
     </div>
   </aside>
   <main>
