@@ -3,17 +3,20 @@ import { FaBars } from 'react-icons/fa';
 import { Link as LinkS } from 'react-scroll';
 
 import { useMenu, useSiteProperties } from '@packages/config';
+import { Button } from '@packages/components';
 
 import styles from './Navbar.module.css';
 
-export const Navbar = () => {
+interface NavbarProps {
+  toggle: () => void;
+}
+
+export const Navbar = ({ toggle }: NavbarProps) => {
   const menuItems = useMenu();
   const valueOf = useSiteProperties();
 
   const text = {
     logo: valueOf('site_title'),
-    cta_title: valueOf('navbar_cta_title'),
-    cta_link: valueOf('navbar_cta_link'),
   };
 
   return (
@@ -23,7 +26,7 @@ export const Navbar = () => {
           <a className={styles.logo}>{text.logo}</a>
         </Link>
         <div className={styles.mobileMenuIcon} data-testid="mobile-menu-icon">
-          <FaBars className={styles.faBars} />
+          <FaBars className={styles.faBars} onClick={toggle} />
         </div>
         <ul className={styles.menu} data-testid="navigation-bar-menu">
           {menuItems.map((item, key) => (
@@ -35,9 +38,7 @@ export const Navbar = () => {
           ))}
         </ul>
         <div className={styles.ctaContainer} data-testid="navigation-bar-cta">
-          <LinkS to={text.cta_link || ''} className={styles.cta}>
-            {text.cta_title}
-          </LinkS>
+          <Button />
         </div>
       </div>
     </nav>

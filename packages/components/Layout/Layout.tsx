@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Navbar } from '@packages/core';
 
@@ -13,7 +13,12 @@ type LayoutProps = {
 };
 
 export const Layout = ({ children }: LayoutProps) => {
+  const [isOpen, setIsOpen] = useState(false);
   const valueOf = useSiteProperties();
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
 
   const text = {
     title: valueOf('site_title'),
@@ -26,8 +31,8 @@ export const Layout = ({ children }: LayoutProps) => {
         <meta name="description" content={text.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <Sidebar />
+      <Navbar toggle={toggle} />
+      <Sidebar isOpen={isOpen} toggle={toggle} />
       <main>{children}</main>
       <footer>
         <a
