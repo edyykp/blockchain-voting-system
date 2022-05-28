@@ -1,12 +1,11 @@
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import React, { useState } from 'react';
 
-import { Navbar } from '@packages/core';
+import { Navbar, Sidebar } from '@packages/core';
+import { useSiteProperties } from '@packages/config';
 
 import styles from './Layout.module.css';
-import { useSiteProperties } from '@packages/config';
-import { Sidebar } from '@packages/core/Sidebar/Sidebar';
 
 type LayoutProps = {
   children: React.ReactNode;
