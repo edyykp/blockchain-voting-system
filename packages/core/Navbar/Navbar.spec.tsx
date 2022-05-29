@@ -13,7 +13,7 @@ const setup = () => {
   };
 };
 
-describe('Navbar component', () => {
+describe('Navbar→', () => {
   it('renders', () => {
     const { container, getByTestId } = setup();
 

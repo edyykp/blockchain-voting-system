@@ -1,24 +1,19 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { Sidebar } from './Sidebar';
-
-const mockProps = {
-  toggle: () => {},
-  isOpen: true,
-};
+import { Footer } from './Footer';
 
 const setup = () => {
   return {
-    ...render(<Sidebar {...mockProps} />),
+    ...render(<Footer />),
   };
 };
 
-describe('Sidebar→', () => {
+describe('Footer→', () => {
   it('renders', () => {
     const { container, getByTestId } = setup();
 
-    expect(getByTestId('sidebar')).toBeInTheDocument();
+    expect(getByTestId('footer')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 });

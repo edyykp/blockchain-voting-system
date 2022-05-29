@@ -1,0 +1,26 @@
+.footer {
+  background-color: var(--secondary);
+  line-height: 1.5;
+  color: var(--ternary);
+  font-size: 1rem;
+  font-weight: 400;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem;
+  width: 100%;
+}
+
+.link {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.25rem 0.75rem;
+  list-style: none;
+}
+
+.menu {
+  width: 50%;
+  display: flex;
+  text-align: left;
+}

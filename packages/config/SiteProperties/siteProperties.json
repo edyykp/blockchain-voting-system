@@ -1,5 +1,6 @@
 {
   "site_title": "BVS",
+  "site_author": "Eduard-Constantin Stoica",
   "site_description": "Blockchain Voting System",
   "navbar_cta_title": "Sign in",
   "navbar_cta_link": "signin"
