@@ -1,12 +1,10 @@
-import Head from 'next/head';
-import Image from 'next/image';
 import React, { useState } from 'react';
+import Head from 'next/head';
 
-import { Navbar } from '@packages/core';
-
-import styles from './Layout.module.css';
+import { Navbar, Sidebar } from '@packages/core';
 import { useSiteProperties } from '@packages/config';
-import { Sidebar } from '@packages/core/Sidebar/Sidebar';
+
+import { Footer } from '../Footer';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -34,18 +32,7 @@ export const Layout = ({ children }: LayoutProps) => {
       <Navbar toggle={toggle} />
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <main>{children}</main>
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <div className={styles.logoWrapper}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </div>
-        </a>
-      </footer>
+      <Footer />
     </>
   );
 };
