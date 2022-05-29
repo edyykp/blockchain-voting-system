@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer→ renders 1`] = `
+<div>
+  <footer
+    class="footer"
+    data-testid="footer"
+  >
+    <ul
+      class="menu"
+    >
+      <a
+        class="link"
+      >
+        About
+      </a>
+      <a
+        class="link"
+      >
+        Data Protection
+      </a>
+    </ul>
+    <div
+      class="copyright"
+    >
+      © 2022, Proudly Coded by 
+      Eduard-Constantin Stoica
+    </div>
+  </footer>
+</div>
+`;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar component renders 1`] = `
+exports[`Sidebar→ renders 1`] = `
 <div>
   <aside
     class="container isOpen"
