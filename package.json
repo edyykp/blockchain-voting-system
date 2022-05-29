@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "CI=true jest --watch",
+    "test": "jest",
     "cypress": "cypress open",
     "cypress:headless": "cypress run"
   },
