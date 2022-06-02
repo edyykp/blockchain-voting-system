@@ -3,5 +3,9 @@
   "site_author": "Eduard-Constantin Stoica",
   "site_description": "Blockchain Voting System",
   "navbar_cta_title": "Sign in",
-  "navbar_cta_link": "signin"
+  "navbar_cta_link": "signin",
+  "sign_in_form_title": "Vote your favourite Formula 1 driver",
+  "sign_in_form_subtitle": "Sign In",
+  "sign_in_form_footer": "Need to register?  ",
+  "sign_up": "Sign up"
 }

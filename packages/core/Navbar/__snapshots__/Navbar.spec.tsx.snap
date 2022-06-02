@@ -3,6 +3,7 @@
 exports[`Navbar→ renders 1`] = `
 <div>
   <nav
+    class=""
     data-testid="navigation-bar"
   >
     <div
@@ -10,7 +11,7 @@ exports[`Navbar→ renders 1`] = `
       data-testid="navigation-bar-logo"
     >
       <a
-        class="logo"
+        class="logo "
         href="/"
       >
         BVS
@@ -42,7 +43,7 @@ exports[`Navbar→ renders 1`] = `
           class="menuItem"
         >
           <a
-            class="menuUrls"
+            class="menuUrls "
           >
             About
           </a>
@@ -51,7 +52,7 @@ exports[`Navbar→ renders 1`] = `
           class="menuItem"
         >
           <a
-            class="menuUrls"
+            class="menuUrls "
           >
             Data Protection
           </a>
@@ -62,7 +63,11 @@ exports[`Navbar→ renders 1`] = `
         data-testid="navigation-bar-cta"
       >
         <a
-          class="button "
+          class="button  primary
+      false
+      mediumButton
+      false
+      "
         >
           Sign in
         </a>

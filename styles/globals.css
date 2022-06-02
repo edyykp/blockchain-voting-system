@@ -1,14 +1,18 @@
 :root {
-  --secondary: #606c38;
-  --secondary_darker: #283618;
+  --primary: #e10600;
 
-  --primary: #dda15e;
-  --primary_darker: #bc6c25;
-
-  --ternary: #fefae0;
-
-  --grey: #0d0d0d;
   --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
 }
 
 html,
@@ -21,7 +25,8 @@ body {
 
 main {
   min-height: 100vh;
-  padding: 4rem 0;
+  width: 100%;
+  height: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -39,7 +44,6 @@ a {
 }
 
 nav {
-  background: var(--secondary_darker);
   height: 80px;
   margin-top: -80px;
   display: flex;
@@ -49,6 +53,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 10;
+  transition: 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 960px) {
