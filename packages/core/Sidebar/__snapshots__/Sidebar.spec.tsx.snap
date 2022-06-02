@@ -46,7 +46,11 @@ exports[`Sidebar→ renders 1`] = `
       class="ctaWrapper"
     >
       <a
-        class="button paddingLarge"
+        class="button  primary
+      false
+      mediumButton
+      false
+      "
       >
         Sign in
       </a>

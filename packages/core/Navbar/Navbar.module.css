@@ -1,3 +1,7 @@
+.backgroundColor {
+  background-color: var(--primary);
+}
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -9,15 +13,20 @@
 }
 
 .logo {
-  color: var(--primary_darker);
+  color: var(--primary);
   justify-self: flex-start;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   display: flex;
   align-items: center;
   margin-left: 24px;
   font-weight: bold;
   text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+
+.logoColor {
+  color: var(--white) !important;
 }
 
 .mobileMenuIcon {
@@ -37,17 +46,28 @@
 }
 
 .menuUrls {
-  color: var(--secondary);
+  color: var(--primary);
   display: flex;
   align-items: center;
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: 0.2s ease-in-out;
 }
 
 .menuUrls:active {
-  border-bottom: 3px solid var(--primary);
+  border-bottom: 3px solid var(--gray-900);
+}
+
+.menuUrls:hover {
+  font-size: 1.3rem;
+}
+
+.urlColor {
+  color: var(--white) !important;
 }
 
 .ctaContainer {
@@ -56,7 +76,7 @@
 }
 
 .faBars {
-  color: var(--primary_darker);
+  color: var(--white);
 }
 
 @media screen and (max-width: 768px) {
@@ -72,7 +92,6 @@
 
   .menu {
     display: none;
-    color: var(--secondary);
   }
 
   .ctaContainer {

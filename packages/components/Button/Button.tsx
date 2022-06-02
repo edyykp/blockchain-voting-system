@@ -5,10 +5,12 @@ import { useSiteProperties } from '@packages/config';
 import styles from './Button.module.css';
 
 interface ButtonProps {
+  theme: 'primary' | 'secondary';
+  size: 'sm' | 'md' | 'lg';
   hasPaddingLarge?: boolean;
 }
 
-export const Button = ({ hasPaddingLarge }: ButtonProps) => {
+export const Button = ({ hasPaddingLarge, theme, size }: ButtonProps) => {
   const valueOf = useSiteProperties();
 
   const text = {
@@ -21,7 +23,11 @@ export const Button = ({ hasPaddingLarge }: ButtonProps) => {
       to={text.link || ''}
       className={`${styles.button} ${
         hasPaddingLarge ? `${styles.paddingLarge}` : ''
-      }`}
+      } ${theme === 'primary' ? `${styles.primary}` : `${styles.secondary}`}
+      ${size === 'sm' && styles.smallButton}
+      ${size === 'md' && styles.mediumButton}
+      ${size === 'lg' && styles.largeButton}
+      `}
     >
       {text.title}
     </Link>

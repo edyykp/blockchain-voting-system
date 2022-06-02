@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignInForm→ renders 1`] = `
+<div>
+  <form
+    class="container"
+    data-testid="signinform"
+  >
+    <div
+      class="wrapper"
+    >
+      <h1
+        class="title"
+      >
+        Vote your favourite Formula 1 driver
+      </h1>
+      <h2
+        class="subtitle"
+      >
+        Sign In
+      </h2>
+    </div>
+    <div
+      class="wrapper"
+    >
+      <div
+        class="container"
+      >
+        <input
+          autocomplete="off"
+          class="input"
+          id="email"
+          placeholder="Enter your email"
+          required=""
+          type="text"
+        />
+        <label
+          class="label "
+          for="email"
+        >
+          Email
+        </label>
+      </div>
+      <div
+        class="container"
+      >
+        <input
+          autocomplete="off"
+          class="input"
+          id="password"
+          placeholder="Enter your password"
+          required=""
+          type="password"
+        />
+        <label
+          class="label "
+          for="password"
+        >
+          Password
+        </label>
+      </div>
+    </div>
+    <a
+      class="button  primary
+      false
+      false
+      largeButton
+      "
+    >
+      Sign in
+    </a>
+    <p
+      class="text"
+    >
+      Need to register?  
+      <a
+        class="link"
+      >
+        Sign up
+      </a>
+    </p>
+  </form>
+</div>
+`;

@@ -37,7 +37,7 @@ export const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
         </ul>
       </div>
       <div className={styles.ctaWrapper}>
-        <Button hasPaddingLarge />
+        <Button theme="primary" size="md" />
       </div>
     </aside>
   );
