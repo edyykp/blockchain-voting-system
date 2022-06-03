@@ -22,6 +22,7 @@ export const InfoSection = ({
           ? styles.primaryContainer
           : styles.secondaryContainer
       }`}
+      data-testid="info-section"
     >
       <div className={styles.wrapper}>
         <div
@@ -50,7 +51,7 @@ export const InfoSection = ({
               >
                 {subtitle}
               </p>
-              <div className={styles.btnWrap}>
+              <div className={styles.btnWrap} data-testid="btn-wrap">
                 {theme === 'primary' && <Button theme="primary" size="md" />}
                 {theme === 'secondary' && (
                   <Button theme="secondary" size="md" />

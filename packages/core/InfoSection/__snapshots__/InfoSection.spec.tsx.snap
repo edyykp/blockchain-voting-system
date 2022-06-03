@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoSection→ renders 1`] = `
+<div>
+  <div
+    class="container primaryContainer"
+    data-testid="info-section"
+  >
+    <div
+      class="wrapper"
+    >
+      <div
+        class="row primaryRow"
+      >
+        <div
+          class="column1"
+          data-aos="fade-up"
+        >
+          <div
+            class="textWrapper"
+          >
+            <p
+              class="topLine"
+            >
+              topline
+            </p>
+            <h1
+              class="heading primaryHeading"
+            >
+              heading
+            </h1>
+            <p
+              class="subtitle primarySubtitle"
+            >
+              subtitle
+            </p>
+            <div
+              class="btnWrap"
+              data-testid="btn-wrap"
+            >
+              <a
+                class="button  primary
+      false
+      mediumButton
+      false
+      "
+              >
+                Sign in
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="column2"
+          data-aos="fade-up"
+        >
+          <div
+            class="imgWrap"
+          >
+            <img
+              alt="info-section-img"
+              class="img"
+              src="/svg.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

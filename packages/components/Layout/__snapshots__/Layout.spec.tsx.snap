@@ -128,11 +128,9 @@ exports[`Layout→ should render children 1`] = `
       </a>
     </div>
   </aside>
-  <main>
-    <div>
-      This is a test
-    </div>
-  </main>
+  <div>
+    This is a test
+  </div>
   <footer
     class="footer"
     data-testid="footer"
