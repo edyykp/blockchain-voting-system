@@ -1,17 +1,34 @@
 import type { NextPage } from 'next';
-import { SignInForm } from '@packages/core';
+import { InfoSection, SignInForm } from '@packages/core';
+import { useInfoSectionData } from '@packages/config';
 
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
+  const sections = useInfoSectionData();
+
   return (
-    <div className={styles.container}>
-      <video autoPlay muted loop className={styles.video} preload="auto">
-        <source src="/Video.mp4" />
-      </video>
-      <div className={styles.overlay} />
-      <SignInForm />
-    </div>
+    <>
+      <main>
+        <video autoPlay muted loop className={styles.video} preload="auto">
+          <source src="/Video.mp4" />
+        </video>
+        <div className={styles.overlay} />
+        <SignInForm />
+      </main>
+      <div className={styles.container}>
+        {sections.map((section, key) => (
+          <InfoSection
+            theme={section.theme}
+            svgPath={section.svgPath}
+            heading={section.heading}
+            subtitle={section.subtitle}
+            topline={section.topline}
+            key={key}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
