@@ -5,6 +5,7 @@ exports[`Register→ renders 1`] = `
   <form
     class="container"
     data-testid="register"
+    id="register"
   >
     <div
       class="wrapper"

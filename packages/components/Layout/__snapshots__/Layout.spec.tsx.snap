@@ -65,7 +65,7 @@ exports[`Layout→ should render children 1`] = `
         <button
           class="cta primary"
         >
-          Sign in
+          Sign up
         </button>
       </div>
     </div>
@@ -116,7 +116,7 @@ exports[`Layout→ should render children 1`] = `
       <button
         class="cta"
       >
-        Sign in
+        Sign up
       </button>
     </div>
   </aside>

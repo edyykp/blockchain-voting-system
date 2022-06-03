@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from 'react';
 
 interface AuthContextInterface {
-  ctaText: 'Sign in' | 'Register';
+  ctaText: 'Sign in' | 'Sign up';
   changeText: () => void;
 }
 const AuthContext = createContext<AuthContextInterface>({
-  ctaText: 'Sign in',
+  ctaText: 'Sign up',
   changeText: () => {},
 });
 
@@ -14,11 +14,32 @@ interface AuthWrapperProps {
 }
 
 export const AuthWrapper = ({ children }: AuthWrapperProps) => {
+  const [animating, setAnimating] = useState(false);
   const [ctaText, setCtaText] =
-    useState<AuthContextInterface['ctaText']>('Sign in');
+    useState<AuthContextInterface['ctaText']>('Sign up');
+
+  const requestAnimFrame = (callback: TimerHandler) => {
+    window.setTimeout(callback, 1000 / 60);
+  };
 
   const changeText = () => {
-    ctaText === 'Sign in' ? setCtaText('Register') : setCtaText('Sign in');
+    const authContainer = document.getElementById('authContainer');
+    if (animating) return;
+
+    authContainer?.classList.add('active');
+    setAnimating(true);
+
+    setTimeout(() => {
+      requestAnimFrame(() => {});
+    });
+    setTimeout(() => {
+      requestAnimFrame(() => {
+        setAnimating(false);
+        authContainer?.classList.remove('active');
+        authContainer?.classList.toggle('reverse');
+        ctaText === 'Sign in' ? setCtaText('Sign up') : setCtaText('Sign in');
+      });
+    }, 680);
   };
 
   return (

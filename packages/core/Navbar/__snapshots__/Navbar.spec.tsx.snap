@@ -65,7 +65,7 @@ exports[`Navbar→ renders 1`] = `
         <button
           class="cta primary"
         >
-          Sign in
+          Sign up
         </button>
       </div>
     </div>

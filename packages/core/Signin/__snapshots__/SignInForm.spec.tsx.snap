@@ -6,6 +6,7 @@ exports[`SignInForm→ renders 1`] = `
     class="container"
     data-aos="zoom-in-up"
     data-testid="signinform"
+    id="signin"
   >
     <div
       class="wrapper"

@@ -48,7 +48,7 @@ exports[`Sidebar→ renders 1`] = `
       <button
         class="cta"
       >
-        Sign in
+        Sign up
       </button>
     </div>
   </aside>

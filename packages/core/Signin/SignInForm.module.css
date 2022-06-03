@@ -12,6 +12,9 @@
   padding-left: 14rem;
   padding-right: 14rem;
   width: 50%;
+  position: absolute;
+  left: 25%;
+  margin-top: -300px;
 }
 
 .wrapper {
@@ -47,6 +50,7 @@
   .container {
     padding-left: 7rem;
     padding-right: 7rem;
+    left: 25%;
   }
 
   .title {
@@ -64,6 +68,7 @@
     padding-right: 5rem;
     min-width: 70vw;
     width: 70%;
+    left: 15%;
   }
 
   .title {
@@ -81,6 +86,7 @@
     padding-left: 2rem;
     padding-right: 2rem;
     width: 90%;
+    left: 5%;
   }
 
   .title {

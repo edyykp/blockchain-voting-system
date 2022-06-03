@@ -1,9 +1,10 @@
 import { Button, Input } from '@packages/components';
-import { useSiteProperties } from '@packages/config';
+import { useSiteProperties, useAuthContext } from '@packages/config';
 
 import styles from './SignInForm.module.css';
 
 export const SignInForm = () => {
+  const auth = useAuthContext();
   const valueOf = useSiteProperties();
 
   const text = {
@@ -17,6 +18,7 @@ export const SignInForm = () => {
       className={styles.container}
       data-testid="signinform"
       data-aos="zoom-in-up"
+      id="signin"
     >
       <div className={styles.wrapper}>
         <h1 className={styles.title}>{text.title}</h1>
@@ -29,7 +31,9 @@ export const SignInForm = () => {
       <Button theme="primary" size="lg" />
       <p className={styles.text}>
         {text.footer}
-        <a className={styles.link}>{text.signup}</a>
+        <a className={styles.link} onClick={auth.changeText}>
+          {text.signup}
+        </a>
       </p>
     </form>
   );
