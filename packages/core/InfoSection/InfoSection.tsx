@@ -7,6 +7,7 @@ type InfoSectionProps = {
   subtitle: string;
   heading: string;
   topline: string;
+  id: string;
 };
 export const InfoSection = ({
   theme,
@@ -14,6 +15,7 @@ export const InfoSection = ({
   subtitle,
   heading,
   topline,
+  id,
 }: InfoSectionProps) => {
   return (
     <div
@@ -23,6 +25,7 @@ export const InfoSection = ({
           : styles.secondaryContainer
       }`}
       data-testid="info-section"
+      id={id}
     >
       <div className={styles.wrapper}>
         <div
