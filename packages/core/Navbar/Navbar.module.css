@@ -1,5 +1,6 @@
 .backgroundColor {
   background-color: var(--primary);
+  box-shadow: 2px 2px 30px 2px black;
 }
 
 .container {

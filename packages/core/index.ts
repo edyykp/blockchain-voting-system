@@ -1,3 +1,4 @@
 export { Navbar } from './Navbar';
 export { Sidebar } from './Sidebar';
-export { SignInForm } from './Signup';
+export { SignInForm } from './Signin';
+export { InfoSection } from './InfoSection';

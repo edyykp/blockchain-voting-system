@@ -1,0 +1,1 @@
+export { useInfoSectionData } from './useInfoSectionData';

@@ -31,7 +31,7 @@ export const Layout = ({ children }: LayoutProps) => {
       </Head>
       <Navbar toggle={toggle} />
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <main>{children}</main>
+      {children}
       <Footer />
     </>
   );

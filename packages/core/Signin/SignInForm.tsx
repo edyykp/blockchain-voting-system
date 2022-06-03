@@ -14,7 +14,11 @@ export const SignInForm = () => {
     signup: valueOf('sign_up'),
   };
   return (
-    <form className={styles.container} data-testid="signinform">
+    <form
+      className={styles.container}
+      data-testid="signinform"
+      data-aos="zoom-in-up"
+    >
       <div className={styles.wrapper}>
         <h1 className={styles.title}>{text.title}</h1>
         <h2 className={styles.subtitle}>{text.subtitle}</h2>
