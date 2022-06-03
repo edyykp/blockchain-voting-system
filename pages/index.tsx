@@ -25,6 +25,8 @@ const Home: NextPage = () => {
             subtitle={section.subtitle}
             topline={section.topline}
             id={section.id}
+            href={section.href}
+            buttonText={section.buttonText}
             key={key}
           />
         ))}

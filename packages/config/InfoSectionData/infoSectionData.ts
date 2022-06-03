@@ -5,6 +5,8 @@ type InfoSectionDataType = {
   theme: 'primary' | 'secondary';
   svgPath: string;
   id: string;
+  href: string;
+  buttonText: string;
 };
 
 export const data: InfoSectionDataType[] = [
@@ -16,6 +18,8 @@ export const data: InfoSectionDataType[] = [
     svgPath: '/safe.svg',
     theme: 'primary',
     id: 'about',
+    href: 'https://academy.binance.com/en/articles/what-makes-a-blockchain-secure',
+    buttonText: 'Find out more',
   },
   {
     topline: 'About Formula 1',
@@ -25,5 +29,7 @@ export const data: InfoSectionDataType[] = [
     svgPath: 'car.svg',
     theme: 'secondary',
     id: 'data-protection',
+    href: 'https://www.formula1.com/',
+    buttonText: 'Find out more',
   },
 ];
