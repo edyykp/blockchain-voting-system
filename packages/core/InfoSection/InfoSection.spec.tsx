@@ -8,7 +8,10 @@ const mockData = {
   topline: 'topline',
   svgPath: '/svg.svg',
   id: 'about',
+  href: 'https://www.google.com',
+  buttonText: 'Find out more',
 };
+
 const setup = (theme: 'primary' | 'secondary') => {
   return {
     ...render(<InfoSection {...mockData} theme={theme} />),
