@@ -62,15 +62,11 @@ exports[`Navbar→ renders 1`] = `
         class="ctaContainer"
         data-testid="navigation-bar-cta"
       >
-        <a
-          class="button  primary
-      false
-      mediumButton
-      false
-      "
+        <button
+          class="cta primary"
         >
           Sign in
-        </a>
+        </button>
       </div>
     </div>
   </nav>

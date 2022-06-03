@@ -1,10 +1,12 @@
-import '../styles/globals.css';
+import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import { Layout } from '@packages/components';
-import { useEffect } from 'react';
+import { AuthWrapper } from '@packages/config';
+
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -12,9 +14,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <AuthWrapper>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AuthWrapper>
   );
 }
 

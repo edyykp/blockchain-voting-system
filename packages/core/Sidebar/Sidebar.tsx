@@ -1,8 +1,7 @@
 import { FaTimes } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 
-import { useMenu } from '@packages/config';
-import { Button } from '@packages/components';
+import { useMenu, useAuthContext } from '@packages/config';
 
 import styles from './Sidebar.module.css';
 
@@ -12,6 +11,7 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
+  const cta = useAuthContext();
   const menuItems = useMenu();
 
   return (
@@ -37,7 +37,9 @@ export const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
         </ul>
       </div>
       <div className={styles.ctaWrapper}>
-        <Button theme="primary" size="md" />
+        <button className={styles.cta} onClick={cta.changeText}>
+          {cta.ctaText}
+        </button>
       </div>
     </aside>
   );

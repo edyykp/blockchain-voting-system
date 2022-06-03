@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './Input.module.css';
 
 type InputProps = {
-  field: 'email' | 'password';
+  field: 'email' | 'password' | 'confirm password';
   type: 'text' | 'password';
   isRequired: boolean;
 };
@@ -14,6 +14,11 @@ function capitalizeFirstLetter(string: string) {
 export const Input = ({ field, type, isRequired }: InputProps) => {
   const [isFilled, setIsFilled] = useState(false);
 
+  const placeholder =
+    field === 'confirm password'
+      ? 'Enter your password'
+      : `Enter your ${field}`;
+
   return (
     <div className={styles.container}>
       <input
@@ -21,7 +26,7 @@ export const Input = ({ field, type, isRequired }: InputProps) => {
         id={field}
         className={styles.input}
         autoComplete="off"
-        placeholder={`Enter your ${field}`}
+        placeholder={placeholder}
         required={isRequired}
         onChange={(event) =>
           event.target.value === '' ? setIsFilled(false) : setIsFilled(true)

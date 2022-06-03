@@ -6,6 +6,10 @@
   "navbar_cta_link": "signin",
   "sign_in_form_title": "Vote your favourite Formula 1 driver",
   "sign_in_form_subtitle": "Sign In",
-  "sign_in_form_footer": "Need to register?  ",
-  "sign_up": "Sign up"
+  "sign_in_form_footer": "Need to register? ",
+  "sign_up": "Sign up",
+  "register_form_title": "Vote your favourite Formula 1 driver",
+  "register_form_subtitle": "Register here",
+  "register_form_footer": "Already have an account? ",
+  "signin": "Sign in"
 }

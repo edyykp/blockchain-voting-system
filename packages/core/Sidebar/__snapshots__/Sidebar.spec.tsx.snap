@@ -45,15 +45,11 @@ exports[`Sidebar→ renders 1`] = `
     <div
       class="ctaWrapper"
     >
-      <a
-        class="button  primary
-      false
-      mediumButton
-      false
-      "
+      <button
+        class="cta"
       >
         Sign in
-      </a>
+      </button>
     </div>
   </aside>
 </div>

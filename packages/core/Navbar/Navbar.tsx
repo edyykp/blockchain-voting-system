@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { FaBars } from 'react-icons/fa';
 import { Link as LinkS } from 'react-scroll';
 
-import { Button } from '@packages/components';
-import { useMenu, useSiteProperties } from '@packages/config';
+import { useMenu, useSiteProperties, useAuthContext } from '@packages/config';
 
 import styles from './Navbar.module.css';
 
@@ -13,6 +12,7 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ toggle }: NavbarProps) => {
+  const cta = useAuthContext();
   const menuItems = useMenu();
   const valueOf = useSiteProperties();
 
@@ -68,7 +68,14 @@ export const Navbar = ({ toggle }: NavbarProps) => {
           ))}
         </ul>
         <div className={styles.ctaContainer} data-testid="navigation-bar-cta">
-          <Button theme={scrollNav ? 'secondary' : 'primary'} size="md" />
+          <button
+            className={`${styles.cta} ${
+              scrollNav ? styles.secondary : styles.primary
+            }`}
+            onClick={cta.changeText}
+          >
+            {cta.ctaText}
+          </button>
         </div>
       </div>
     </nav>
