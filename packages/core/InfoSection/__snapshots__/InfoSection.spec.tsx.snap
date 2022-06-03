@@ -41,12 +41,14 @@ exports[`InfoSection→ renders 1`] = `
             >
               <a
                 class="button  primary
-      false
-      mediumButton
-      false
-      "
+    false
+    mediumButton
+    false
+    "
+                href="https://www.google.com"
+                target="_blank"
               >
-                Sign in
+                Find out more
               </a>
             </div>
           </div>

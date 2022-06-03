@@ -24,4 +24,15 @@
   width: 50%;
   display: flex;
   text-align: left;
+  padding-inline-start: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .menu {
+    display: none;
+  }
+
+  .footer {
+    text-align: center;
+  }
 }

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { InfoSection, SignInForm } from '@packages/core';
+import { InfoSection, Register, SignInForm } from '@packages/core';
 import { useInfoSectionData } from '@packages/config';
 
 import styles from '../styles/Home.module.css';
@@ -14,7 +14,10 @@ const Home: NextPage = () => {
           <source src="/Video.mp4" />
         </video>
         <div className={styles.overlay} />
-        <SignInForm />
+        <div id="authContainer">
+          <SignInForm />
+          <Register />
+        </div>
       </main>
       <div className={styles.container}>
         {sections.map((section, key) => (

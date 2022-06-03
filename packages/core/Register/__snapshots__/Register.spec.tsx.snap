@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignInForm→ renders 1`] = `
+exports[`Register→ renders 1`] = `
 <div>
   <form
     class="container"
-    data-aos="zoom-in-up"
-    data-testid="signinform"
-    id="signin"
+    data-testid="register"
+    id="register"
   >
     <div
       class="wrapper"
@@ -19,7 +18,7 @@ exports[`SignInForm→ renders 1`] = `
       <h2
         class="subtitle"
       >
-        Sign In
+        Register here
       </h2>
     </div>
     <div
@@ -61,6 +60,24 @@ exports[`SignInForm→ renders 1`] = `
           Password
         </label>
       </div>
+      <div
+        class="container"
+      >
+        <input
+          autocomplete="off"
+          class="input"
+          id="confirm password"
+          placeholder="Enter your password"
+          required=""
+          type="password"
+        />
+        <label
+          class="label "
+          for="confirm password"
+        >
+          Confirm password
+        </label>
+      </div>
     </div>
     <a
       class="button  primary
@@ -69,16 +86,16 @@ exports[`SignInForm→ renders 1`] = `
       largeButton
       "
     >
-      Sign in
+      Register
     </a>
     <p
       class="text"
     >
-      Need to register? 
+      Already have an account? 
       <a
         class="link"
       >
-        Sign up
+        Sign in
       </a>
     </p>
   </form>
