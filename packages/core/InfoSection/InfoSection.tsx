@@ -8,6 +8,8 @@ type InfoSectionProps = {
   heading: string;
   topline: string;
   id: string;
+  href: string;
+  buttonText: string;
 };
 export const InfoSection = ({
   theme,
@@ -16,6 +18,8 @@ export const InfoSection = ({
   heading,
   topline,
   id,
+  href,
+  buttonText,
 }: InfoSectionProps) => {
   return (
     <div
@@ -55,9 +59,23 @@ export const InfoSection = ({
                 {subtitle}
               </p>
               <div className={styles.btnWrap} data-testid="btn-wrap">
-                {theme === 'primary' && <Button theme="primary" size="md" />}
+                {theme === 'primary' && (
+                  <Button
+                    theme="primary"
+                    size="md"
+                    href={href}
+                    targetHref="_blank"
+                    buttonText={buttonText}
+                  />
+                )}
                 {theme === 'secondary' && (
-                  <Button theme="secondary" size="md" />
+                  <Button
+                    theme="secondary"
+                    size="md"
+                    href={href}
+                    targetHref="_blank"
+                    buttonText={buttonText}
+                  />
                 )}
               </div>
             </div>
