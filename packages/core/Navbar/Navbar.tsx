@@ -56,6 +56,11 @@ export const Navbar = ({ toggle }: NavbarProps) => {
                 className={`${styles.menuUrls} ${
                   scrollNav ? styles.urlColor : ''
                 }`}
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-80}
+                activeClass={styles.active}
               >
                 {item.title}
               </LinkS>

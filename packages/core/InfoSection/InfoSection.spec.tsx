@@ -7,6 +7,7 @@ const mockData = {
   subtitle: 'subtitle',
   topline: 'topline',
   svgPath: '/svg.svg',
+  id: 'about',
 };
 const setup = (theme: 'primary' | 'secondary') => {
   return {
