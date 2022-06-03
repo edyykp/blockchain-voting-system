@@ -5,6 +5,7 @@ exports[`InfoSection→ renders 1`] = `
   <div
     class="container primaryContainer"
     data-testid="info-section"
+    id="about"
   >
     <div
       class="wrapper"
