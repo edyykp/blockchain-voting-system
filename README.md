@@ -1,8 +1,6 @@
-## JIRA board
+## Authentication
 
-[JIRA Board](https://eduard-stoica.atlassian.net/jira/software/projects/BVS/boards/1)
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[https://github.com/vercel/next.js/tree/canary/examples/with-iron-session](Authentication with iron-session)
 
 ## Getting Started
 
