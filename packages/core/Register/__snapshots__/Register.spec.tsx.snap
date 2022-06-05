@@ -30,7 +30,6 @@ exports[`Register→ renders 1`] = `
         <input
           autocomplete="off"
           class="input"
-          id="email"
           placeholder="Enter your email"
           required=""
           type="text"
@@ -48,7 +47,6 @@ exports[`Register→ renders 1`] = `
         <input
           autocomplete="off"
           class="input"
-          id="password"
           placeholder="Enter your password"
           required=""
           type="password"
@@ -66,7 +64,6 @@ exports[`Register→ renders 1`] = `
         <input
           autocomplete="off"
           class="input"
-          id="confirm password"
           placeholder="Enter your password"
           required=""
           type="password"

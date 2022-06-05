@@ -31,7 +31,6 @@ exports[`SignInForm→ renders 1`] = `
         <input
           autocomplete="off"
           class="input"
-          id="email"
           placeholder="Enter your email"
           required=""
           type="text"
@@ -49,7 +48,6 @@ exports[`SignInForm→ renders 1`] = `
         <input
           autocomplete="off"
           class="input"
-          id="password"
           placeholder="Enter your password"
           required=""
           type="password"

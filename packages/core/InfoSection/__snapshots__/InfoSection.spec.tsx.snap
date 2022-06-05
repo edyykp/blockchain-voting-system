@@ -63,6 +63,7 @@ exports[`InfoSection→ renders 1`] = `
             <img
               alt="info-section-img"
               class="img"
+              loading="lazy"
               src="/svg.svg"
             />
           </div>
