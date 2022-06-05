@@ -23,7 +23,6 @@ export const Input = ({ field, type, isRequired }: InputProps) => {
     <div className={styles.container}>
       <input
         type={type}
-        id={field}
         className={styles.input}
         autoComplete="off"
         placeholder={placeholder}

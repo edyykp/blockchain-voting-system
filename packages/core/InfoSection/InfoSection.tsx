@@ -86,6 +86,7 @@ export const InfoSection = ({
                 className={styles.img}
                 alt="info-section-img"
                 src={svgPath}
+                loading="lazy"
               />
             </div>
           </div>
