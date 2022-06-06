@@ -13,7 +13,10 @@ type RaceStatusType = {
   };
 };
 
-export const isCircuitFinished = async (race: RaceType, year?: string) => {
+export const isCircuitFinished = async (
+  race: RaceType,
+  year?: string | string[],
+) => {
   let isFinished = false;
 
   const status = await fetch(

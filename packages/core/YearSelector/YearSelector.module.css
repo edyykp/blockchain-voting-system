@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftLine {
+  width: 19%;
+  background-color: black;
+  height: 1px;
+  border-width: 0;
+  -webkit-box-shadow: 2px 2px 10px 0px #666666;
+  box-shadow: 2px 2px 10px 0px #666666;
+}
+
+.rightLine {
+  width: 70%;
+  height: 1px;
+  border-width: 0;
+  background-color: black;
+  -webkit-box-shadow: 2px 2px 10px 0px #666666;
+  box-shadow: 2px 2px 10px 0px #666666;
+}
+
+.selector {
+  height: 30px;
+  width: 10%;
+  font-size: 1rem;
+  border-bottom: 1px solid black;
+  border: 0;
+  background-color: var(--gray-800);
+  color: var(--gray-200);
+  opacity: 0.7;
+  -webkit-box-shadow: 2px 2px 10px 0px #666666;
+  box-shadow: 2px 2px 10px 0px #666666;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 1024px) {
+  .selector {
+    width: 15%;
+  }
+
+  .leftLine {
+    width: 17%;
+  }
+
+  .rightLine {
+    width: 67%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .selector {
+    width: 18%;
+  }
+
+  .leftLine {
+    width: 15%;
+  }
+
+  .rightLine {
+    width: 66%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .selector {
+    width: 30%;
+  }
+
+  .leftLine {
+    width: 11%;
+  }
+
+  .rightLine {
+    width: 59%;
+  }
+}

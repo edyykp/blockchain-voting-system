@@ -2,52 +2,71 @@
 
 exports[`YearSelector→ renders 1`] = `
 <div>
-  <select
-    data-testid="year-selector"
-    id="years"
-    name="years"
+  <span
+    class="container"
   >
-    <option
-      value="2015"
+    <hr
+      class="leftLine"
+    />
+    <select
+      class="selector"
+      data-testid="year-selector"
+      id="years"
+      name="years"
     >
-      2015
-    </option>
-    <option
-      value="2016"
-    >
-      2016
-    </option>
-    <option
-      value="2017"
-    >
-      2017
-    </option>
-    <option
-      value="2018"
-    >
-      2018
-    </option>
-    <option
-      value="2019"
-    >
-      2019
-    </option>
-    <option
-      value="2020"
-    >
-      2020
-    </option>
-    <option
-      value="2021"
-    >
-      2021
-    </option>
-    <option
-      selected=""
-      value="2022"
-    >
-      2022
-    </option>
-  </select>
+      <option
+        class="option"
+        value="2015"
+      >
+        Year 2015
+      </option>
+      <option
+        class="option"
+        value="2016"
+      >
+        Year 2016
+      </option>
+      <option
+        class="option"
+        value="2017"
+      >
+        Year 2017
+      </option>
+      <option
+        class="option"
+        value="2018"
+      >
+        Year 2018
+      </option>
+      <option
+        class="option"
+        value="2019"
+      >
+        Year 2019
+      </option>
+      <option
+        class="option"
+        value="2020"
+      >
+        Year 2020
+      </option>
+      <option
+        class="option"
+        value="2021"
+      >
+        Year 2021
+      </option>
+      <option
+        class="option"
+        selected=""
+        value="2022"
+      >
+        Year 2022
+      </option>
+    </select>
+    <hr
+      class="rightLine"
+    />
+  </span>
 </div>
 `;
