@@ -5,3 +5,31 @@
   justify-content: space-around;
   gap: 4rem;
 }
+
+@media screen and (max-width: 1337px) {
+  .container {
+    gap: 3rem;
+  }
+}
+
+@media screen and (max-width: 1305px) {
+  .container {
+    padding: 3rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media screen and (max-width: 1241px) {
+  .container {
+    padding: 2rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media screen and (max-width: 1209px) {
+  .container {
+    gap: 1rem;
+    padding: 0.5rem;
+    padding-bottom: 5rem;
+  }
+}
