@@ -36,6 +36,7 @@ export const Card = ({ race }: CardProps) => {
           alt={race.circuitId}
           className={styles.image}
           layout="fill"
+          objectFit="cover"
         />
       </div>
 
