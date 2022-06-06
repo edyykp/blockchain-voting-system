@@ -1,5 +1,4 @@
 import { fireEvent, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 

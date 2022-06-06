@@ -23,10 +23,8 @@
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
-    "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^14.2.0",
     "@types/aos": "^3.0.4",
     "@types/node": "17.0.21",
     "@types/react": "17.0.41",
