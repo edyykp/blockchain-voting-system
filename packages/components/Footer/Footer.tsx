@@ -16,17 +16,18 @@ export const Footer = () => {
     <footer className={styles.footer} data-testid="footer">
       <ul className={styles.menu}>
         {menu.map((item, key) => (
-          <Link
-            to={item.url}
-            className={styles.link}
-            key={key}
-            smooth={true}
-            duration={500}
-            spy={true}
-            offset={-80}
-          >
-            {item.title}
-          </Link>
+          <li key={key}>
+            <Link
+              to={item.url}
+              className={styles.link}
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={-80}
+            >
+              {item.title}
+            </Link>
+          </li>
         ))}
       </ul>
       <div className={styles.copyright}>

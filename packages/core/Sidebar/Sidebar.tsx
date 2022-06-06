@@ -25,14 +25,11 @@ export const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
       <div className={styles.menuWrapper}>
         <ul className={styles.menu}>
           {menuItems.map((item, key) => (
-            <Link
-              to={item.url}
-              className={styles.link}
-              onClick={toggle}
-              key={key}
-            >
-              {item.title}
-            </Link>
+            <li key={key}>
+              <Link to={item.url} className={styles.link} onClick={toggle}>
+                {item.title}
+              </Link>
+            </li>
           ))}
         </ul>
       </div>
