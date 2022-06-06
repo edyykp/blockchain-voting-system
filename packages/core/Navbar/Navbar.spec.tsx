@@ -1,7 +1,9 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 
 import { Navbar } from './Navbar';
+import { createMockRouter } from 'test-utils/createMockRouter';
 
 const mockProps = {
   toggle: () => {},
@@ -9,7 +11,11 @@ const mockProps = {
 
 const setup = () => {
   return {
-    ...render(<Navbar {...mockProps} />),
+    ...render(
+      <RouterContext.Provider value={createMockRouter({})}>
+        <Navbar {...mockProps} />
+      </RouterContext.Provider>,
+    ),
   };
 };
 

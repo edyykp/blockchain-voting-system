@@ -28,13 +28,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const currentYear = new Date().getFullYear();
   const isCurrentYearRequested = year === String(currentYear) || !year;
 
-  const races = await getAllCircuitsPerYear(String(year));
+  const races = await getAllCircuitsPerYear(year);
   const finishedRaces: RaceType[] = [];
 
   if (isCurrentYearRequested) {
     await Promise.all(
       races.map(async (race) => {
-        const isFinished = await isCircuitFinished(race, String(year));
+        const isFinished = await isCircuitFinished(race, year);
 
         if (isFinished) {
           finishedRaces.push(race);

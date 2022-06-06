@@ -1,13 +1,18 @@
 import { render } from '@testing-library/react';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 import '@testing-library/jest-dom';
+
 import { Layout } from './Layout';
+import { createMockRouter } from 'test-utils/createMockRouter';
 
 const setup = () => {
   return {
     ...render(
-      <Layout>
-        <div>This is a test</div>
-      </Layout>,
+      <RouterContext.Provider value={createMockRouter({})}>
+        <Layout>
+          <div>This is a test</div>
+        </Layout>
+      </RouterContext.Provider>,
     ),
   };
 };

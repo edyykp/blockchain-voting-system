@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 
 import { YearSelector } from './YearSelector';
-import { createMockRouter } from '../../../test-utils/createMockRouter';
+import { createMockRouter } from 'test-utils/createMockRouter';
 
 const setup = (year?: string) => {
   return {
@@ -29,21 +29,26 @@ describe('YearSelector→', () => {
     const { getByRole } = setup();
 
     expect(
-      getByRole('option', { name: currentYear }).getAttribute('selected'),
+      getByRole('option', { name: `Year ${currentYear}` }).getAttribute(
+        'selected',
+      ),
     ).toBe('');
     expect(
-      getByRole('option', { name: '2021' }).getAttribute('selected'),
+      getByRole('option', { name: 'Year 2021' }).getAttribute('selected'),
     ).toBeNull();
   });
 
   it('renders year from parameter if search parameter is defined', () => {
     const { getByRole } = setup('2017');
 
-    expect(getByRole('option', { name: '2017' }).getAttribute('selected')).toBe(
-      '',
-    );
+    expect(
+      getByRole('option', { name: 'Year 2017' }).getAttribute('selected'),
+    ).toBe('');
 
-    expect(getByRole('option', { name: currentYear }).getAttribute('selected'))
-      .toBeNull;
+    expect(
+      getByRole('option', { name: `Year ${currentYear}` }).getAttribute(
+        'selected',
+      ),
+    ).toBeNull;
   });
 });

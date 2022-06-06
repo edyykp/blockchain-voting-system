@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FaBars } from 'react-icons/fa';
 import { Link as LinkS } from 'react-scroll';
+import { useRouter } from 'next/router';
 
 import { useMenu, useSiteProperties, useAuthContext } from '@packages/config';
 
@@ -13,15 +14,16 @@ interface NavbarProps {
 
 export const Navbar = ({ toggle }: NavbarProps) => {
   const cta = useAuthContext();
+  const { pathname } = useRouter();
   const menuItems = useMenu();
   const valueOf = useSiteProperties();
 
-  const [scrollNav, setScrollNav] = useState(false);
+  const [scrollNav, setScrollNav] = useState(pathname === '/' ? false : true);
 
   const changeNav = () => {
     if (window.scrollY >= 80) {
       setScrollNav(true);
-    } else {
+    } else if (pathname === '/') {
       setScrollNav(false);
     }
   };

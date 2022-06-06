@@ -25,7 +25,7 @@ type CircuitTableType = {
   };
 };
 
-export const getAllCircuitsPerYear = async (year?: string) => {
+export const getAllCircuitsPerYear = async (year?: string | string[]) => {
   const races: RaceType[] = [];
 
   const res = await fetch(
