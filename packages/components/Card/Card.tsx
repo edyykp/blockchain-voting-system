@@ -17,18 +17,31 @@ export const Card = ({ race }: CardProps) => {
     standingsButton: valueOf('standings_button_text'),
   };
 
+  const setSource = () => {
+    try {
+      return require(`public/${race.circuitId}.png`);
+    } catch (error) {
+      return require('public/placeholder.png');
+    }
+  };
+
+  const src = setSource();
+
   return (
     <div className={styles.container}>
-      <Image
-        src={`/${race.circuitId}.png`}
-        loading="lazy"
-        alt={race.circuitId}
-        className={styles.image}
-        layout="fill"
-      />
+      <div className={styles.imgWrap}>
+        <Image
+          src={src}
+          loading="lazy"
+          alt={race.circuitId}
+          className={styles.image}
+          layout="fill"
+        />
+      </div>
+
       <div className={styles.body}>
-        <h1 className={styles.locality}>{race.locality}</h1>
-        <h2 className={styles.contry}>{race.country}</h2>
+        <h1 className={styles.locality}>{race.locality},</h1>
+        <h2 className={styles.country}>{race.country}</h2>
         <button className={`${styles.button} ${styles.votingButton}`}>
           {text.votingButton}
         </button>

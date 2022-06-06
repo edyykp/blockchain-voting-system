@@ -4,18 +4,18 @@ import { RaceType } from '@packages/types';
 import { CardsList, YearSelector } from '@packages/core';
 import { getAllCircuitsPerYear, isCircuitFinished } from '@packages/network';
 
+import styles from '../../styles/Dashboard.module.css';
+
 type DashboardProps = {
   races: RaceType[];
 };
 
 const Dashboard: NextPage<DashboardProps> = ({ races }: DashboardProps) => {
   return (
-    <>
-      <main>
-        <YearSelector />
-        <CardsList races={races} />
-      </main>
-    </>
+    <div className={styles.container}>
+      <YearSelector />
+      <CardsList races={races} />
+    </div>
   );
 };
 

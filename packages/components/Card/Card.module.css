@@ -1,4 +1,74 @@
-.image {
+.container {
+  height: 500px;
+  width: 350px;
+  border: 1px solid var(--gray-300);
+  -webkit-box-shadow: 2px 2px 30px -15px #666666;
+  box-shadow: 2px 2px 30px -15px #666666;
+  border-radius: 10px;
+}
+
+.imgWrap {
+  position: relative;
   width: 100%;
+  height: 300px;
+}
+
+.image {
   height: 180px;
+}
+
+.body {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.button {
+  width: 100%;
+  color: var(--gray-200);
+  height: 30px;
+  border: 0;
+  font-size: 1rem;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: transparent;
+}
+
+.votingButton {
+  margin-bottom: 10px;
+  background-color: var(--primary);
+}
+
+.votingButton:hover {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.votingButton:active {
+  -webkit-box-shadow: 2px 2px 10px 0px var(--primary);
+  box-shadow: 2px 2px 10px 0px var(--primary);
+}
+
+.standingsButton {
+  background-color: var(--gray-800);
+}
+
+.standingsButton:hover {
+  border: 1px solid var(--gray-800);
+  color: var(--gray-800);
+}
+
+.standingsButton:active {
+  -webkit-box-shadow: 2px 2px 10px 0px var(--gray-800);
+  box-shadow: 2px 2px 10px 0px var(--gray-800);
+}
+
+.locality {
+  margin-bottom: 0;
+}
+
+.country {
+  margin-block-start: 0.5rem;
 }

@@ -11,5 +11,7 @@
   "register_form_title": "Vote your favourite Formula 1 driver",
   "register_form_subtitle": "Register here",
   "register_form_footer": "Already have an account? ",
-  "signin": "Sign in"
+  "signin": "Sign in",
+  "vote_button_text": "Vote now",
+  "standings_button_text": "Standings"
 }

@@ -17,6 +17,7 @@ export const YearSelector = () => {
         router.replace(`/dashboard?year=${event.target.value}`)
       }
       defaultValue={router.query.year ?? currentYear}
+      data-testid="year-selector"
     >
       {listOfYears.map((year) => (
         <option value={year} key={year}>
