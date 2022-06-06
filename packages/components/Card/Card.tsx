@@ -19,7 +19,7 @@ export const Card = ({ race }: CardProps) => {
 
   const setSource = () => {
     try {
-      return require(`public/${race.circuitId}.png`);
+      return require(`public/${race.circuitId}.jpg`);
     } catch (error) {
       return require('public/placeholder.png');
     }
