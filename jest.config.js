@@ -15,6 +15,9 @@ const customJestConfig = {
   modulePathIgnorePatterns: ['integration-tests'],
   moduleNameMapper: {
     '@packages/(.*)$': '<rootDir>/packages/$1',
+    '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$':
+      '<rootDir>/__mocks__/fileMock.js',
+    '^.+\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
   },
   testEnvironment: 'jest-environment-jsdom',
   errorOnDeprecated: true,

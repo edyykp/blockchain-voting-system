@@ -1,5 +1,6 @@
 .backgroundColor {
   background-color: var(--primary);
+  -webkit-box-shadow: 2px 2px 30px 2px black;
   box-shadow: 2px 2px 30px 2px black;
 }
 
@@ -97,6 +98,7 @@
 .secondary:hover {
   background: transparent;
   color: var(--white);
+  -webkit-box-shadow: 2px 2px 30px 3px var(--white);
   box-shadow: 2px 2px 30px 3px var(--white);
 }
 
@@ -107,6 +109,7 @@
 }
 
 .primary:hover {
+  -webkit-box-shadow: 2px 2px 30px 3px var(--primary);
   box-shadow: 2px 2px 30px 3px var(--primary);
 }
 

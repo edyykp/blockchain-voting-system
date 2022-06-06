@@ -26,7 +26,7 @@ export const data: InfoSectionDataType[] = [
     heading: 'Chess, Padel, Golf and a bit of racing too',
     subtitle:
       'Formula 1 is a type of motorsport. Teams compete in a series of Grand Prix races, held in different countries around the world. Some of the most popular races are held in Monaco, Japan, Italy and Britain. The cars are very fast.',
-    svgPath: 'car.svg',
+    svgPath: '/car.svg',
     theme: 'secondary',
     id: 'data-protection',
     href: 'https://www.formula1.com/',
