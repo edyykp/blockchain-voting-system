@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YearStandingsButton→ renders 1`] = `
+<div>
+  <button
+    class="button"
+    data-testid="year-standings-button"
+  >
+    Standings
+     
+    2017
+  </button>
+</div>
+`;
