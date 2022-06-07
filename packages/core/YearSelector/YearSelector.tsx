@@ -17,7 +17,9 @@ export const YearSelector = ({ year }: YearSelectorProps) => {
         name="years"
         id="years"
         onChange={(event) =>
-          window.location.replace(`/dashboard?year=${event.target.value}`)
+          window.location.replace(
+            `/dashboard?year=${encodeURIComponent(event.target.value)}`,
+          )
         }
         defaultValue={year}
         data-testid="year-selector"
