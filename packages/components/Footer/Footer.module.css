@@ -25,6 +25,7 @@
   display: flex;
   text-align: left;
   padding-inline-start: 0;
+  list-style-type: none;
 }
 
 @media screen and (max-width: 480px) {

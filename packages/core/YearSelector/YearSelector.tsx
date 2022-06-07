@@ -1,15 +1,14 @@
-import { useRouter } from 'next/router';
-
 import styles from './YearSelector.module.css';
 
-const currentYear = new Date().getFullYear();
-const listOfYears: number[] = [];
-for (let year = 2015; year <= currentYear; year++) {
-  listOfYears.push(year);
-}
+type YearSelectorProps = {
+  year: string;
+};
 
-export const YearSelector = () => {
-  const router = useRouter();
+export const YearSelector = ({ year }: YearSelectorProps) => {
+  const listOfYears: number[] = [];
+  for (let y = 2015; y <= new Date().getFullYear(); y++) {
+    listOfYears.push(y);
+  }
 
   return (
     <span className={styles.container}>
@@ -18,9 +17,11 @@ export const YearSelector = () => {
         name="years"
         id="years"
         onChange={(event) =>
-          router.replace(`/dashboard?year=${event.target.value}`)
+          window.location.replace(
+            `/dashboard?year=${encodeURIComponent(event.target.value)}`,
+          )
         }
-        defaultValue={router.query.year ?? currentYear}
+        defaultValue={year}
         data-testid="year-selector"
         className={styles.selector}
       >

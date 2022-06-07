@@ -1,7 +1,8 @@
 import { GetServerSideProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import { RaceType } from '@packages/types';
-import { CardsList, YearSelector } from '@packages/core';
+import { CardsList, YearSelector, YearStandingsButton } from '@packages/core';
 import { getAllCircuitsPerYear, isCircuitFinished } from '@packages/network';
 
 import styles from '../../styles/Dashboard.module.css';
@@ -11,10 +12,21 @@ type DashboardProps = {
 };
 
 const Dashboard: NextPage<DashboardProps> = ({ races }: DashboardProps) => {
+  const { query } = useRouter();
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className={styles.container}>
-      <YearSelector />
-      <CardsList races={races} />
+      <YearSelector
+        year={query.year ? String(query.year) : String(currentYear)}
+      />
+      <div className={styles.contentWrapper}>
+        <YearStandingsButton
+          year={query.year ? String(query.year) : String(currentYear)}
+        />
+
+        <CardsList races={races} />
+      </div>
     </div>
   );
 };

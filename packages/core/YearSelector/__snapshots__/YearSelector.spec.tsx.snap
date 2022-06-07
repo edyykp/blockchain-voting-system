@@ -28,6 +28,7 @@ exports[`YearSelector→ renders 1`] = `
       </option>
       <option
         class="option"
+        selected=""
         value="2017"
       >
         Year 2017
@@ -58,7 +59,6 @@ exports[`YearSelector→ renders 1`] = `
       </option>
       <option
         class="option"
-        selected=""
         value="2022"
       >
         Year 2022

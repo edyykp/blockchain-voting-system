@@ -9,16 +9,20 @@ exports[`Footer→ renders 1`] = `
     <ul
       class="menu"
     >
-      <a
-        class="link"
-      >
-        About
-      </a>
-      <a
-        class="link"
-      >
-        Data Protection
-      </a>
+      <li>
+        <a
+          class="link"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+        >
+          Data Protection
+        </a>
+      </li>
     </ul>
     <div
       class="copyright"
