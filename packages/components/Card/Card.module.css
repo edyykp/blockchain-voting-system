@@ -1,6 +1,5 @@
 .container {
   height: 500px;
-  width: 350px;
   border: 1px solid var(--gray-300);
   -webkit-box-shadow: 2px 2px 30px -15px #666666;
   box-shadow: 2px 2px 30px -15px #666666;
