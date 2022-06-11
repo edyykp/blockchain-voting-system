@@ -59,6 +59,6 @@ export const getAllRacesPerYear = async (year: string | string[]) => {
     return { races, error: null, status: res.status };
   } catch (error: any) {
     console.error(error);
-    return { races: [], error, status: 500 };
+    return { races: [], error: error.message, status: 500 };
   }
 };
