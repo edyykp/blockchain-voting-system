@@ -1,64 +1,57 @@
-import { GetServerSideProps, NextPage } from 'next';
-import { useRouter } from 'next/router';
+import { GetStaticProps, NextPage } from 'next';
 
 import { RaceType } from '@packages/types';
 import { CardsList, YearSelector, YearStandingsButton } from '@packages/core';
-import { getAllCircuitsPerYear, isCircuitFinished } from '@packages/network';
+import { getAllRacesPerYear } from '@packages/network';
 
 import styles from '../../styles/Dashboard.module.css';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 type DashboardProps = {
   races: RaceType[];
+  error: any;
+  status: number;
 };
 
-const Dashboard: NextPage<DashboardProps> = ({ races }: DashboardProps) => {
-  const { query } = useRouter();
-  const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear();
+
+const Dashboard: NextPage<DashboardProps> = ({
+  races,
+  error,
+  status,
+}: DashboardProps) => {
+  const { replace } = useRouter();
+
+  useEffect(() => {
+    if (error) {
+      if (status > 499) {
+        replace('/500');
+      }
+
+      replace('/404');
+    }
+  }, [error, status]);
 
   return (
     <div className={styles.container}>
-      <YearSelector
-        year={query.year ? String(query.year) : String(currentYear)}
-      />
+      <YearSelector year={String(currentYear)} />
       <div className={styles.contentWrapper}>
-        <YearStandingsButton
-          year={query.year ? String(query.year) : String(currentYear)}
-        />
-
+        <YearStandingsButton year={String(currentYear)} />
         <CardsList races={races} />
       </div>
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  context.res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=604800, stale-while-revalidate=59',
+export const getStaticProps: GetStaticProps = async () => {
+  const { races, error, status } = await getAllRacesPerYear(
+    String(currentYear),
   );
-  const { year } = context.query;
-  const currentYear = new Date().getFullYear();
-  const isCurrentYearRequested = year === String(currentYear) || !year;
-
-  const races = await getAllCircuitsPerYear(year);
-  const finishedRaces: RaceType[] = [];
-
-  if (isCurrentYearRequested) {
-    await Promise.all(
-      races.map(async (race) => {
-        const isFinished = await isCircuitFinished(race, year);
-
-        if (isFinished) {
-          finishedRaces.push(race);
-        }
-      }),
-    );
-  }
 
   return {
-    props: {
-      races: isCurrentYearRequested ? finishedRaces : races,
-    },
+    props: { races, error, status },
+    revalidate: 240,
   };
 };
 
