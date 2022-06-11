@@ -1,12 +1,12 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import { RaceType } from '@packages/types';
 import { CardsList, YearSelector, YearStandingsButton } from '@packages/core';
 import { getAllRacesPerYear } from '@packages/network';
 
 import styles from '../../styles/Dashboard.module.css';
-import { useEffect } from 'react';
 
 type DashboardProps = {
   races: RaceType[];
