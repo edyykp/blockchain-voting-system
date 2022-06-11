@@ -46,6 +46,7 @@ export const getAllRacesPerYear = async (year: string | string[]) => {
 
     allRaces.forEach((race) => {
       const raceDate = new Date(`${race.date}T${race.time}`);
+
       if (currentDate.getTime() > raceDate.getTime()) {
         races.push({
           circuitId: race.Circuit.circuitId,
@@ -53,7 +54,6 @@ export const getAllRacesPerYear = async (year: string | string[]) => {
           country: race.Circuit.Location.country,
         });
       }
-      undefined;
     });
 
     return { races, error: null, status: res.status };
