@@ -1,4 +1,6 @@
 import Image from 'next/image';
+// import { useEffect } from 'react';
+// import { useRouter } from 'next/router';
 
 import { useSiteProperties } from '@packages/config';
 import { RaceType } from '@packages/types';
@@ -11,6 +13,23 @@ type CardProps = {
 
 export const Card = ({ race }: CardProps) => {
   const valueOf = useSiteProperties();
+  // const { query } = useRouter();
+  // const currentYear = new Date().getFullYear();
+
+  // const getDrivers = async () => {
+  //   const data = await fetch(
+  //     `/api/getDrivers?year=${query.year ?? currentYear}&circuit=${
+  //       race.circuitId
+  //     }`,
+  //   );
+
+  //   const text = await data.json();
+  //   console.log(text);
+  // };
+
+  // useEffect(() => {
+  //   getDrivers();
+  // }, []);
 
   const text = {
     votingButton: valueOf('vote_button_text'),
