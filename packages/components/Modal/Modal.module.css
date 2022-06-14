@@ -23,9 +23,16 @@
 .header {
   display: flex;
   justify-content: flex-end;
-  font-size: 25px;
+  border-bottom: 1px solid var(--gray-600);
 }
 
 .body {
   padding-top: 10px;
+}
+
+.title {
+  margin-top: 0;
+  font-size: 1.2rem;
+  flex-grow: 2;
+  text-align: center;
 }

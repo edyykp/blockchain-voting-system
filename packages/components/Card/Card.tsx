@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import Image from 'next/image';
-// import { useEffect } from 'react';
-// import { useRouter } from 'next/router';
 
 import { useSiteProperties } from '@packages/config';
 import { RaceType } from '@packages/types';
+import { VotingModal } from '@packages/core';
 
 import styles from './Card.module.css';
 
@@ -12,31 +12,15 @@ type CardProps = {
 };
 
 export const Card = ({ race }: CardProps) => {
+  const [voteShow, setShowVotingModal] = useState(false);
   const valueOf = useSiteProperties();
-  // const { query } = useRouter();
-  // const currentYear = new Date().getFullYear();
-
-  // const getDrivers = async () => {
-  //   const data = await fetch(
-  //     `/api/getDrivers?year=${query.year ?? currentYear}&circuit=${
-  //       race.circuitId
-  //     }`,
-  //   );
-
-  //   const text = await data.json();
-  //   console.log(text);
-  // };
-
-  // useEffect(() => {
-  //   getDrivers();
-  // }, []);
 
   const text = {
     votingButton: valueOf('vote_button_text'),
     standingsButton: valueOf('standings_button_text'),
   };
 
-  const setSource = () => {
+  const setImageSource = () => {
     try {
       return require(`public/${race.circuitId}.jpg`);
     } catch (error) {
@@ -44,13 +28,17 @@ export const Card = ({ race }: CardProps) => {
     }
   };
 
-  const src = setSource();
-
   return (
     <div className={styles.container}>
+      <VotingModal
+        show={voteShow}
+        setShowModal={setShowVotingModal}
+        raceName={`${race.country}, ${race.locality}`}
+        circuitId={race.circuitId}
+      />
       <div className={styles.imgWrap}>
         <Image
-          src={src}
+          src={setImageSource()}
           loading="lazy"
           alt={race.circuitId}
           className={styles.image}
@@ -62,7 +50,10 @@ export const Card = ({ race }: CardProps) => {
       <div className={styles.body}>
         <h1 className={styles.locality}>{race.locality},</h1>
         <h2 className={styles.country}>{race.country}</h2>
-        <button className={`${styles.button} ${styles.votingButton}`}>
+        <button
+          className={`${styles.button} ${styles.votingButton}`}
+          onClick={() => setShowVotingModal(true)}
+        >
           {text.votingButton}
         </button>
         <button className={`${styles.button} ${styles.standingsButton}`}>

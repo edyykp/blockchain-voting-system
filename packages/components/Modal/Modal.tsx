@@ -43,7 +43,7 @@ export const Modal = ({ show, onClose, children, title }: ModalProps) => {
     <div className={styles.overlay}>
       <div className={styles.wrapper} ref={modalWrapper}>
         <div className={styles.header}>
-          {title}
+          <h1 className={styles.title}>{title}</h1>
           <FaTimes className={styles.icon} onClick={handleCloseClick} />
         </div>
         <div className={styles.body}>{children}</div>
