@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { createMockRouter } from 'test-utils/createMockRouter';
 
 import { CardsList } from './CardsList';
 
@@ -25,7 +27,11 @@ const mockRaces = {
 
 const setup = () => {
   return {
-    ...render(<CardsList {...mockRaces} />),
+    ...render(
+      <RouterContext.Provider value={createMockRouter({})}>
+        <CardsList {...mockRaces} />
+      </RouterContext.Provider>,
+    ),
   };
 };
 

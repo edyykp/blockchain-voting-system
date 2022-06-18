@@ -13,19 +13,41 @@
 
 .wrapper {
   background: white;
-  width: 500px;
+  width: 800px;
   height: 600px;
   border-radius: 15px;
   padding: 15px;
   z-index: 2;
+  overflow-y: auto;
+  scrollbar-width: 5px;
+  scrollbar-color: var(--primary) transparent;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+.wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 50px;
 }
 
 .header {
   display: flex;
   justify-content: flex-end;
-  font-size: 25px;
+  border-bottom: 1px solid var(--gray-600);
 }
 
 .body {
   padding-top: 10px;
+}
+
+.title {
+  margin-top: 0;
+  font-size: 1.2rem;
+  flex-grow: 2;
+  text-align: center;
 }
