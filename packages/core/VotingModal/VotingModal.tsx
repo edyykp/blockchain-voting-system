@@ -7,7 +7,7 @@ import { DriverType } from '@packages/types';
 
 import styles from './VotingModal.module.css';
 
-type VotingModalProps = {
+export type VotingModalProps = {
   show: boolean;
   raceName: string;
   circuitId: string;
@@ -33,7 +33,6 @@ export const VotingModal = ({
     const text: { drivers: DriverType[]; error: string | null } =
       await data.json();
 
-    console.log(text.drivers);
     setDrivers(text.drivers);
     setError(text.error);
   };
@@ -61,7 +60,19 @@ export const VotingModal = ({
     if (startingPosition === 0) {
       return undefined;
     }
-    return Math.abs(Number(startingPosition) - Number(finalPosition));
+    const difference = Math.abs(
+      Number(startingPosition) - Number(finalPosition),
+    );
+
+    if (difference === 0) {
+      return undefined;
+    }
+
+    if (startingPosition > finalPosition) {
+      return '▲' + String(difference);
+    }
+
+    return '▼' + String(difference);
   };
 
   const setImageSource = (source: string) => {
@@ -73,27 +84,50 @@ export const VotingModal = ({
   };
 
   const DriversList = (driversList: DriverType[]) => (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="drivers-container">
       {driversList.map((driver, key) => (
-        <div className={styles.driverWrapper} key={key}>
-          <div>
-            {driver.finalPosition}{' '}
-            <span>{positionMovement(driver.startingPosition, key + 1)}</span>
+        <div
+          className={styles.driverWrapper}
+          key={key}
+          data-testid="driver-button"
+        >
+          <div className={styles.positionWrapper}>
+            {key + 1}.
+            <span
+              className={`${styles.arrow} ${
+                driver.startingPosition < driver.finalPosition ||
+                !driver.finalPosition
+                  ? styles.redArrow
+                  : styles.greenArrow
+              }`}
+            >
+              {positionMovement(driver.startingPosition, key + 1)}
+            </span>
           </div>
-          <div>
-            <span>{driver.Driver.permanentNumber}</span>
+          <div className={styles.nameWrapper}>
+            <span className={styles.permanentNumber}>
+              {driver.Driver.permanentNumber}
+            </span>{' '}
             {driver.Driver.givenName} {driver.Driver.familyName}
           </div>
-          <div>{driver.Driver.nationality}</div>
-          <div>
-            <span>
+          <div className={styles.nationalityWrapper}>
+            {driver.Driver.nationality}
+          </div>
+          <div className={styles.teamWrapper}>
+            <span className={styles.imageWrapper}>
               <Image
-                src={setImageSource(driver.Constructor.constructorId)}
+                src="/ferrari.png"
                 loading="lazy"
                 alt={driver.Constructor.constructorId}
+                width={15}
+                height={20}
+                className={styles.img}
               />
             </span>
-            {driver.Constructor.name}
+
+            <span className={styles.constructorWrapper}>
+              {driver.Constructor.name}
+            </span>
           </div>
         </div>
       ))}

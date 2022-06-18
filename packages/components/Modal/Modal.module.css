@@ -13,11 +13,26 @@
 
 .wrapper {
   background: white;
-  width: 500px;
+  width: 800px;
   height: 600px;
   border-radius: 15px;
   padding: 15px;
   z-index: 2;
+  overflow-y: auto;
+  scrollbar-width: 5px;
+  scrollbar-color: var(--primary) transparent;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+.wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 50px;
 }
 
 .header {

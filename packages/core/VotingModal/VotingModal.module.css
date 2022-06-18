@@ -1,0 +1,80 @@
+.container {
+  display: block;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.driverWrapper {
+  display: grid;
+  grid-template-columns: 70px 1fr 150px 1fr;
+  width: 100%;
+  height: 80px;
+  border-bottom: 0.5px solid var(--gray-400);
+  padding-left: 10px;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+  font-size: 1.1rem;
+}
+
+.driverWrapper:hover {
+  box-shadow: 0px 0px 20px 2px var(--primary);
+  font-size: 1.2rem;
+}
+
+.nameWrapper {
+  letter-spacing: 0.3mm;
+  display: grid;
+  grid-template-columns: 25px auto;
+}
+
+.positionWrapper {
+  font-weight: 600;
+}
+
+.permanentNumber {
+  font-family: 'Montagu Slab', serif;
+  font-size: 0.9rem;
+  letter-spacing: normal;
+  color: var(--gray-dark);
+}
+
+.constructorWrapper {
+  vertical-align: top;
+  margin-left: 5px;
+}
+
+.arrow {
+  font-weight: bold;
+  letter-spacing: -0.5mm;
+  font-size: 0.9rem;
+}
+
+.greenArrow {
+  color: var(--green-success);
+  text-shadow: 0px 0px 12px var(--green-success);
+}
+
+.redArrow {
+  color: var(--primary);
+  text-shadow: 0px 0px 12px var(--primary);
+}
+
+@media screen and (max-width: 650px) {
+  .driverWrapper {
+    grid-template-columns: auto 60%;
+    font-size: 1rem;
+  }
+
+  .driverWrapper:hover {
+    font-size: 1rem;
+  }
+
+  .permanentNumber {
+    font-size: 0.8rem;
+  }
+
+  .nationalityWrapper,
+  .teamWrapper {
+    height: 60px;
+    padding-top: 10px;
+  }
+}
