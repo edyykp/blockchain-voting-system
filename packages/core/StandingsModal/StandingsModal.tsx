@@ -79,9 +79,9 @@ export const StandingsModal = ({
 
   const setImageSource = (source: string) => {
     try {
-      return require(`public/${source}.jpg`);
+      return `public/${source}.jpg`;
     } catch (error) {
-      return require('public/placeholder.png');
+      return 'public/placeholder.png';
     }
   };
 
@@ -108,7 +108,7 @@ export const StandingsModal = ({
           <div className={styles.teamWrapper}>
             <span className={styles.imageWrapper}>
               <Image
-                src={setImageSource(driver.Constructor.constructorId)}
+                src={require(setImageSource(driver.Constructor.constructorId))}
                 loading="lazy"
                 alt={driver.Constructor.constructorId}
                 width={15}
