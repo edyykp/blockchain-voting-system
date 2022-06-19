@@ -5,6 +5,11 @@ import { createMockRouter } from 'test-utils/createMockRouter';
 
 import { StandingsModal, StandingsModalProps } from './StandingsModal';
 
+type ImageProps = {
+  src: string;
+  alt: string;
+};
+
 const MOCK_PROPS_NO_SHOW = {
   show: false,
   raceName: 'Monaco',
@@ -99,6 +104,14 @@ const MOCK_FETCHED_DATA = {
     },
   ],
 };
+
+jest.mock(
+  'next/image',
+  () =>
+    function Image({ src, alt }: ImageProps) {
+      return <img src={src} alt={alt} />;
+    },
+);
 
 const setup = (props: StandingsModalProps) => {
   return {
