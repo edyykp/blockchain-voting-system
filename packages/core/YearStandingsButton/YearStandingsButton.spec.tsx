@@ -1,11 +1,17 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { createMockRouter } from 'test-utils/createMockRouter';
 
 import { YearStandingsButton } from './YearStandingsButton';
 
 const setup = (year: string) => {
   return {
-    ...render(<YearStandingsButton year={year} />),
+    ...render(
+      <RouterContext.Provider value={createMockRouter({})}>
+        <YearStandingsButton year={year} />
+      </RouterContext.Provider>,
+    ),
   };
 };
 

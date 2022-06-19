@@ -5,30 +5,32 @@ import Image from 'next/image';
 import { Modal } from '@packages/components';
 import { DriverType } from '@packages/types';
 
-import styles from './VotingModal.module.css';
+import styles from './StandingsModal.module.css';
 
-export type VotingModalProps = {
+export type StandingsModalProps = {
   show: boolean;
-  raceName: string;
-  circuitId: string;
   setShowModal: (show: boolean) => void;
+  raceName?: string;
+  circuitId?: string;
 };
 
-export const VotingModal = ({
+export const StandingsModal = ({
   show,
   raceName,
   circuitId,
   setShowModal,
-}: VotingModalProps) => {
+}: StandingsModalProps) => {
   const [drivers, setDrivers] = useState<DriverType[]>([]);
   const [error, setError] = useState<string | null>(null);
   const { query } = useRouter();
   const currentYear = new Date().getFullYear();
+  const renderedYear = query.year ?? currentYear;
 
   const getDrivers = async () => {
-    const data = await fetch(
-      `/api/getDrivers?year=${query.year ?? currentYear}&circuit=${circuitId}`,
-    );
+    const url = circuitId
+      ? `/api/getDrivers?year=${renderedYear}&circuit=${circuitId}`
+      : `/api/getDrivers?year=${renderedYear}`;
+    const data = await fetch(url);
 
     const text: { drivers: DriverType[]; error: string | null } =
       await data.json();
@@ -84,26 +86,16 @@ export const VotingModal = ({
   };
 
   const DriversList = (driversList: DriverType[]) => (
-    <div className={styles.container} data-testid="drivers-container">
+    <div className={styles.container} data-testid="standings-container">
       {driversList.map((driver, key) => (
         <div
-          className={styles.driverWrapper}
+          className={`${styles.driverWrapper} ${
+            key % 2 === 1 ? styles.greyBackground : ''
+          }`}
           key={key}
-          data-testid="driver-button"
+          data-testid="driver-row"
         >
-          <div className={styles.positionWrapper}>
-            {key + 1}.
-            <span
-              className={`${styles.arrow} ${
-                driver.startingPosition < driver.finalPosition ||
-                !driver.finalPosition
-                  ? styles.redArrow
-                  : styles.greenArrow
-              }`}
-            >
-              {positionMovement(driver.startingPosition, key + 1)}
-            </span>
-          </div>
+          <div className={styles.positionWrapper}>{key + 1}.</div>
           <div className={styles.nameWrapper}>
             <span className={styles.permanentNumber}>
               {driver.Driver.permanentNumber}
@@ -139,7 +131,7 @@ export const VotingModal = ({
       show={show}
       onClose={() => setShowModal(false)}
       children={DriversList(drivers)}
-      title={`Vote for ${raceName}`}
+      title={`Standings for ${raceName ?? renderedYear}`}
     />
   );
 };

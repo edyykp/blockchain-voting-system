@@ -1,4 +1,5 @@
 export { VotingModal } from './VotingModal/VotingModal';
+export { StandingsModal } from './StandingsModal';
 export { Navbar } from './Navbar';
 export { Sidebar } from './Sidebar';
 export { SignInForm } from './Signin';

@@ -41,6 +41,7 @@ export default async function handler(
     res
       .status(400)
       .json({ drivers: [], error: 'Missing parameter year/circuit' });
+    return;
   }
   try {
     const result = await fetch(
@@ -59,6 +60,7 @@ export default async function handler(
       res
         .status(result.status)
         .json({ drivers: [], error: `Status returned: ${res.status}` });
+      return;
     }
 
     const data: DriversTableType = await result.json();

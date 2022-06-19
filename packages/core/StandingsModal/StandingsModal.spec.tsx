@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { createMockRouter } from 'test-utils/createMockRouter';
 
-import { VotingModal, VotingModalProps } from './VotingModal';
+import { StandingsModal, StandingsModalProps } from './StandingsModal';
 
 type ImageProps = {
   src: string;
@@ -113,17 +113,17 @@ jest.mock(
     },
 );
 
-const setup = (props: VotingModalProps) => {
+const setup = (props: StandingsModalProps) => {
   return {
     ...render(
       <RouterContext.Provider value={createMockRouter({})}>
-        <VotingModal {...props} />
+        <StandingsModal {...props} />
       </RouterContext.Provider>,
     ),
   };
 };
 
-describe('VotingModal→', () => {
+describe('StandingsModal→', () => {
   beforeEach(
     (global.fetch = jest.fn(() =>
       Promise.resolve({
@@ -138,7 +138,7 @@ describe('VotingModal→', () => {
     const { container, getByTestId } = setup(MOCK_PROPS_SHOW);
 
     await waitFor(() => {
-      expect(getByTestId('drivers-container')).toBeInTheDocument();
+      expect(getByTestId('standings-container')).toBeInTheDocument();
     });
     expect(container).toMatchSnapshot();
   });
@@ -147,15 +147,15 @@ describe('VotingModal→', () => {
     const { container, queryByTestId } = setup(MOCK_PROPS_NO_SHOW);
 
     await waitFor(() => {});
-    expect(queryByTestId('drivers-container')).not.toBeInTheDocument();
+    expect(queryByTestId('standings-container')).not.toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 
-  it('renders one button for each driver received', async () => {
+  it('renders one row for each driver received', async () => {
     const { queryAllByTestId } = setup(MOCK_PROPS_SHOW);
 
     await waitFor(() => {
-      expect(queryAllByTestId('driver-button')).toHaveLength(5);
+      expect(queryAllByTestId('driver-row')).toHaveLength(5);
     });
   });
 
@@ -172,6 +172,6 @@ describe('VotingModal→', () => {
 
     await waitFor(() => {});
 
-    expect(queryByTestId('drivers-container')).not.toBeInTheDocument();
+    expect(queryByTestId('standings-container')).not.toBeInTheDocument();
   });
 });

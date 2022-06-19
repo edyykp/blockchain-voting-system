@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VotingModal→ renders 1`] = `
+exports[`StandingsModal→ renders 1`] = `
 <div>
   <div
     class="overlay"
@@ -14,7 +14,7 @@ exports[`VotingModal→ renders 1`] = `
         <h1
           class="title"
         >
-          Vote for Monaco
+          Standings for Monaco
         </h1>
         <svg
           class="icon"
@@ -36,22 +36,17 @@ exports[`VotingModal→ renders 1`] = `
       >
         <div
           class="container"
-          data-testid="drivers-container"
+          data-testid="standings-container"
         >
           <div
-            class="driverWrapper"
-            data-testid="driver-button"
+            class="driverWrapper "
+            data-testid="driver-row"
           >
             <div
               class="positionWrapper"
             >
               1
               .
-              <span
-                class="arrow greenArrow"
-              >
-                ▲17
-              </span>
             </div>
             <div
               class="nameWrapper"
@@ -90,19 +85,14 @@ exports[`VotingModal→ renders 1`] = `
             </div>
           </div>
           <div
-            class="driverWrapper"
-            data-testid="driver-button"
+            class="driverWrapper greyBackground"
+            data-testid="driver-row"
           >
             <div
               class="positionWrapper"
             >
               2
               .
-              <span
-                class="arrow redArrow"
-              >
-                ▲8
-              </span>
             </div>
             <div
               class="nameWrapper"
@@ -141,19 +131,14 @@ exports[`VotingModal→ renders 1`] = `
             </div>
           </div>
           <div
-            class="driverWrapper"
-            data-testid="driver-button"
+            class="driverWrapper "
+            data-testid="driver-row"
           >
             <div
               class="positionWrapper"
             >
               3
               .
-              <span
-                class="arrow redArrow"
-              >
-                ▼1
-              </span>
             </div>
             <div
               class="nameWrapper"
@@ -192,19 +177,14 @@ exports[`VotingModal→ renders 1`] = `
             </div>
           </div>
           <div
-            class="driverWrapper"
-            data-testid="driver-button"
+            class="driverWrapper greyBackground"
+            data-testid="driver-row"
           >
             <div
               class="positionWrapper"
             >
               4
               .
-              <span
-                class="arrow redArrow"
-              >
-                ▲13
-              </span>
             </div>
             <div
               class="nameWrapper"
@@ -243,19 +223,14 @@ exports[`VotingModal→ renders 1`] = `
             </div>
           </div>
           <div
-            class="driverWrapper"
-            data-testid="driver-button"
+            class="driverWrapper "
+            data-testid="driver-row"
           >
             <div
               class="positionWrapper"
             >
               5
               .
-              <span
-                class="arrow redArrow"
-              >
-                ▲4
-              </span>
             </div>
             <div
               class="nameWrapper"
@@ -300,4 +275,4 @@ exports[`VotingModal→ renders 1`] = `
 </div>
 `;
 
-exports[`VotingModal→ renders nothing if show is false 1`] = `<div />`;
+exports[`StandingsModal→ renders nothing if show is false 1`] = `<div />`;
