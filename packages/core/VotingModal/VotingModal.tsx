@@ -116,7 +116,7 @@ export const VotingModal = ({
           <div className={styles.teamWrapper}>
             <span className={styles.imageWrapper}>
               <Image
-                src="/ferrari.png"
+                src={setImageSource(driver.Constructor.constructorId)}
                 loading="lazy"
                 alt={driver.Constructor.constructorId}
                 width={15}
