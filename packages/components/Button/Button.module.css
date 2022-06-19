@@ -52,3 +52,15 @@
   border: 2px solid;
   border-color: var(--white);
 }
+
+.ternary {
+  background: transparent;
+  border: 2px solid;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.ternary:hover {
+  -webkit-box-shadow: 2px 2px 30px 3px var(--primary);
+  box-shadow: 2px 2px 30px 3px var(--primary);
+}

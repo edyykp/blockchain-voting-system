@@ -5,12 +5,13 @@ import { useSiteProperties } from '@packages/config';
 import styles from './Button.module.css';
 
 interface ButtonProps {
-  theme: 'primary' | 'secondary';
+  theme: 'primary' | 'secondary' | 'ternary';
   size: 'sm' | 'md' | 'lg';
   href?: string;
   targetHref?: string;
   buttonText?: string;
   hasPaddingLarge?: boolean;
+  onClick?: () => void;
 }
 
 export const Button = ({
@@ -20,6 +21,7 @@ export const Button = ({
   href,
   targetHref,
   buttonText,
+  onClick,
 }: ButtonProps) => {
   const valueOf = useSiteProperties();
 
@@ -32,8 +34,14 @@ export const Button = ({
     <a
       href={href}
       className={`${styles.button} ${
-        hasPaddingLarge ? `${styles.paddingLarge}` : ''
-      } ${theme === 'primary' ? `${styles.primary}` : `${styles.secondary}`}
+        hasPaddingLarge ? styles.paddingLarge : ''
+      } ${
+        theme === 'primary'
+          ? styles.primary
+          : theme === 'secondary'
+          ? styles.secondary
+          : styles.ternary
+      }
     ${size === 'sm' && styles.smallButton}
     ${size === 'md' && styles.mediumButton}
     ${size === 'lg' && styles.largeButton}
@@ -46,12 +54,19 @@ export const Button = ({
     <Link
       to={text.link || ''}
       className={`${styles.button} ${
-        hasPaddingLarge ? `${styles.paddingLarge}` : ''
-      } ${theme === 'primary' ? `${styles.primary}` : `${styles.secondary}`}
+        hasPaddingLarge ? styles.paddingLarge : ''
+      } ${
+        theme === 'primary'
+          ? styles.primary
+          : theme === 'secondary'
+          ? styles.secondary
+          : styles.ternary
+      }
       ${size === 'sm' && styles.smallButton}
       ${size === 'md' && styles.mediumButton}
       ${size === 'lg' && styles.largeButton}
       `}
+      onClick={onClick}
     >
       {buttonText ?? text.title}
     </Link>

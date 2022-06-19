@@ -13,5 +13,9 @@
   "register_form_footer": "Already have an account? ",
   "signin": "Sign in",
   "vote_button_text": "Vote now",
-  "standings_button_text": "Standings"
+  "standings_button_text": "Standings",
+  "check_modal_title": "Continue your vote with %s?",
+  "check_modal_yes_button": "Vote",
+  "check_modal_no_button": "Discard",
+  "voted_modal_title": "You have successfully voted with %s."
 }

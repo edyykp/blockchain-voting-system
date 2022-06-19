@@ -1,0 +1,1 @@
+export { CheckModal } from './CheckModal';

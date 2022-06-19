@@ -6,8 +6,8 @@ import styles from './Modal.module.css';
 type ModalProps = {
   show: boolean;
   onClose: () => void;
-  title: string;
   children: ReactNode;
+  title?: string;
 };
 
 export const Modal = ({ show, onClose, children, title }: ModalProps) => {

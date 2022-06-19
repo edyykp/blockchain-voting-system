@@ -7,6 +7,7 @@ import { CardsList, YearSelector, YearStandingsButton } from '@packages/core';
 import { getAllRacesPerYear } from '@packages/network';
 
 import styles from '../../styles/Dashboard.module.css';
+import { VotedModalWrapper } from '@packages/config';
 
 type DashboardProps = {
   races: RaceType[];
@@ -34,13 +35,15 @@ const Dashboard: NextPage<DashboardProps> = ({
   }, [error, status]);
 
   return (
-    <div className={styles.container}>
-      <YearSelector year={String(currentYear)} />
-      <div className={styles.contentWrapper}>
-        <YearStandingsButton year={String(currentYear)} />
-        <CardsList races={races} />
+    <VotedModalWrapper>
+      <div className={styles.container}>
+        <YearSelector year={String(currentYear)} />
+        <div className={styles.contentWrapper}>
+          <YearStandingsButton year={String(currentYear)} />
+          <CardsList races={races} />
+        </div>
       </div>
-    </div>
+    </VotedModalWrapper>
   );
 };
 

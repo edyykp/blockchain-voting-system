@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { Modal } from '@packages/components';
 import { DriverType } from '@packages/types';
+import { CheckModal } from '@packages/core';
+import { useVotedModalContext } from '@packages/config';
 
 import styles from './VotingModal.module.css';
 
@@ -22,6 +24,9 @@ export const VotingModal = ({
 }: VotingModalProps) => {
   const [drivers, setDrivers] = useState<DriverType[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [showCheckModal, setShowCheckModal] = useState<boolean>(false);
+  const { setVotedDriver } = useVotedModalContext();
+  const [selectedDriver, setSelectedDriver] = useState<string | undefined>();
   const { query } = useRouter();
   const currentYear = new Date().getFullYear();
 
@@ -77,19 +82,34 @@ export const VotingModal = ({
 
   const setImageSource = (source: string) => {
     try {
-      return `public/${source}.jpg`;
+      return require(`public/${source}.jpg`);
     } catch (error) {
-      return 'public/placeholder.png';
+      return require('public/placeholder.png');
     }
   };
 
   const DriversList = (driversList: DriverType[]) => (
     <div className={styles.container} data-testid="drivers-container">
+      <CheckModal
+        show={showCheckModal}
+        setShowModal={setShowCheckModal}
+        driverName={selectedDriver}
+        voteFinishedCallback={() => {
+          setShowModal(false);
+          setVotedDriver(selectedDriver || '');
+        }}
+      />
       {driversList.map((driver, key) => (
         <div
           className={styles.driverWrapper}
           key={key}
           data-testid="driver-button"
+          onClick={() => {
+            setShowCheckModal(true);
+            setSelectedDriver(
+              `${driver.Driver.givenName} ${driver.Driver.familyName}`,
+            );
+          }}
         >
           <div className={styles.positionWrapper}>
             {key + 1}.
@@ -116,7 +136,7 @@ export const VotingModal = ({
           <div className={styles.teamWrapper}>
             <span className={styles.imageWrapper}>
               <Image
-                src={require(setImageSource(driver.Constructor.constructorId))}
+                src={setImageSource(driver.Constructor.constructorId)}
                 loading="lazy"
                 alt={driver.Constructor.constructorId}
                 width={15}

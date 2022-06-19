@@ -14,7 +14,8 @@
 .wrapper {
   background: white;
   width: 800px;
-  height: 600px;
+  height: fit-content;
+  max-height: 600px;
   border-radius: 15px;
   padding: 15px;
   z-index: 2;

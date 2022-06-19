@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-block: 50px;
+  padding-inline: 100px;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 540px) {
+  .container {
+    padding-inline: 50px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .container {
+    padding-inline: 5px;
+  }
+}
