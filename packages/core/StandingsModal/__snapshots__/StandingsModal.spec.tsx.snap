@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StandingsModal→ renders 1`] = `
+<div>
+  <div
+    class="overlay"
+  >
+    <div
+      class="wrapper"
+    >
+      <div
+        class="header"
+      >
+        <h1
+          class="title"
+        >
+          Standings for Monaco
+        </h1>
+        <svg
+          class="icon"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 352 512"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+          />
+        </svg>
+      </div>
+      <div
+        class="body"
+      >
+        <div
+          class="container"
+          data-testid="standings-container"
+        >
+          <div
+            class="driverWrapper "
+            data-testid="driver-row"
+          >
+            <div
+              class="positionWrapper"
+            >
+              1
+              .
+            </div>
+            <div
+              class="nameWrapper"
+            >
+              <span
+                class="permanentNumber"
+              >
+                6
+              </span>
+               
+              Nicholas
+               
+              Latifi
+            </div>
+            <div
+              class="nationalityWrapper"
+            >
+              Canadian
+            </div>
+            <div
+              class="teamWrapper"
+            >
+              <span
+                class="imageWrapper"
+              >
+                <span
+                  style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                >
+                  <span
+                    style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2715%27%20height=%2720%27/%3e"
+                      style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                    />
+                  </span>
+                  <img
+                    alt="williams"
+                    class="img"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                  />
+                  <noscript />
+                </span>
+              </span>
+              <span
+                class="constructorWrapper"
+              >
+                Williams
+              </span>
+            </div>
+          </div>
+          <div
+            class="driverWrapper greyBackground"
+            data-testid="driver-row"
+          >
+            <div
+              class="positionWrapper"
+            >
+              2
+              .
+            </div>
+            <div
+              class="nameWrapper"
+            >
+              <span
+                class="permanentNumber"
+              >
+                14
+              </span>
+               
+              Fernando
+               
+              Alonso
+            </div>
+            <div
+              class="nationalityWrapper"
+            >
+              Spanish
+            </div>
+            <div
+              class="teamWrapper"
+            >
+              <span
+                class="imageWrapper"
+              >
+                <span
+                  style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                >
+                  <span
+                    style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2715%27%20height=%2720%27/%3e"
+                      style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                    />
+                  </span>
+                  <img
+                    alt="alpine"
+                    class="img"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                  />
+                  <noscript />
+                </span>
+              </span>
+              <span
+                class="constructorWrapper"
+              >
+                Alpine F1 Team
+              </span>
+            </div>
+          </div>
+          <div
+            class="driverWrapper "
+            data-testid="driver-row"
+          >
+            <div
+              class="positionWrapper"
+            >
+              3
+              .
+            </div>
+            <div
+              class="nameWrapper"
+            >
+              <span
+                class="permanentNumber"
+              >
+                33
+              </span>
+               
+              Max
+               
+              Verstappen
+            </div>
+            <div
+              class="nationalityWrapper"
+            >
+              Dutch
+            </div>
+            <div
+              class="teamWrapper"
+            >
+              <span
+                class="imageWrapper"
+              >
+                <span
+                  style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                >
+                  <span
+                    style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2715%27%20height=%2720%27/%3e"
+                      style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                    />
+                  </span>
+                  <img
+                    alt="red_bull"
+                    class="img"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                  />
+                  <noscript />
+                </span>
+              </span>
+              <span
+                class="constructorWrapper"
+              >
+                Red Bull
+              </span>
+            </div>
+          </div>
+          <div
+            class="driverWrapper greyBackground"
+            data-testid="driver-row"
+          >
+            <div
+              class="positionWrapper"
+            >
+              4
+              .
+            </div>
+            <div
+              class="nameWrapper"
+            >
+              <span
+                class="permanentNumber"
+              >
+                5
+              </span>
+               
+              Sebastian
+               
+              Vettel
+            </div>
+            <div
+              class="nationalityWrapper"
+            >
+              German
+            </div>
+            <div
+              class="teamWrapper"
+            >
+              <span
+                class="imageWrapper"
+              >
+                <span
+                  style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                >
+                  <span
+                    style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2715%27%20height=%2720%27/%3e"
+                      style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                    />
+                  </span>
+                  <img
+                    alt="aston_martin"
+                    class="img"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                  />
+                  <noscript />
+                </span>
+              </span>
+              <span
+                class="constructorWrapper"
+              >
+                Aston Martin
+              </span>
+            </div>
+          </div>
+          <div
+            class="driverWrapper "
+            data-testid="driver-row"
+          >
+            <div
+              class="positionWrapper"
+            >
+              5
+              .
+            </div>
+            <div
+              class="nameWrapper"
+            >
+              <span
+                class="permanentNumber"
+              >
+                55
+              </span>
+               
+              Carlos
+               
+              Sainz
+            </div>
+            <div
+              class="nationalityWrapper"
+            >
+              Spanish
+            </div>
+            <div
+              class="teamWrapper"
+            >
+              <span
+                class="imageWrapper"
+              >
+                <span
+                  style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                >
+                  <span
+                    style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2715%27%20height=%2720%27/%3e"
+                      style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                    />
+                  </span>
+                  <img
+                    alt="ferrari"
+                    class="img"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                  />
+                  <noscript />
+                </span>
+              </span>
+              <span
+                class="constructorWrapper"
+              >
+                Ferrari
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`StandingsModal→ renders nothing if show is false 1`] = `<div />`;
