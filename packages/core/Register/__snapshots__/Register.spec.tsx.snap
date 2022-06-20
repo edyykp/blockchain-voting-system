@@ -83,7 +83,10 @@ exports[`Register→ renders 1`] = `
       largeButton
       "
     >
-      Register
+      <span>
+        Register
+      </span>
+       
     </a>
     <p
       class="text"

@@ -12,6 +12,7 @@ export const SignInForm = () => {
     subtitle: valueOf('sign_in_form_subtitle'),
     footer: valueOf('sign_in_form_footer'),
     signup: valueOf('sign_up'),
+    metamaskLogin: valueOf('metamask_button_text'),
   };
   return (
     <form
@@ -28,7 +29,15 @@ export const SignInForm = () => {
         <Input type="text" field="email" isRequired={true} />
         <Input type="password" field="password" isRequired={true} />
       </div>
-      <Button theme="primary" size="lg" />
+      <div className={styles.buttonsWrapper}>
+        <Button theme="primary" size="lg" />
+        <Button
+          theme="secondary"
+          size="lg"
+          buttonText={text.metamaskLogin}
+          iconLink="/metamask.svg"
+        />
+      </div>
       <p className={styles.text}>
         {text.footer}
         <a className={styles.link} onClick={auth.changeText}>

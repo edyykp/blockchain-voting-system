@@ -1,4 +1,5 @@
 import { Link } from 'react-scroll';
+import Image from 'next/image';
 
 import { useSiteProperties } from '@packages/config';
 
@@ -12,6 +13,7 @@ interface ButtonProps {
   buttonText?: string;
   hasPaddingLarge?: boolean;
   onClick?: () => void;
+  iconLink?: string;
 }
 
 export const Button = ({
@@ -22,12 +24,19 @@ export const Button = ({
   targetHref,
   buttonText,
   onClick,
+  iconLink,
 }: ButtonProps) => {
   const valueOf = useSiteProperties();
 
   const text = {
     title: valueOf('navbar_cta_title'),
     link: valueOf('navbar_cta_link'),
+  };
+
+  const iconSize = {
+    sm: 15,
+    md: 20,
+    lg: 30,
   };
 
   return href ? (
@@ -48,7 +57,16 @@ export const Button = ({
     `}
       target={targetHref}
     >
-      {buttonText ?? text.title}
+      <span>{buttonText ?? text.title}</span>
+      {iconLink && (
+        <Image
+          src={iconLink}
+          alt={iconLink}
+          width={iconSize[size]}
+          height={iconSize[size]}
+          className={styles.icon}
+        />
+      )}
     </a>
   ) : (
     <Link
@@ -68,7 +86,16 @@ export const Button = ({
       `}
       onClick={onClick}
     >
-      {buttonText ?? text.title}
+      <span>{buttonText ?? text.title}</span>{' '}
+      {iconLink && (
+        <Image
+          src={iconLink}
+          alt={iconLink}
+          width={iconSize[size]}
+          height={iconSize[size]}
+          className={styles.icon}
+        />
+      )}
     </Link>
   );
 };

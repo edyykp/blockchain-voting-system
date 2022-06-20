@@ -51,7 +51,10 @@ exports[`StandingsModal→ renders 1`] = `
       false
       "
             >
-              Vote
+              <span>
+                Vote
+              </span>
+               
             </a>
             <a
               class="button  ternary
@@ -60,7 +63,10 @@ exports[`StandingsModal→ renders 1`] = `
       false
       "
             >
-              Discard
+              <span>
+                Discard
+              </span>
+               
             </a>
           </div>
         </div>

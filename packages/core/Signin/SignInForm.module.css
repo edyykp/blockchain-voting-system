@@ -42,6 +42,12 @@
   color: var(--primary);
 }
 
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .link:hover {
   border-bottom: 1px solid var(--primary);
 }

@@ -48,7 +48,9 @@ exports[`InfoSection→ renders 1`] = `
                 href="https://www.google.com"
                 target="_blank"
               >
-                Find out more
+                <span>
+                  Find out more
+                </span>
               </a>
             </div>
           </div>
