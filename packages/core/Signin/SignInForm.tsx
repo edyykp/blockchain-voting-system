@@ -1,9 +1,17 @@
+import { useState } from 'react';
+
 import { Button, Input } from '@packages/components';
-import { useSiteProperties, useAuthContext } from '@packages/config';
+import {
+  useSiteProperties,
+  useAuthContext,
+  isMobileDevice,
+} from '@packages/config';
+import { connect } from '@packages/network';
 
 import styles from './SignInForm.module.css';
 
 export const SignInForm = () => {
+  const [error, setError] = useState<string | undefined>();
   const auth = useAuthContext();
   const valueOf = useSiteProperties();
 
@@ -14,6 +22,17 @@ export const SignInForm = () => {
     signup: valueOf('sign_up'),
     metamaskLogin: valueOf('metamask_button_text'),
   };
+
+  const socialLogin = async () => {
+    if (isMobileDevice()) {
+      window.location.href = `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${process.env.NEXT_PUBLIC_HOSTNAME}`;
+    } else {
+      connect((userAddress) => {
+        alert(userAddress);
+      });
+    }
+  };
+
   return (
     <form
       className={styles.container}
@@ -36,6 +55,7 @@ export const SignInForm = () => {
           size="lg"
           buttonText={text.metamaskLogin}
           iconLink="/metamask.svg"
+          onClick={socialLogin}
         />
       </div>
       <p className={styles.text}>
