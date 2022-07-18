@@ -27,6 +27,8 @@ export const SignInForm = () => {
     metamaskLogin: valueOf('metamask_button_text'),
   };
 
+  console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
+  console.log(process.env.NEXT_PUBLIC_HOSTNAME);
   const socialLogin = async () => {
     if (isMobileDevice()) {
       window.location.assign(

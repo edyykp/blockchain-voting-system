@@ -1,5 +1,6 @@
 import { init } from 'next-firebase-auth';
 
+console.log(process.env.VERCEL_URL);
 export const initAuth = () => {
   init({
     authPageURL: '/',
