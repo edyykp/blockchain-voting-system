@@ -15,6 +15,7 @@
   position: absolute;
   left: 25%;
   margin-top: -300px;
+  text-align: center;
 }
 
 .wrapper {
@@ -50,7 +51,7 @@
   .container {
     padding-left: 7rem;
     padding-right: 7rem;
-    left: 15%;
+    left: 25%;
   }
 
   .title {

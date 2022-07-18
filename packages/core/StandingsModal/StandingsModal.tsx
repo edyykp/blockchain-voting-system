@@ -132,6 +132,7 @@ export const StandingsModal = ({
       onClose={() => setShowModal(false)}
       children={DriversList(drivers)}
       title={`Standings for ${raceName ?? renderedYear}`}
+      theme="light"
     />
   );
 };

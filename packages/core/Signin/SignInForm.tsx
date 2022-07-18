@@ -6,13 +6,17 @@ import {
   useAuthContext,
   isMobileDevice,
 } from '@packages/config';
+import { useEmailModalContext } from '@packages/config';
 import { connect } from '@packages/network';
 
 import styles from './SignInForm.module.css';
+import { useRouter } from 'next/router';
 
 export const SignInForm = () => {
   const [error, setError] = useState<string | undefined>();
+  const router = useRouter();
   const auth = useAuthContext();
+  const { setShow } = useEmailModalContext();
   const valueOf = useSiteProperties();
 
   const text = {
@@ -27,8 +31,32 @@ export const SignInForm = () => {
     if (isMobileDevice()) {
       window.location.href = `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${process.env.NEXT_PUBLIC_HOSTNAME}`;
     } else {
-      connect((userAddress) => {
-        alert(userAddress);
+      connect(async (userAddress) => {
+        const data = await fetch('/api/loginMetamask', {
+          body: JSON.stringify({
+            userAddress,
+          }),
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+        const res = await data.json();
+
+        if (data.status === 401) {
+          setShow(true);
+        }
+
+        if (data.status !== 200) {
+          setError(res.error);
+        }
+
+        if (data.status === 200) {
+          router.push('/dashboard');
+        }
+      }).catch((error) => {
+        setError(error.message);
       });
     }
   };
@@ -44,18 +72,20 @@ export const SignInForm = () => {
         <h1 className={styles.title}>{text.title}</h1>
         <h2 className={styles.subtitle}>{text.subtitle}</h2>
       </div>
+      {error && <div className={styles.errorWrapper}>{error}</div>}
       <div className={styles.wrapper}>
-        <Input type="text" field="email" isRequired={true} />
-        <Input type="password" field="password" isRequired={true} />
+        <Input type="text" field="email" isRequired />
+        <Input type="password" field="password" isRequired />
       </div>
       <div className={styles.buttonsWrapper}>
-        <Button theme="primary" size="lg" />
+        <Button theme="primary" size="lg" buttonType="submit" />
         <Button
           theme="secondary"
           size="lg"
           buttonText={text.metamaskLogin}
           iconLink="/metamask.svg"
           onClick={socialLogin}
+          buttonType="button"
         />
       </div>
       <p className={styles.text}>

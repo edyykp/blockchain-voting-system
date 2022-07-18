@@ -160,6 +160,7 @@ export const VotingModal = ({
       onClose={() => setShowModal(false)}
       children={DriversList(drivers)}
       title={`Vote for ${raceName}`}
+      theme="light"
     />
   );
 };

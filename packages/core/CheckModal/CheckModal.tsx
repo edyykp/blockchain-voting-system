@@ -50,6 +50,7 @@ export const CheckModal = ({
       children={modalContent}
       show={show}
       onClose={() => setShowModal(false)}
+      theme="light"
     />
   );
 };

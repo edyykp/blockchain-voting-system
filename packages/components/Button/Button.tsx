@@ -14,6 +14,7 @@ interface ButtonProps {
   hasPaddingLarge?: boolean;
   onClick?: () => void;
   iconLink?: string;
+  buttonType?: 'button' | 'submit';
 }
 
 export const Button = ({
@@ -25,12 +26,12 @@ export const Button = ({
   buttonText,
   onClick,
   iconLink,
+  buttonType,
 }: ButtonProps) => {
   const valueOf = useSiteProperties();
 
   const text = {
     title: valueOf('navbar_cta_title'),
-    link: valueOf('navbar_cta_link'),
   };
 
   const iconSize = {
@@ -69,8 +70,7 @@ export const Button = ({
       )}
     </a>
   ) : (
-    <Link
-      to={text.link || ''}
+    <button
       className={`${styles.button} ${
         hasPaddingLarge ? styles.paddingLarge : ''
       } ${
@@ -85,6 +85,7 @@ export const Button = ({
       ${size === 'lg' && styles.largeButton}
       `}
       onClick={onClick}
+      type={buttonType}
     >
       <span>{buttonText ?? text.title}</span>{' '}
       {iconLink && (
@@ -96,6 +97,6 @@ export const Button = ({
           className={styles.icon}
         />
       )}
-    </Link>
+    </button>
   );
 };

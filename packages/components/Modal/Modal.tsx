@@ -7,10 +7,17 @@ type ModalProps = {
   show: boolean;
   onClose: () => void;
   children: ReactNode;
+  theme: 'dark' | 'light';
   title?: string;
 };
 
-export const Modal = ({ show, onClose, children, title }: ModalProps) => {
+export const Modal = ({
+  show,
+  onClose,
+  children,
+  title,
+  theme,
+}: ModalProps) => {
   const modalWrapper = useRef<HTMLDivElement | null>(null);
 
   const handleCloseClick = (event: globalThis.MouseEvent | MouseEvent) => {
@@ -41,7 +48,12 @@ export const Modal = ({ show, onClose, children, title }: ModalProps) => {
 
   return (
     <div className={styles.overlay}>
-      <div className={styles.wrapper} ref={modalWrapper}>
+      <div
+        className={`${styles.wrapper} ${
+          theme === 'dark' && styles.darkBackground
+        }`}
+        ref={modalWrapper}
+      >
         <div className={styles.header}>
           <h1 className={styles.title}>{title}</h1>
           <FaTimes className={styles.icon} onClick={handleCloseClick} />

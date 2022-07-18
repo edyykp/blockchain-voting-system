@@ -52,6 +52,18 @@
   border-bottom: 1px solid var(--primary);
 }
 
+.errorWrapper {
+  width: 100%;
+  border: 4px solid var(--primary);
+  background-color: darksalmon;
+  text-align: center;
+  color: var(--primary);
+  padding-block: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 1440px) {
   .container {
     padding-left: 7rem;
@@ -101,5 +113,11 @@
 
   .subtitle {
     font-size: 20px;
+  }
+}
+
+@media screen and (max-height: 768px) and (min-width: 480px) {
+  .container {
+    margin-top: -240px;
   }
 }

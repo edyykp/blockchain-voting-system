@@ -64,3 +64,10 @@
   -webkit-box-shadow: 2px 2px 30px 3px var(--primary);
   box-shadow: 2px 2px 30px 3px var(--primary);
 }
+
+@media screen and (max-width: 320px) {
+  .largeButton {
+    font-size: 18px;
+    width: 200px;
+  }
+}

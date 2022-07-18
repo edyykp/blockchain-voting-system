@@ -34,9 +34,20 @@ export const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
         </ul>
       </div>
       <div className={styles.ctaWrapper}>
-        <button className={styles.cta} onClick={cta.changeText}>
+        <Link
+          to="home"
+          smooth={true}
+          duration={500}
+          spy={true}
+          offset={-80}
+          className={styles.cta}
+          onClick={() => {
+            cta.changeText();
+            toggle();
+          }}
+        >
           {cta.ctaText}
-        </button>
+        </Link>
       </div>
     </aside>
   );

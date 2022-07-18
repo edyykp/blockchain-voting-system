@@ -27,6 +27,7 @@ export const VotedModal = ({
           {text.title}
         </h1>
       }
+      theme="light"
     />
   );
 };

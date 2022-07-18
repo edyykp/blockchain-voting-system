@@ -24,6 +24,10 @@
   scrollbar-color: var(--primary) transparent;
 }
 
+.darkBackground {
+  background: var(--gray-700);
+}
+
 .wrapper::-webkit-scrollbar {
   width: 5px;
 }

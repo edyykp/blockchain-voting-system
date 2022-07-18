@@ -29,7 +29,13 @@ export const Navbar = ({ toggle }: NavbarProps) => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', changeNav);
+    if (pathname === '/') {
+      window.addEventListener('scroll', changeNav);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', changeNav);
+    };
   }, []);
 
   const text = {
@@ -70,14 +76,19 @@ export const Navbar = ({ toggle }: NavbarProps) => {
           ))}
         </ul>
         <div className={styles.ctaContainer} data-testid="navigation-bar-cta">
-          <button
+          <LinkS
+            to="home"
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={-80}
             className={`${styles.cta} ${
               scrollNav ? styles.secondary : styles.primary
             }`}
             onClick={cta.changeText}
           >
             {cta.ctaText}
-          </button>
+          </LinkS>
         </div>
       </div>
     </nav>

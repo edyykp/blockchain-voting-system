@@ -1,14 +1,17 @@
+import { getFirebaseAdmin } from 'next-firebase-auth';
+
 export const connect = async (onConnected: (userAdress: string) => void) => {
   if (!window.ethereum) {
-    alert('Get MetaMask!');
-    return;
+    throw new Error('MetaMask extension needs to be installed');
   }
 
   const accounts = await window.ethereum.request({
     method: 'eth_requestAccounts',
   });
 
-  onConnected(accounts[0]);
+  const selectedAccount = accounts[0];
+
+  onConnected(selectedAccount);
 };
 
 export const checkIfWalletIsConnected = async (
