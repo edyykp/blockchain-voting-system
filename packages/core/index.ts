@@ -10,3 +10,4 @@ export { Register } from './Register';
 export { CardsList } from './CardsList';
 export { YearSelector } from './YearSelector';
 export { YearStandingsButton } from './YearStandingsButton';
+export { EmailModal } from './EmailModal';

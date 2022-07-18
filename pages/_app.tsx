@@ -3,10 +3,11 @@ import type { AppProps } from 'next/app';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import { Layout } from '@packages/components';
-import { AuthWrapper } from '@packages/config';
+import { AuthWrapper, initAuth, EmailModalWrapper } from '@packages/config';
 
 import '../styles/globals.css';
+
+initAuth();
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -14,11 +15,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <AuthWrapper>
-      <Layout>
+    <EmailModalWrapper>
+      <AuthWrapper>
         <Component {...pageProps} />
-      </Layout>
-    </AuthWrapper>
+      </AuthWrapper>
+    </EmailModalWrapper>
   );
 }
 

@@ -1,8 +1,10 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { AuthAction, withAuthUser } from 'next-firebase-auth';
 
 import { RaceType } from '@packages/types';
+import { Layout } from '@packages/components';
 import { CardsList, YearSelector, YearStandingsButton } from '@packages/core';
 import { getAllRacesPerYear } from '@packages/network';
 
@@ -34,13 +36,15 @@ const Dashboard: NextPage<DashboardProps> = ({
   }, [error, status]);
 
   return (
-    <div className={styles.container}>
-      <YearSelector year={String(query.year)} />
-      <div className={styles.contentWrapper}>
-        <YearStandingsButton year={String(query.year)} />
-        <CardsList races={races} />
+    <Layout>
+      <div className={styles.container}>
+        <YearSelector year={String(query.year)} />
+        <div className={styles.contentWrapper}>
+          <YearStandingsButton year={String(query.year)} />
+          <CardsList races={races} />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
@@ -90,4 +94,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 };
 
-export default Dashboard;
+export default withAuthUser<DashboardProps>({
+  authPageURL: '/',
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+})(Dashboard);

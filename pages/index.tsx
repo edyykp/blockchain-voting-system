@@ -1,6 +1,13 @@
 import type { NextPage } from 'next';
+import {
+  AuthAction,
+  withAuthUser,
+  withAuthUserTokenSSR,
+} from 'next-firebase-auth';
+
 import { InfoSection, Register, SignInForm } from '@packages/core';
 import { useInfoSectionData } from '@packages/config';
+import { Layout } from '@packages/components';
 
 import styles from '../styles/Home.module.css';
 
@@ -8,8 +15,8 @@ const Home: NextPage = () => {
   const sections = useInfoSectionData();
 
   return (
-    <>
-      <main>
+    <Layout>
+      <main id="home">
         <video autoPlay muted loop className={styles.video} preload="auto">
           <source src="/Video.mp4" />
         </video>
@@ -34,8 +41,16 @@ const Home: NextPage = () => {
           />
         ))}
       </div>
-    </>
+    </Layout>
   );
 };
 
-export default Home;
+export const getServerSideProps = withAuthUserTokenSSR({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+  appPageURL: '/dashboard',
+})();
+
+export default withAuthUser({
+  appPageURL: '/dashboard',
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+})(Home);
