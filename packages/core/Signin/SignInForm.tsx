@@ -30,11 +30,7 @@ export const SignInForm = () => {
   const socialLogin = async () => {
     if (isMobileDevice()) {
       window.location.assign(
-        `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${
-          process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
-            ? window.location.hostname
-            : process.env.NEXT_PUBLIC_HOSTNAME
-        }`,
+        `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${process.env.NEXT_PUBLIC_HOSTNAME}`,
       );
     } else {
       connect(async (userAddress) => {

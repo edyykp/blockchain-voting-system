@@ -24,7 +24,7 @@ export const initAuth = () => {
     },
     firebaseClientInitConfig: {
       apiKey: 'AIzaSyD9sUbajIjQUxJxNheqHH2h4sZnxWW5Kp0',
-      authDomain: window.location.hostname,
+      authDomain: process.env.HOSTNAME,
       projectId: 'voting-system-cca07',
       storageBucket: 'voting-system-cca07.appspot.com',
     },

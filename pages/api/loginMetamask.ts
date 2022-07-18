@@ -5,20 +5,18 @@ import { getFirebaseAdmin, setAuthCookies } from 'next-firebase-auth';
 import { initAuth } from '@packages/config';
 
 initAuth();
+try {
+  firebase.initializeApp({
+    apiKey: 'AIzaSyD9sUbajIjQUxJxNheqHH2h4sZnxWW5Kp0',
+    authDomain: process.env.HOSTNAME,
+    projectId: 'voting-system-cca07',
+    storageBucket: 'voting-system-cca07.appspot.com',
+  });
+} catch (e: any) {
+  console.log(e.message);
+}
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<any>) => {
-  console.log(req.headers.host);
-  try {
-    firebase.initializeApp({
-      apiKey: 'AIzaSyD9sUbajIjQUxJxNheqHH2h4sZnxWW5Kp0',
-      authDomain: req.headers.host,
-      projectId: 'voting-system-cca07',
-      storageBucket: 'voting-system-cca07.appspot.com',
-    });
-  } catch (e: any) {
-    console.log(e.message);
-  }
-
   if (!req.body.userAddress) {
     return res.status(500).json({ error: 'Unexpected error' });
   }
