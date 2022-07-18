@@ -20,16 +20,16 @@ export const StandingsModal = ({
   circuitId,
   setShowModal,
 }: StandingsModalProps) => {
-  const [drivers, setDrivers] = useState<DriverType[]>([]);
+  //const [drivers, setDrivers] = useState<DriverType[]>([]);
   const [error, setError] = useState<string | null>(null);
   const { query } = useRouter();
   const currentYear = new Date().getFullYear();
   const renderedYear = query.year ?? currentYear;
 
   const getDrivers = async () => {
-    const url = circuitId
-      ? `/api/getDrivers?year=${renderedYear}&circuit=${circuitId}`
-      : `/api/getDrivers?year=${renderedYear}`;
+    // const url = circuitId
+    //   ? `/api/getDrivers?year=${renderedYear}&circuit=${circuitId}`
+    //   : `/api/getDrivers?year=${renderedYear}`;
     //const data = await fetch(url);
     return [];
     //const text: { drivers: DriverType[]; error: string | null } =
@@ -55,27 +55,27 @@ export const StandingsModal = ({
     }
   }, [error]);
 
-  const positionMovement = (
-    startingPosition: number,
-    finalPosition: number,
-  ) => {
-    if (startingPosition === 0) {
-      return undefined;
-    }
-    const difference = Math.abs(
-      Number(startingPosition) - Number(finalPosition),
-    );
+  // const positionMovement = (
+  //   startingPosition: number,
+  //   finalPosition: number,
+  // ) => {
+  //   if (startingPosition === 0) {
+  //     return undefined;
+  //   }
+  //   const difference = Math.abs(
+  //     Number(startingPosition) - Number(finalPosition),
+  //   );
 
-    if (difference === 0) {
-      return undefined;
-    }
+  //   if (difference === 0) {
+  //     return undefined;
+  //   }
 
-    if (startingPosition > finalPosition) {
-      return '▲' + String(difference);
-    }
+  //   if (startingPosition > finalPosition) {
+  //     return '▲' + String(difference);
+  //   }
 
-    return '▼' + String(difference);
-  };
+  //   return '▼' + String(difference);
+  // };
 
   const setImageSource = (source: string) => {
     try {
@@ -130,7 +130,7 @@ export const StandingsModal = ({
     <Modal
       show={show}
       onClose={() => setShowModal(false)}
-      children={DriversList(drivers)}
+      children={DriversList([])}
       title={`Standings for ${raceName ?? renderedYear}`}
       theme="light"
     />

@@ -1,27 +1,27 @@
-import { RaceType } from '@packages/types';
+// import { RaceType } from '@packages/types';
 
-type RacesTableType = {
-  MRData: {
-    RaceTable: {
-      Races: {
-        raceName: string;
-        Circuit: {
-          circuitId: string;
-          Location: {
-            locality: string;
-            country: string;
-          };
-        };
-        date: string;
-        time: string;
-      }[];
-    };
-  };
-};
+// type RacesTableType = {
+//   MRData: {
+//     RaceTable: {
+//       Races: {
+//         raceName: string;
+//         Circuit: {
+//           circuitId: string;
+//           Location: {
+//             locality: string;
+//             country: string;
+//           };
+//         };
+//         date: string;
+//         time: string;
+//       }[];
+//     };
+//   };
+// };
 
 export const getAllRacesPerYear = async (year: string | string[]) => {
-  const races: RaceType[] = [];
-  const currentDate = new Date();
+  //const races: RaceType[] = [];
+  //const currentDate = new Date();
 
   return { races: [], error: undefined, status: 200 };
 

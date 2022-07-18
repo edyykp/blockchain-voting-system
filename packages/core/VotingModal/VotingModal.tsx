@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+//import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import { Modal } from '@packages/components';
@@ -22,13 +22,14 @@ export const VotingModal = ({
   circuitId,
   setShowModal,
 }: VotingModalProps) => {
-  const [drivers, setDrivers] = useState<DriverType[]>([]);
+  console.log(circuitId);
+  // const [drivers, setDrivers] = useState<DriverType[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [showCheckModal, setShowCheckModal] = useState<boolean>(false);
   const { setVotedDriver } = useVotedModalContext();
   const [selectedDriver, setSelectedDriver] = useState<string | undefined>();
-  const { query } = useRouter();
-  const currentYear = new Date().getFullYear();
+  // const { query } = useRouter();
+  //const currentYear = new Date().getFullYear();
 
   const getDrivers = async () => {
     return [];
@@ -159,7 +160,7 @@ export const VotingModal = ({
     <Modal
       show={show}
       onClose={() => setShowModal(false)}
-      children={DriversList(drivers)}
+      children={DriversList([])}
       title={`Vote for ${raceName}`}
       theme="light"
     />

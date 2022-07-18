@@ -7,31 +7,31 @@ type Data = {
   error: string | null;
 };
 
-type DriversTableType = {
-  MRData: {
-    RaceTable: {
-      Races: [
-        {
-          Results: {
-            position: number;
-            grid: number;
-            Driver: {
-              permanentNumber: string;
-              driverId: string;
-              givenName: string;
-              familyName: string;
-              nationality: string;
-            };
-            Constructor: {
-              constructorId: string;
-              name: string;
-            };
-          }[];
-        },
-      ];
-    };
-  };
-};
+// type DriversTableType = {
+//   MRData: {
+//     RaceTable: {
+//       Races: [
+//         {
+//           Results: {
+//             position: number;
+//             grid: number;
+//             Driver: {
+//               permanentNumber: string;
+//               driverId: string;
+//               givenName: string;
+//               familyName: string;
+//               nationality: string;
+//             };
+//             Constructor: {
+//               constructorId: string;
+//               name: string;
+//             };
+//           }[];
+//         },
+//       ];
+//     };
+//   };
+// };
 
 export default async function handler(
   req: NextApiRequest,
