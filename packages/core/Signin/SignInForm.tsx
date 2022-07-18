@@ -28,7 +28,7 @@ export const SignInForm = () => {
   };
 
   console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
-  console.log(process.env.NEXT_PUBLIC_HOSTNAME);
+  console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
   const socialLogin = async () => {
     if (isMobileDevice()) {
       window.location.assign(
