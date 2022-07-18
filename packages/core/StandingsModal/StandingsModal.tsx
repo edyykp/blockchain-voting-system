@@ -31,7 +31,7 @@ export const StandingsModal = ({
       ? `/api/getDrivers?year=${renderedYear}&circuit=${circuitId}`
       : `/api/getDrivers?year=${renderedYear}`;
     //const data = await fetch(url);
-    return undefined;
+    return [];
     //const text: { drivers: DriverType[]; error: string | null } =
     //await data.json();
 

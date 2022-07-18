@@ -45,48 +45,48 @@ export default async function handler(
   }
 
   return [];
-  try {
-    const result = await fetch(
-      `${process.env.F1_API_URL}/results?year=${req.query.year}&circuit=${req.query.circuit}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    );
+  // try {
+  //   const result = await fetch(
+  //     `${process.env.F1_API_URL}/results?year=${req.query.year}&circuit=${req.query.circuit}`,
+  //     {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     },
+  //   );
 
-    if (!result.ok) {
-      console.error(
-        `Something when wrong when fetching all drivers for race ${req.query.circuit} and year ${req.query.year}`,
-      );
-      res
-        .status(result.status)
-        .json({ drivers: [], error: `Status returned: ${res.status}` });
-      return;
-    }
+  //   if (!result.ok) {
+  //     console.error(
+  //       `Something when wrong when fetching all drivers for race ${req.query.circuit} and year ${req.query.year}`,
+  //     );
+  //     res
+  //       .status(result.status)
+  //       .json({ drivers: [], error: `Status returned: ${res.status}` });
+  //     return;
+  //   }
 
-    const data: DriversTableType = await result.json();
+  //   const data: DriversTableType = await result.json();
 
-    res.status(result.status).json({
-      drivers: data.MRData.RaceTable.Races[0].Results.map((driver) => ({
-        startingPosition: Number(driver.grid),
-        finalPosition: Number(driver.position),
-        Driver: {
-          permanentNumber: driver.Driver.permanentNumber,
-          driverId: driver.Driver.driverId,
-          givenName: driver.Driver.givenName,
-          familyName: driver.Driver.familyName,
-          nationality: driver.Driver.nationality,
-        },
-        Constructor: {
-          constructorId: driver.Constructor.constructorId,
-          name: driver.Constructor.name,
-        },
-      })),
-      error: null,
-    });
-  } catch (error: any) {
-    console.error(error);
-    res.status(500).json({ drivers: [], error: error.message });
-  }
+  //   res.status(result.status).json({
+  //     drivers: data.MRData.RaceTable.Races[0].Results.map((driver) => ({
+  //       startingPosition: Number(driver.grid),
+  //       finalPosition: Number(driver.position),
+  //       Driver: {
+  //         permanentNumber: driver.Driver.permanentNumber,
+  //         driverId: driver.Driver.driverId,
+  //         givenName: driver.Driver.givenName,
+  //         familyName: driver.Driver.familyName,
+  //         nationality: driver.Driver.nationality,
+  //       },
+  //       Constructor: {
+  //         constructorId: driver.Constructor.constructorId,
+  //         name: driver.Constructor.name,
+  //       },
+  //     })),
+  //     error: null,
+  //   });
+  // } catch (error: any) {
+  //   console.error(error);
+  //   res.status(500).json({ drivers: [], error: error.message });
+  // }
 }

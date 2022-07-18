@@ -31,16 +31,16 @@ export const VotingModal = ({
   const currentYear = new Date().getFullYear();
 
   const getDrivers = async () => {
-    return undefined;
-    const data = await fetch(
-      `/api/getDrivers?year=${query.year ?? currentYear}&circuit=${circuitId}`,
-    );
+    return [];
+    // const data = await fetch(
+    //   `/api/getDrivers?year=${query.year ?? currentYear}&circuit=${circuitId}`,
+    // );
 
-    const text: { drivers: DriverType[]; error: string | null } =
-      await data.json();
+    // const text: { drivers: DriverType[]; error: string | null } =
+    //   await data.json();
 
-    setDrivers(text.drivers);
-    setError(text.error);
+    // setDrivers(text.drivers);
+    // setError(text.error);
   };
 
   useEffect(() => {
