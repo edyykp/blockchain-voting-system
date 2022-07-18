@@ -29,7 +29,13 @@ export const SignInForm = () => {
 
   const socialLogin = async () => {
     if (isMobileDevice()) {
-      window.location.href = `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${process.env.NEXT_PUBLIC_HOSTNAME}`;
+      window.location.assign(
+        `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${
+          process.env.NODE_ENV === 'production'
+            ? process.env.VERCEL_URL
+            : process.env.NEXT_PUBLIC_HOSTNAME
+        }`,
+      );
     } else {
       connect(async (userAddress) => {
         const data = await fetch('/api/loginMetamask', {
