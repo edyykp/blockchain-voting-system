@@ -31,8 +31,8 @@ export const SignInForm = () => {
     if (isMobileDevice()) {
       window.location.assign(
         `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${
-          process.env.NODE_ENV === 'production'
-            ? process.env.VERCEL_URL
+          process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_VERCEL_URL
             : process.env.NEXT_PUBLIC_HOSTNAME
         }`,
       );
