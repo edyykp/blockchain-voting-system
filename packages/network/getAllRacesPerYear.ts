@@ -20,10 +20,11 @@
 // };
 
 export const getAllRacesPerYear = async (year: string | string[]) => {
+  console.log(year);
   //const races: RaceType[] = [];
   //const currentDate = new Date();
 
-  return { races: [], error: undefined, status: 200 };
+  return { races: [], error: null, status: 200 };
 
   // try {
   //   const res = await fetch(`${process.env.F1_API_URL}/races?year=${year}`, {
