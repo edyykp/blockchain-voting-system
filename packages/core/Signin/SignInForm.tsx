@@ -27,14 +27,12 @@ export const SignInForm = () => {
     metamaskLogin: valueOf('metamask_button_text'),
   };
 
-  console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
-  console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
   const socialLogin = async () => {
     if (isMobileDevice()) {
       window.location.assign(
         `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${
           process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
-            ? process.env.NEXT_PUBLIC_VERCEL_URL
+            ? window.location.hostname
             : process.env.NEXT_PUBLIC_HOSTNAME
         }`,
       );
