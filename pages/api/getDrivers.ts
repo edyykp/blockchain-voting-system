@@ -43,6 +43,8 @@ export default async function handler(
       .json({ drivers: [], error: 'Missing parameter year/circuit' });
     return;
   }
+
+  return [];
   try {
     const result = await fetch(
       `${process.env.F1_API_URL}/results?year=${req.query.year}&circuit=${req.query.circuit}`,

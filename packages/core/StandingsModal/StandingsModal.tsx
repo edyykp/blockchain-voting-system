@@ -30,13 +30,13 @@ export const StandingsModal = ({
     const url = circuitId
       ? `/api/getDrivers?year=${renderedYear}&circuit=${circuitId}`
       : `/api/getDrivers?year=${renderedYear}`;
-    const data = await fetch(url);
+    //const data = await fetch(url);
+    return undefined;
+    //const text: { drivers: DriverType[]; error: string | null } =
+    //await data.json();
 
-    const text: { drivers: DriverType[]; error: string | null } =
-      await data.json();
-
-    setDrivers(text.drivers);
-    setError(text.error);
+    //setDrivers(text.drivers);
+    //setError(text.error);
   };
 
   useEffect(() => {

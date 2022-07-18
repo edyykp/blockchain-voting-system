@@ -31,6 +31,7 @@ export const VotingModal = ({
   const currentYear = new Date().getFullYear();
 
   const getDrivers = async () => {
+    return undefined;
     const data = await fetch(
       `/api/getDrivers?year=${query.year ?? currentYear}&circuit=${circuitId}`,
     );
