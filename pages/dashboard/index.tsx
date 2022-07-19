@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { AuthAction, useAuthUser, withAuthUser } from 'next-firebase-auth';
+import { AuthAction, withAuthUser } from 'next-firebase-auth';
 import { useEffect } from 'react';
 
 import { RaceType } from '@packages/types';
@@ -25,7 +25,6 @@ const Dashboard: NextPage<DashboardProps> = ({
   status,
 }: DashboardProps) => {
   const { replace } = useRouter();
-  const user = useAuthUser();
 
   useEffect(() => {
     if (error) {
