@@ -8,10 +8,11 @@ import {
   isMobileDevice,
 } from '@packages/config';
 import { useEmailModalContext } from '@packages/config';
-import { connect } from '@packages/network';
+import { connect, getUserByWalletAddress } from '@packages/network';
 
 import styles from './SignInForm.module.css';
 import { useRouter } from 'next/router';
+import { signInUser } from '../../network/signInUser';
 
 export const SignInForm = () => {
   const [error, setError] = useState<string | undefined>();
@@ -27,7 +28,6 @@ export const SignInForm = () => {
     signup: valueOf('sign_up'),
     metamaskLogin: valueOf('metamask_button_text'),
   };
-  console.log(process.env.NEXT_PUBLIC_HOSTNAME);
 
   const socialLogin = async () => {
     if (isMobileDevice()) {
@@ -36,32 +36,31 @@ export const SignInForm = () => {
       );
     } else {
       connect(async (userAddress) => {
-        const data = await fetch('/api/loginMetamask', {
-          body: JSON.stringify({
-            userAddress,
-          }),
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        });
-        const res = await data.json();
-
-        if (data.status === 401) {
-          setShow(true);
+        if (!userAddress) {
+          setError('Unexpected error');
+          return;
         }
 
-        if (data.status !== 200) {
-          setError(res.error);
+        const user = await getUserByWalletAddress(userAddress);
+        const userEmail = user?.data()['email'];
+
+        if (user && userEmail) {
+          const { status, error } = await signInUser(
+            userEmail,
+            'defaultMetamask',
+          );
+
+          if (status === 200) {
+            router.push('/dashboard');
+            return;
+          }
+
+          if (status !== 200) {
+            setError(error);
+          }
         }
 
-        await firebase
-          .auth()
-          .signInWithEmailAndPassword('edy@gmail.com', 'Beyedoo7433!');
-        if (data.status === 200) {
-          router.push('/dashboard');
-        }
+        setShow(true);
       }).catch((error) => {
         setError(error.message);
       });

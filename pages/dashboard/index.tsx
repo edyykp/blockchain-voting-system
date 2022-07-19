@@ -26,7 +26,6 @@ const Dashboard: NextPage<DashboardProps> = ({
 }: DashboardProps) => {
   const { replace } = useRouter();
   const user = useAuthUser();
-  console.log(user);
 
   useEffect(() => {
     if (error) {

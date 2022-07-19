@@ -1,6 +1,5 @@
 import { init } from 'next-firebase-auth';
 
-console.log(process.env.NEXT_PUBLIC_HOSTNAME);
 export const initAuth = () => {
   init({
     authPageURL: '/',

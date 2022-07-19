@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-//import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import { Modal } from '@packages/components';
@@ -22,26 +22,24 @@ export const VotingModal = ({
   circuitId,
   setShowModal,
 }: VotingModalProps) => {
-  console.log(circuitId);
-  // const [drivers, setDrivers] = useState<DriverType[]>([]);
+  const [drivers, setDrivers] = useState<DriverType[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [showCheckModal, setShowCheckModal] = useState<boolean>(false);
   const { setVotedDriver } = useVotedModalContext();
   const [selectedDriver, setSelectedDriver] = useState<string | undefined>();
-  // const { query } = useRouter();
-  //const currentYear = new Date().getFullYear();
+  const { query } = useRouter();
+  const currentYear = new Date().getFullYear();
 
   const getDrivers = async () => {
-    return [];
-    // const data = await fetch(
-    //   `/api/getDrivers?year=${query.year ?? currentYear}&circuit=${circuitId}`,
-    // );
+    const data = await fetch(
+      `/api/getDrivers?year=${query.year ?? currentYear}&circuit=${circuitId}`,
+    );
 
-    // const text: { drivers: DriverType[]; error: string | null } =
-    //   await data.json();
+    const text: { drivers: DriverType[]; error: string | null } =
+      await data.json();
 
-    // setDrivers(text.drivers);
-    // setError(text.error);
+    setDrivers(text.drivers);
+    setError(text.error);
   };
 
   useEffect(() => {
@@ -160,7 +158,7 @@ export const VotingModal = ({
     <Modal
       show={show}
       onClose={() => setShowModal(false)}
-      children={DriversList([])}
+      children={DriversList(drivers)}
       title={`Vote for ${raceName}`}
       theme="light"
     />
