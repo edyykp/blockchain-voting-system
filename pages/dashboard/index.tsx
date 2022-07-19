@@ -67,5 +67,5 @@ export const getStaticProps: GetStaticProps = async () => {
 export default withAuthUser<DashboardProps>({
   authPageURL: '/',
   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
-  whenUnauthedAfterInit: AuthAction.RENDER,
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
 })(Dashboard);
