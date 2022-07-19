@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import firebase from 'firebase';
 
 import { Button, Input } from '@packages/components';
 import {
@@ -57,6 +56,7 @@ export const SignInForm = () => {
 
           if (status !== 200) {
             setError(error);
+            return;
           }
         }
 
