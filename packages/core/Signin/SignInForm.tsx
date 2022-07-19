@@ -26,6 +26,7 @@ export const SignInForm = () => {
     signup: valueOf('sign_up'),
     metamaskLogin: valueOf('metamask_button_text'),
   };
+  console.log(process.env.NEXT_PUBLIC_HOSTNAME);
 
   const socialLogin = async () => {
     if (isMobileDevice()) {

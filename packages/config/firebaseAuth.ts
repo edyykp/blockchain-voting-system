@@ -1,5 +1,6 @@
 import { init } from 'next-firebase-auth';
 
+console.log(process.env.HOSTNAME);
 export const initAuth = () => {
   init({
     authPageURL: '/',
@@ -37,6 +38,7 @@ export const initAuth = () => {
       httpOnly: true,
       maxAge: 1 * 60 * 60 * 24 * 1000,
       overwrite: true,
+      path: '/',
       sameSite: 'strict',
       secure: true, // set this to false in local (non-HTTPS) development
       signed: true,
