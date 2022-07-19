@@ -43,6 +43,9 @@ export const SignInForm = () => {
         const user = await getUserByWalletAddress(userAddress);
         const userEmail = user?.data()['email'];
 
+        console.log(user);
+        console.log(userEmail);
+
         if (user && userEmail) {
           const { status, error } = await signInUser(
             userEmail,
