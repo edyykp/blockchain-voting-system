@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import firebase from 'firebase';
 
 import { Button, Input } from '@packages/components';
 import {
@@ -55,6 +56,9 @@ export const SignInForm = () => {
           setError(res.error);
         }
 
+        await firebase
+          .auth()
+          .signInWithEmailAndPassword('edy@gmail.com', 'Beyedoo7433!');
         if (data.status === 200) {
           router.push('/dashboard');
         }
