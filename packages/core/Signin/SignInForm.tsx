@@ -7,10 +7,11 @@ import {
   isMobileDevice,
 } from '@packages/config';
 import { useEmailModalContext } from '@packages/config';
-import { connect } from '@packages/network';
+import { connect, getUserByWalletAddress } from '@packages/network';
 
 import styles from './SignInForm.module.css';
 import { useRouter } from 'next/router';
+import { signInUser } from '../../network/signInUser';
 
 export const SignInForm = () => {
   const [error, setError] = useState<string | undefined>();
@@ -30,37 +31,39 @@ export const SignInForm = () => {
   const socialLogin = async () => {
     if (isMobileDevice()) {
       window.location.assign(
-        `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${
-          process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
-            ? process.env.NEXT_PUBLIC_VERCEL_URL
-            : process.env.NEXT_PUBLIC_HOSTNAME
-        }`,
+        `${process.env.NEXT_PUBLIC_METAMASK_APP_DEEP_LINK}${process.env.NEXT_PUBLIC_HOSTNAME}`,
       );
     } else {
       connect(async (userAddress) => {
-        const data = await fetch('/api/loginMetamask', {
-          body: JSON.stringify({
-            userAddress,
-          }),
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        });
-        const res = await data.json();
-
-        if (data.status === 401) {
-          setShow(true);
+        if (!userAddress) {
+          setError('Unexpected error');
+          return;
         }
 
-        if (data.status !== 200) {
-          setError(res.error);
+        const user = await getUserByWalletAddress(userAddress);
+        const userEmail = user?.data()['email'];
+
+        console.log(user);
+        console.log(userEmail);
+
+        if (user && userEmail) {
+          const { status, error } = await signInUser(
+            userEmail,
+            'defaultMetamask',
+          );
+
+          if (status === 200) {
+            router.push('/dashboard');
+            return;
+          }
+
+          if (status !== 200) {
+            setError(error);
+            return;
+          }
         }
 
-        if (data.status === 200) {
-          router.push('/dashboard');
-        }
+        setShow(true);
       }).catch((error) => {
         setError(error.message);
       });
