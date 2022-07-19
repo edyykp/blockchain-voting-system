@@ -1,6 +1,7 @@
 import { init } from 'next-firebase-auth';
 
 console.log(process.env.HOSTNAME);
+console.log(process.env.FIREBASE_PRIVATE_KEY);
 export const initAuth = () => {
   init({
     authPageURL: '/',
