@@ -1,9 +1,6 @@
 import { init } from 'next-firebase-auth';
 
 console.log(process.env.NEXT_PUBLIC_HOSTNAME);
-console.log(process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY);
-console.log(process.env.NEXT_PUBLIC_COOKIE_SECRET_CURRENT);
-console.log(process.env.NEXT_PUBLIC_COOKIE_SECRET_PREVIOUS);
 export const initAuth = () => {
   init({
     authPageURL: '/',
@@ -22,8 +19,7 @@ export const initAuth = () => {
         clientEmail:
           'firebase-adminsdk-4i011@voting-system-cca07.iam.gserviceaccount.com',
         privateKey:
-          process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n') ||
-          '',
+          process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n') || '',
       },
       databaseURL: 'https://voting-system-cca07-default-rtdb.firebaseio.com',
     },
