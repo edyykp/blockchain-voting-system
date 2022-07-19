@@ -36,8 +36,8 @@ export const initAuth = () => {
     cookies: {
       name: 'authCookie',
       keys: [
-        process.env.NEXT_PUBLIC_COOKIE_SECRET_CURRENT,
-        process.env.NEXT_PUBLIC_COOKIE_SECRET_PREVIOUS,
+        process.env.COOKIE_SECRET_CURRENT,
+        process.env.COOKIE_SECRET_PREVIOUS,
       ],
       httpOnly: true,
       maxAge: 1 * 60 * 60 * 24 * 1000,
