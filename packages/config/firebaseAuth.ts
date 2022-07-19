@@ -1,7 +1,6 @@
 import { init } from 'next-firebase-auth';
 
-console.log(process.env.HOSTNAME);
-console.log(process.env.FIREBASE_PRIVATE_KEY);
+console.log(process.env.NEXT_PUBLIC_HOSTNAME);
 export const initAuth = () => {
   init({
     authPageURL: '/',
@@ -26,7 +25,7 @@ export const initAuth = () => {
     },
     firebaseClientInitConfig: {
       apiKey: 'AIzaSyD9sUbajIjQUxJxNheqHH2h4sZnxWW5Kp0',
-      authDomain: process.env.HOSTNAME,
+      authDomain: process.env.NEXT_PUBLIC_HOSTNAME,
       projectId: 'voting-system-cca07',
       storageBucket: 'voting-system-cca07.appspot.com',
     },
