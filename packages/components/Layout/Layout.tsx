@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import { AuthUser } from 'next-firebase-auth';
 
 import { Navbar, Sidebar } from '@packages/core';
 import { useSiteProperties } from '@packages/config';
@@ -7,10 +8,11 @@ import { useSiteProperties } from '@packages/config';
 import { Footer } from '../Footer';
 
 type LayoutProps = {
+  user: AuthUser;
   children: React.ReactNode;
 };
 
-export const Layout = ({ children }: LayoutProps) => {
+export const Layout = ({ children, user }: LayoutProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const valueOf = useSiteProperties();
@@ -28,8 +30,8 @@ export const Layout = ({ children }: LayoutProps) => {
       <Head>
         <title>{text.title}</title>
       </Head>
-      <Navbar toggle={toggle} />
-      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <Navbar toggle={toggle} user={user} />
+      <Sidebar isOpen={isOpen} toggle={toggle} user={user} />
       {children}
       <Footer />
     </>

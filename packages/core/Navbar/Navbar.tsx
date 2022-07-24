@@ -3,16 +3,19 @@ import Link from 'next/link';
 import { FaBars } from 'react-icons/fa';
 import { Link as LinkS } from 'react-scroll';
 import { useRouter } from 'next/router';
+import { AuthUser } from 'next-firebase-auth';
 
 import { useMenu, useSiteProperties, useAuthContext } from '@packages/config';
+import { Button } from '@packages/components';
 
 import styles from './Navbar.module.css';
 
 interface NavbarProps {
   toggle: () => void;
+  user: AuthUser;
 }
 
-export const Navbar = ({ toggle }: NavbarProps) => {
+export const Navbar = ({ toggle, user }: NavbarProps) => {
   const cta = useAuthContext();
   const { pathname } = useRouter();
   const menuItems = useMenu();
@@ -40,6 +43,7 @@ export const Navbar = ({ toggle }: NavbarProps) => {
 
   const text = {
     logo: valueOf('site_title'),
+    logoutButton: valueOf('logout_button_text'),
   };
 
   return (
@@ -76,19 +80,28 @@ export const Navbar = ({ toggle }: NavbarProps) => {
           ))}
         </ul>
         <div className={styles.ctaContainer} data-testid="navigation-bar-cta">
-          <LinkS
-            to="home"
-            smooth={true}
-            duration={500}
-            spy={true}
-            offset={-80}
-            className={`${styles.cta} ${
-              scrollNav ? styles.secondary : styles.primary
-            }`}
-            onClick={cta.changeText}
-          >
-            {cta.ctaText}
-          </LinkS>
+          {user && user.email ? (
+            <Button
+              theme="secondary"
+              size="md"
+              buttonText={text.logoutButton}
+              onClick={() => user.signOut()}
+            />
+          ) : (
+            <LinkS
+              to="home"
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={-80}
+              className={`${styles.cta} ${
+                scrollNav ? styles.secondary : styles.primary
+              }`}
+              onClick={cta.changeText}
+            >
+              {cta.ctaText}
+            </LinkS>
+          )}
         </div>
       </div>
     </nav>

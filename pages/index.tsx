@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import {
   AuthAction,
   withAuthUser,
+  useAuthUser,
   withAuthUserTokenSSR,
 } from 'next-firebase-auth';
 
@@ -12,10 +13,11 @@ import { Layout } from '@packages/components';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
+  const user = useAuthUser();
   const sections = useInfoSectionData();
 
   return (
-    <Layout>
+    <Layout user={user}>
       <main id="home">
         <video autoPlay muted loop className={styles.video} preload="auto">
           <source src="/Video.mp4" />

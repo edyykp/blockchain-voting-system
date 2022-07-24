@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { AuthAction, withAuthUser } from 'next-firebase-auth';
+import { AuthAction, withAuthUser, useAuthUser } from 'next-firebase-auth';
 import { useEffect } from 'react';
 
 import { RaceType } from '@packages/types';
@@ -24,6 +24,7 @@ const Dashboard: NextPage<DashboardProps> = ({
   error,
   status,
 }: DashboardProps) => {
+  const user = useAuthUser();
   const { replace } = useRouter();
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const Dashboard: NextPage<DashboardProps> = ({
 
   return (
     <VotedModalWrapper>
-      <Layout>
+      <Layout user={user}>
         <div className={styles.container}>
           <YearSelector year={String(currentYear)} />
           <div className={styles.contentWrapper}>

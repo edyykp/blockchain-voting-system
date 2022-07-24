@@ -18,5 +18,6 @@
   "check_modal_yes_button": "Vote",
   "check_modal_no_button": "Discard",
   "voted_modal_title": "You have successfully voted with %s.",
-  "metamask_button_text": "Continue with"
+  "metamask_button_text": "Continue with",
+  "logout_button_text": "Log out"
 }

@@ -1,18 +1,26 @@
 import { FaTimes } from 'react-icons/fa';
 import { Link } from 'react-scroll';
+import { AuthUser } from 'next-firebase-auth';
 
-import { useMenu, useAuthContext } from '@packages/config';
+import { useMenu, useAuthContext, useSiteProperties } from '@packages/config';
+import { Button } from '@packages/components';
 
 import styles from './Sidebar.module.css';
 
 interface SidebarProps {
   isOpen: boolean;
   toggle: () => void;
+  user: AuthUser;
 }
 
-export const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
+export const Sidebar = ({ isOpen, toggle, user }: SidebarProps) => {
   const cta = useAuthContext();
+  const valueOf = useSiteProperties();
   const menuItems = useMenu();
+
+  const text = {
+    logoutButton: valueOf('logout_button_text'),
+  };
 
   return (
     <aside
@@ -34,20 +42,29 @@ export const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
         </ul>
       </div>
       <div className={styles.ctaWrapper}>
-        <Link
-          to="home"
-          smooth={true}
-          duration={500}
-          spy={true}
-          offset={-80}
-          className={styles.cta}
-          onClick={() => {
-            cta.changeText();
-            toggle();
-          }}
-        >
-          {cta.ctaText}
-        </Link>
+        {user && user.email ? (
+          <Button
+            theme="secondary"
+            size="md"
+            buttonText={text.logoutButton}
+            onClick={() => user.signOut()}
+          />
+        ) : (
+          <Link
+            to="home"
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={-80}
+            className={styles.cta}
+            onClick={() => {
+              cta.changeText();
+              toggle();
+            }}
+          >
+            {cta.ctaText}
+          </Link>
+        )}
       </div>
     </aside>
   );

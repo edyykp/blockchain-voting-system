@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { AuthAction, withAuthUser } from 'next-firebase-auth';
+import { AuthAction, withAuthUser, useAuthUser } from 'next-firebase-auth';
 
 import { RaceType } from '@packages/types';
 import { Layout } from '@packages/components';
@@ -23,6 +23,7 @@ const Dashboard: NextPage<DashboardProps> = ({
   error,
   status,
 }: DashboardProps) => {
+  const user = useAuthUser();
   const { query, replace } = useRouter();
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const Dashboard: NextPage<DashboardProps> = ({
   }, [error, status]);
 
   return (
-    <Layout>
+    <Layout user={user}>
       <div className={styles.container}>
         <YearSelector year={String(query.year)} />
         <div className={styles.contentWrapper}>
