@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useSiteProperties } from '@packages/config';
 
 import styles from './Button.module.css';
+import { MouseEvent } from 'react';
 
 interface ButtonProps {
   theme: 'primary' | 'secondary' | 'ternary';
@@ -12,7 +13,7 @@ interface ButtonProps {
   targetHref?: string;
   buttonText?: string;
   hasPaddingLarge?: boolean;
-  onClick?: () => void;
+  onClick?: (event?: MouseEvent) => void;
   iconLink?: string;
   buttonType?: 'button' | 'submit';
 }

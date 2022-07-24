@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import firebase from 'firebase';
 
 import { Button, Input } from '@packages/components';
 import {
@@ -8,13 +9,19 @@ import {
   isMobileDevice,
 } from '@packages/config';
 import { useEmailModalContext } from '@packages/config';
-import { connect, getUserByWalletAddress } from '@packages/network';
+import {
+  connect,
+  getUserByEmail,
+  getUserByWalletAddress,
+} from '@packages/network';
 
 import styles from './SignInForm.module.css';
 import { signInUser } from '../../network/signInUser';
 
 export const SignInForm = () => {
   const [error, setError] = useState<string | undefined>();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const auth = useAuthContext();
   const { setShow } = useEmailModalContext();
@@ -67,6 +74,37 @@ export const SignInForm = () => {
     }
   };
 
+  const login = async () => {
+    const userFromEmail = await getUserByEmail(emailRef.current?.value || '');
+
+    if (!userFromEmail) {
+      setError('Email is incorrect');
+      return;
+    }
+
+    if (userFromEmail.data()['wallet_address'] !== undefined) {
+      setError('This email is used with Metamask login only');
+      return;
+    }
+
+    if (emailRef.current?.value && passwordRef.current?.value) {
+      const { status, error } = await signInUser(
+        emailRef.current?.value,
+        passwordRef.current?.value,
+      );
+
+      if (status === 200) {
+        router.push('/dashboard');
+        return;
+      }
+
+      if (status !== 200) {
+        setError(error);
+        return;
+      }
+    }
+  };
+
   return (
     <form
       className={styles.container}
@@ -80,11 +118,24 @@ export const SignInForm = () => {
       </div>
       {error && <div className={styles.errorWrapper}>{error}</div>}
       <div className={styles.wrapper}>
-        <Input type="text" field="email" isRequired />
-        <Input type="password" field="password" isRequired />
+        <Input type="text" field="email" isRequired inputRef={emailRef} />
+        <Input
+          type="password"
+          field="password"
+          isRequired
+          inputRef={passwordRef}
+        />
       </div>
       <div className={styles.buttonsWrapper}>
-        <Button theme="primary" size="lg" buttonType="submit" />
+        <Button
+          theme="primary"
+          size="lg"
+          buttonType="submit"
+          onClick={(event) => {
+            login();
+            event?.preventDefault();
+          }}
+        />
         <Button
           theme="secondary"
           size="lg"

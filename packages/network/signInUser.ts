@@ -4,7 +4,7 @@ export const signInUser = async (userEmail: string, password: string) => {
   const idToken = await (
     await firebase
       .auth(firebase.app())
-      .signInWithEmailAndPassword(userEmail, 'defaultMetamask')
+      .signInWithEmailAndPassword(userEmail, password)
   ).user?.getIdToken();
 
   const data = await fetch('/login', {
