@@ -24,7 +24,7 @@ export const initAuth = () => {
     },
     firebaseClientInitConfig: {
       apiKey: 'AIzaSyD9sUbajIjQUxJxNheqHH2h4sZnxWW5Kp0',
-      authDomain: process.env.VERCEL_URL,
+      authDomain: process.env.NEXT_PUBLIC_HOSTNAME,
       projectId: 'voting-system-cca07',
       storageBucket: 'voting-system-cca07.appspot.com',
     },
@@ -35,7 +35,7 @@ export const initAuth = () => {
         process.env.COOKIE_SECRET_PREVIOUS,
       ],
       httpOnly: true,
-      maxAge: 1 * 60 * 60 * 24 * 1000,
+      maxAge: 1 * 60 * 60 * 24,
       overwrite: true,
       path: '/',
       sameSite: 'strict',

@@ -76,7 +76,7 @@ exports[`Register→ renders 1`] = `
         </label>
       </div>
     </div>
-    <a
+    <button
       class="button  primary
       false
       false
@@ -87,7 +87,7 @@ exports[`Register→ renders 1`] = `
         Register
       </span>
        
-    </a>
+    </button>
     <p
       class="text"
     >

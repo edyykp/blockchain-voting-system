@@ -23,7 +23,7 @@ const setup = (props: VotedModalProps) => {
   };
 };
 
-describe('StandingsModal→', () => {
+describe('VotedModal→', () => {
   it('renders', async () => {
     const { container, getByTestId } = setup(MOCK_PROPS_SHOW);
 

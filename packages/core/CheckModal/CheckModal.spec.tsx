@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import { CheckModal, CheckModalProps } from './CheckModal';
@@ -23,7 +23,7 @@ const setup = (props: CheckModalProps) => {
   };
 };
 
-describe('StandingsModal→', () => {
+describe('CheckModal→', () => {
   it('renders', async () => {
     const { container, getByTestId } = setup(MOCK_PROPS_SHOW);
 

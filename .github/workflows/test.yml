@@ -17,6 +17,8 @@ env:
   F1_API_URL: http://localhost:8080
   BLOCKCHAIN_URL: http://localhost:7545
   OLDEST_YEAR: 2015
+  COOKIE_SECRET_CURRENT: current
+  COOKIE_SECRET_PREVIOUS: previous
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"

@@ -63,24 +63,26 @@ exports[`SignInForm→ renders 1`] = `
     <div
       class="buttonsWrapper"
     >
-      <a
+      <button
         class="button  primary
       false
       false
       largeButton
       "
+        type="submit"
       >
         <span>
           Sign in
         </span>
          
-      </a>
-      <a
+      </button>
+      <button
         class="button  secondary
       false
       false
       largeButton
       "
+        type="button"
       >
         <span>
           Continue with
@@ -109,7 +111,7 @@ exports[`SignInForm→ renders 1`] = `
           />
           <noscript />
         </span>
-      </a>
+      </button>
     </div>
     <p
       class="text"
