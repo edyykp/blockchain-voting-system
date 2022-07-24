@@ -6,7 +6,7 @@ exports[`StandingsModal→ renders 1`] = `
     class="overlay"
   >
     <div
-      class="wrapper"
+      class="wrapper false"
     >
       <div
         class="header"

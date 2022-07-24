@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StandingsModal→ renders 1`] = `
+exports[`VotedModal→ renders 1`] = `
 <div>
   <div
     class="overlay"
   >
     <div
-      class="wrapper"
+      class="wrapper false"
     >
       <div
         class="header"
@@ -44,4 +44,4 @@ exports[`StandingsModal→ renders 1`] = `
 </div>
 `;
 
-exports[`StandingsModal→ renders nothing if show is false 1`] = `<div />`;
+exports[`VotedModal→ renders nothing if show is false 1`] = `<div />`;

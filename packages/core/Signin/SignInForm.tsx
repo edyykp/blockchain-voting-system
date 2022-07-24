@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { Button, Input } from '@packages/components';
 import {
@@ -10,7 +11,6 @@ import { useEmailModalContext } from '@packages/config';
 import { connect, getUserByWalletAddress } from '@packages/network';
 
 import styles from './SignInForm.module.css';
-import { useRouter } from 'next/router';
 import { signInUser } from '../../network/signInUser';
 
 export const SignInForm = () => {
@@ -42,9 +42,6 @@ export const SignInForm = () => {
 
         const user = await getUserByWalletAddress(userAddress);
         const userEmail = user?.data()['email'];
-
-        console.log(user);
-        console.log(userEmail);
 
         if (user && userEmail) {
           const { status, error } = await signInUser(

@@ -35,7 +35,7 @@ export const initAuth = () => {
         process.env.COOKIE_SECRET_PREVIOUS,
       ],
       httpOnly: true,
-      maxAge: 1 * 60 * 60 * 24 * 1000,
+      maxAge: 1 * 60 * 60 * 24,
       overwrite: true,
       path: '/',
       sameSite: 'strict',

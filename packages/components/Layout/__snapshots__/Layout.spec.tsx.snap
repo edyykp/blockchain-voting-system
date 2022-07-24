@@ -62,11 +62,11 @@ exports[`Layout→ should render children 1`] = `
         class="ctaContainer"
         data-testid="navigation-bar-cta"
       >
-        <button
+        <a
           class="cta primary"
         >
           Sign up
-        </button>
+        </a>
       </div>
     </div>
   </nav>
@@ -117,11 +117,11 @@ exports[`Layout→ should render children 1`] = `
     <div
       class="ctaWrapper"
     >
-      <button
+      <a
         class="cta"
       >
         Sign up
-      </button>
+      </a>
     </div>
   </aside>
   <div>

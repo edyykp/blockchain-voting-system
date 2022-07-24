@@ -1,19 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CheckModal→ renders 1`] = `
+exports[`EmailModal→ renders 1`] = `
 <div>
   <div
     class="overlay"
   >
     <div
-      class="wrapper false"
+      class="wrapper darkBackground"
     >
       <div
         class="header"
       >
         <h1
           class="title"
-        />
+        >
+          Set up your email
+        </h1>
         <svg
           class="icon"
           fill="currentColor"
@@ -34,41 +36,37 @@ exports[`CheckModal→ renders 1`] = `
       >
         <div
           class="container"
-          data-testid="check-modal"
+          data-testid="email-modal"
         >
-          <h1
-            class="title"
-          >
-            Continue your vote with Charles Leclerc?
-          </h1>
           <div
-            class="buttonsWrapper"
+            class="container"
           >
-            <button
-              class="button  primary
-      false
-      mediumButton
-      false
-      "
+            <input
+              autocomplete="off"
+              class="input"
+              placeholder="Enter your email"
+              required=""
+              type="text"
+            />
+            <label
+              class="label "
+              for="email"
             >
-              <span>
-                Vote
-              </span>
-               
-            </button>
-            <button
-              class="button  ternary
-      false
-      mediumButton
-      false
-      "
-            >
-              <span>
-                Discard
-              </span>
-               
-            </button>
+              Email
+            </label>
           </div>
+          <button
+            class="button  primary
+      false
+      false
+      largeButton
+      "
+          >
+            <span>
+              Set email and log in
+            </span>
+             
+          </button>
         </div>
       </div>
     </div>
@@ -76,4 +74,4 @@ exports[`CheckModal→ renders 1`] = `
 </div>
 `;
 
-exports[`CheckModal→ renders nothing if show is false 1`] = `<div />`;
+exports[`EmailModal→ renders nothing if show is false 1`] = `<div />`;

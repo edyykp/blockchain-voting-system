@@ -49,11 +49,11 @@ exports[`Sidebar→ renders 1`] = `
     <div
       class="ctaWrapper"
     >
-      <button
+      <a
         class="cta"
       >
         Sign up
-      </button>
+      </a>
     </div>
   </aside>
 </div>
