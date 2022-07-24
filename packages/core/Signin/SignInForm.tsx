@@ -24,7 +24,7 @@ export const SignInForm = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const auth = useAuthContext();
-  const { setShow } = useEmailModalContext();
+  const { setShow, setWalletAddress } = useEmailModalContext();
   const valueOf = useSiteProperties();
 
   const text = {
@@ -68,6 +68,7 @@ export const SignInForm = () => {
         }
 
         setShow(true);
+        setWalletAddress(userAddress);
       }).catch((error) => {
         setError(error.message);
       });
@@ -82,7 +83,7 @@ export const SignInForm = () => {
       return;
     }
 
-    if (userFromEmail.data()['wallet_address'] !== undefined) {
+    if (userFromEmail.data()['wallet_address'] !== null) {
       setError('This email is used with Metamask login only');
       return;
     }
@@ -100,7 +101,6 @@ export const SignInForm = () => {
 
       if (status !== 200) {
         setError(error);
-        return;
       }
     }
   };
