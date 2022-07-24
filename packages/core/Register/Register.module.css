@@ -18,6 +18,18 @@
   text-align: center;
 }
 
+.errorWrapper {
+  width: 100%;
+  border: 4px solid var(--primary);
+  background-color: darksalmon;
+  text-align: center;
+  color: var(--primary);
+  padding-block: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
 .wrapper {
   width: 100%;
   text-align: center;
