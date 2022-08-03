@@ -113,6 +113,13 @@ jest.mock(
     },
 );
 
+jest.mock('@packages/config/Web3Context', () => ({
+  ...jest.requireActual('@packages/config/Web3Context'),
+  useWeb3: jest
+    .fn()
+    .mockResolvedValue({ account: 'hello', votingContract: 'string' }),
+}));
+
 const setup = (props: VotingModalProps) => {
   return {
     ...render(

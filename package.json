@@ -12,6 +12,7 @@
     "cypress:headless": "cypress run"
   },
   "dependencies": {
+    "@truffle/contract": "^4.5.18",
     "aos": "^3.0.0-beta.6",
     "firebase": "8.9",
     "next": "12.1.0",

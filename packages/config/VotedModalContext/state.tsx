@@ -1,6 +1,7 @@
-import { VotedModal } from '@packages/core';
 import React from 'react';
 import { createContext, useContext, useState } from 'react';
+
+import { VotedModal } from '@packages/core';
 
 interface VotedModalContextInterface {
   setVotedDriver: (name: string) => void;

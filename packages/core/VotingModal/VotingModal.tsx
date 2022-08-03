@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { useAuthUser } from 'next-firebase-auth';
 
 import { Modal } from '@packages/components';
 import { DriverType } from '@packages/types';
 import { CheckModal } from '@packages/core';
-import { useVotedModalContext } from '@packages/config';
+import { useVotedModalContext, useWeb3 } from '@packages/config';
 
 import styles from './VotingModal.module.css';
 
@@ -25,8 +26,12 @@ export const VotingModal = ({
   const [drivers, setDrivers] = useState<DriverType[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [showCheckModal, setShowCheckModal] = useState<boolean>(false);
+  const user = useAuthUser();
   const { setVotedDriver } = useVotedModalContext();
-  const [selectedDriver, setSelectedDriver] = useState<string | undefined>();
+  const { account, votingContract } = useWeb3();
+  const [selectedDriver, setSelectedDriver] = useState<
+    DriverType | undefined
+  >();
   const { query } = useRouter();
   const currentYear = new Date().getFullYear();
 
@@ -88,15 +93,44 @@ export const VotingModal = ({
     }
   };
 
+  const sendVote = async () => {
+    const instance = await votingContract.deployed();
+
+    instance
+      .vote(
+        String(query.year ?? currentYear),
+        circuitId,
+        {
+          driverId: selectedDriver?.Driver.driverId,
+          givenName: selectedDriver?.Driver.givenName,
+          familyName: selectedDriver?.Driver.familyName,
+          nationality: selectedDriver?.Driver.nationality,
+          permanentNumber: selectedDriver?.Driver.permanentNumber,
+          constructorId: selectedDriver?.Constructor.constructorId,
+          constructorName: selectedDriver?.Constructor.name,
+          votes: 1,
+        },
+        user.email,
+        {
+          from: account,
+        },
+      )
+      .then((address: any) => console.log(address))
+      .catch((error: any) => console.error(error));
+  };
+
   const DriversList = (driversList: DriverType[]) => (
     <div className={styles.container} data-testid="drivers-container">
       <CheckModal
         show={showCheckModal}
         setShowModal={setShowCheckModal}
-        driverName={selectedDriver}
+        driverName={`${selectedDriver?.Driver.givenName} ${selectedDriver?.Driver.familyName}`}
         voteFinishedCallback={() => {
           setShowModal(false);
-          setVotedDriver(selectedDriver || '');
+          setVotedDriver(
+            `${selectedDriver?.Driver.givenName} ${selectedDriver?.Driver.familyName}`,
+          );
+          sendVote();
         }}
       />
       {driversList.map((driver, key) => (
@@ -106,9 +140,7 @@ export const VotingModal = ({
           data-testid="driver-button"
           onClick={() => {
             setShowCheckModal(true);
-            setSelectedDriver(
-              `${driver.Driver.givenName} ${driver.Driver.familyName}`,
-            );
+            setSelectedDriver(driver);
           }}
         >
           <div className={styles.positionWrapper}>
