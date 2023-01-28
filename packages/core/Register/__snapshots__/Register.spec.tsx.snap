@@ -76,6 +76,7 @@ exports[`Register→ renders 1`] = `
         </label>
       </div>
     </div>
+    <div />
     <button
       class="button  primary
       false
