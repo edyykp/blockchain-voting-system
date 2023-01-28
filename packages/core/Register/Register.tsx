@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import { Button, Input } from '@packages/components';
 import { useSiteProperties, useAuthContext } from '@packages/config';
@@ -13,6 +14,7 @@ export const Register = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const confirmationPasswordRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | undefined>();
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null)
   const auth = useAuthContext();
   const valueOf = useSiteProperties();
 
@@ -24,6 +26,11 @@ export const Register = () => {
   };
 
   const register = async () => {
+    if (captchaValue === null) {
+      setError('ReCAPTCHA incomplete');
+      return;
+    }
+
     if (
       !emailRef.current?.value ||
       !passwordRef.current?.value ||
@@ -53,6 +60,10 @@ export const Register = () => {
     }
   };
 
+  const handleCaptcha = (token: string | null) => {
+    setCaptchaValue(token)
+  }
+
   return (
     <form className={styles.container} data-testid="register" id="register">
       <div className={styles.wrapper}>
@@ -80,6 +91,7 @@ export const Register = () => {
           inputRef={confirmationPasswordRef}
         />
       </div>
+      <ReCAPTCHA sitekey='6LdKjL8ZAAAAAEBwynzk986OTAhiobOdOg6Ynch8' onChange={handleCaptcha} theme='dark' type='image' />
       <Button
         theme="primary"
         size="lg"
