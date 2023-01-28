@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import { RaceType } from '@packages/types';
 import { Layout } from '@packages/components';
-import { VotedModalWrapper } from '@packages/config';
+import { VotedModalWrapper, Web3Wrapper } from '@packages/config';
 import { CardsList, YearSelector, YearStandingsButton } from '@packages/core';
 import { getAllRacesPerYear } from '@packages/network';
 
@@ -38,17 +38,19 @@ const Dashboard: NextPage<DashboardProps> = ({
   }, [error, status]);
 
   return (
-    <VotedModalWrapper>
-      <Layout user={user}>
-        <div className={styles.container}>
-          <YearSelector year={String(currentYear)} />
-          <div className={styles.contentWrapper}>
-            <YearStandingsButton year={String(currentYear)} />
-            <CardsList races={races} />
+    <Web3Wrapper>
+      <VotedModalWrapper>
+        <Layout user={user}>
+          <div className={styles.container}>
+            <YearSelector year={String(currentYear)} />
+            <div className={styles.contentWrapper}>
+              <YearStandingsButton year={String(currentYear)} />
+              <CardsList races={races} />
+            </div>
           </div>
-        </div>
-      </Layout>
-    </VotedModalWrapper>
+        </Layout>
+      </VotedModalWrapper>
+    </Web3Wrapper>
   );
 };
 

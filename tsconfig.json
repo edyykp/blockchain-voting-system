@@ -20,6 +20,12 @@
     },
     "typeRoots": ["./node_modules/@types", "./packages/types"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "truffle-config.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "truffle-config.js",
+    "packages/config/Web3Context/state.js"
+  ],
   "exclude": ["node_modules"]
 }

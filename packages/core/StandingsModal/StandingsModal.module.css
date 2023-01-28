@@ -4,7 +4,7 @@
 }
 .driverWrapper {
   display: grid;
-  grid-template-columns: 70px 1fr 150px 1fr;
+  grid-template-columns: 70px 1fr 150px 1fr 80px;
   width: 100%;
   height: 80px;
   border-bottom: 0.5px solid var(--gray-400);
@@ -65,9 +65,13 @@
     font-size: 0.8rem;
   }
 
-  .nationalityWrapper,
+  .votesWrapper,
   .teamWrapper {
     height: 60px;
     padding-top: 10px;
+  }
+
+  .nationalityWrapper {
+    display: none;
   }
 }

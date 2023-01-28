@@ -7,6 +7,7 @@ import { RaceType } from '@packages/types';
 import { Layout } from '@packages/components';
 import { CardsList, YearSelector, YearStandingsButton } from '@packages/core';
 import { getAllRacesPerYear } from '@packages/network';
+import { VotedModalWrapper, Web3Wrapper } from '@packages/config';
 
 import styles from '../../styles/Dashboard.module.css';
 
@@ -37,15 +38,19 @@ const Dashboard: NextPage<DashboardProps> = ({
   }, [error, status]);
 
   return (
-    <Layout user={user}>
-      <div className={styles.container}>
-        <YearSelector year={String(query.year)} />
-        <div className={styles.contentWrapper}>
-          <YearStandingsButton year={String(query.year)} />
-          <CardsList races={races} />
-        </div>
-      </div>
-    </Layout>
+    <Web3Wrapper>
+      <VotedModalWrapper>
+        <Layout user={user}>
+          <div className={styles.container}>
+            <YearSelector year={String(query.year)} />
+            <div className={styles.contentWrapper}>
+              <YearStandingsButton year={String(query.year)} />
+              <CardsList races={races} />
+            </div>
+          </div>
+        </Layout>
+      </VotedModalWrapper>
+    </Web3Wrapper>
   );
 };
 

@@ -9,3 +9,4 @@ export {
   EmailModalWrapper,
   useEmailModalContext,
 } from './SetEmailModalContext';
+export { Web3Wrapper, useWeb3 } from './Web3Context';

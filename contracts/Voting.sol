@@ -4,13 +4,14 @@ pragma solidity >=0.4.22 <0.9.0;
 contract Voting {
   uint256 private constant SECONDS_PER_DAY = 24 * 60 * 60;
   int256 private constant OFFSET19700101 = 2440588;
+  event Voted();
 
   struct Driver {
-    string driverId;
+    bytes32 driverId;
     string givenName;
     string familyName;
     string nationality;
-    uint256 permanentNumber;
+    string permanentNumber;
     string constructorId;
     string constructorName;
     uint256 votes;
@@ -19,13 +20,29 @@ contract Voting {
   struct Race {
     uint256 year;
     string raceId;
-    mapping(string => Driver) drivers;
-    string[] emailsVoted;
+    Driver[] drivers;
+    bytes32[] emailsVoted;
   }
 
-  mapping(uint256 => mapping(string => Race)) private races;
+  mapping(bytes32 => Race) races;
+  bool reentrancyLock = false;
 
-  constructor() {}
+  constructor() public payable {}
+
+  function getRace(
+    uint256 year,
+    string calldata raceId
+  ) public view returns (Race memory) {
+    uint256 currentYear = _daysToDate(block.timestamp / SECONDS_PER_DAY);
+
+    require(
+      year > 2015 && year <= currentYear,
+      'This year is not currently supported.'
+    );
+    require(bytes(raceId).length > 0, 'raceId cannot be empty.');
+
+    return races[keccak256(abi.encodePacked(year, raceId))];
+  }
 
   function _daysToDate(uint256 _days) internal pure returns (uint256 year) {
     int256 __days = int256(_days);
@@ -45,34 +62,39 @@ contract Voting {
     return year;
   }
 
-  function stringsEquals(string memory s1, string memory s2)
-    private
-    pure
-    returns (bool)
-  {
-    bytes memory b1 = bytes(s1);
-    bytes memory b2 = bytes(s2);
-    uint256 l1 = b1.length;
+  function stringsEquals(bytes32 s1, bytes32 s2) private pure returns (bool) {
+    uint256 l1 = s1.length;
 
-    if (l1 != b2.length) {
+    if (l1 != s2.length) {
       return false;
     }
 
     for (uint256 i = 0; i < l1; i++) {
-      if (b1[i] != b2[i]) return false;
+      if (s1[i] != s2[i]) return false;
     }
     return true;
   }
 
-  function hasEmailVoted(string memory email, string[] memory emailsVoted)
-    private
-    pure
-    returns (bool)
-  {
-    uint256 i;
-
-    for (i = 0; i < emailsVoted.length; i++) {
+  function hasEmailVoted(
+    bytes32 email,
+    bytes32[] memory emailsVoted
+  ) private pure returns (bool) {
+    for (uint256 i = 0; i < emailsVoted.length; i++) {
       if (stringsEquals(emailsVoted[i], email)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  function driverExistsIncreaseVotes(
+    bytes32 raceId,
+    bytes32 driverId
+  ) private returns (bool) {
+    for (uint256 i = 0; i < races[raceId].drivers.length; i++) {
+      if (stringsEquals(races[raceId].drivers[i].driverId, driverId)) {
+        races[raceId].drivers[i].votes++;
         return true;
       }
     }
@@ -82,10 +104,16 @@ contract Voting {
 
   function vote(
     uint256 year,
-    string memory raceId,
-    string memory driverId,
-    string memory email
-  ) public {
+    string calldata raceId,
+    Driver calldata driver,
+    string calldata email
+  ) external {
+    require(
+      gasleft() >= 200000,
+      'Not enough gas to execute the vote function.'
+    );
+    require(!reentrancyLock, 'Reentrancy detected.');
+    reentrancyLock = true;
     uint256 currentYear = _daysToDate(block.timestamp / SECONDS_PER_DAY);
 
     require(
@@ -93,13 +121,39 @@ contract Voting {
       'This year is not currently supported.'
     );
     require(bytes(raceId).length > 0, 'raceId cannot be empty.');
-    require(bytes(driverId).length > 0, 'driverId cannot be empty.');
+    require(driver.driverId.length > 0, 'driverId cannot be empty.');
+    bytes32 hashedKey = keccak256(abi.encodePacked(year, raceId));
+    bytes32 hashedEmail = keccak256(abi.encodePacked(email, hashedKey));
+    require(
+      hasEmailVoted(hashedEmail, races[hashedKey].emailsVoted) == false,
+      'You can only vote once for a race!'
+    );
+    require(
+      races[hashedKey].drivers.length < 22,
+      'There are maximum 22 drivers in one race.'
+    );
+    require(driver.votes + 1 >= driver.votes, 'Integer overflow.');
 
-    if (!hasEmailVoted(email, races[year][raceId].emailsVoted)) {
-      races[year][raceId].drivers[driverId].votes++;
-      races[year][raceId].emailsVoted[
-        races[year][raceId].emailsVoted.length - 1
-      ] = email;
+    races[hashedKey].year = year;
+    races[hashedKey].raceId = raceId;
+    races[hashedKey].emailsVoted.push(hashedEmail);
+
+    if (!driverExistsIncreaseVotes(hashedKey, driver.driverId)) {
+      races[hashedKey].drivers.push(
+        Driver(
+          driver.driverId,
+          driver.givenName,
+          driver.familyName,
+          driver.nationality,
+          driver.permanentNumber,
+          driver.constructorId,
+          driver.constructorName,
+          1
+        )
+      );
     }
+
+    reentrancyLock = false;
+    emit Voted();
   }
 }

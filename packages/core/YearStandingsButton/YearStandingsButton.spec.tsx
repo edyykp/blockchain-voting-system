@@ -15,6 +15,13 @@ const setup = (year: string) => {
   };
 };
 
+jest.mock('@packages/config/Web3Context', () => ({
+  ...jest.requireActual('@packages/config/Web3Context'),
+  useWeb3: jest
+    .fn()
+    .mockResolvedValue({ account: 'hello', votingContract: 'string' }),
+}));
+
 describe('YearStandingsButton→', () => {
   it('renders', () => {
     const { container, getByTestId } = setup('2017');

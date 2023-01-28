@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "truffle compile && truffle migrate && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
@@ -12,6 +12,7 @@
     "cypress:headless": "cypress run"
   },
   "dependencies": {
+    "@truffle/contract": "^4.5.18",
     "aos": "^3.0.0-beta.6",
     "firebase": "8.9",
     "next": "12.1.0",
@@ -21,6 +22,7 @@
     "react-icons": "^4.3.1",
     "react-scroll": "^1.8.7",
     "sharp": "^0.30.6",
+    "truffle": "^5.5.24",
     "web3": "^1.7.4"
   },
   "devDependencies": {

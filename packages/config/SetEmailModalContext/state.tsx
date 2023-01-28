@@ -1,6 +1,7 @@
-import { EmailModal } from '@packages/core';
 import React from 'react';
 import { createContext, useContext, useState } from 'react';
+
+import { EmailModal } from '@packages/core';
 
 interface EmailModalContextInterface {
   setShow: (set: boolean) => void;

@@ -54,58 +54,12 @@ exports[`StandingsModal→ renders 1`] = `
               <span
                 class="permanentNumber"
               >
-                6
+                55
               </span>
                
-              Nicholas
+              Carlos
                
-              Latifi
-            </div>
-            <div
-              class="nationalityWrapper"
-            >
-              Canadian
-            </div>
-            <div
-              class="teamWrapper"
-            >
-              <span
-                class="imageWrapper"
-              >
-                <img
-                  alt="williams"
-                  src="/test-file-stub"
-                />
-              </span>
-              <span
-                class="constructorWrapper"
-              >
-                Williams
-              </span>
-            </div>
-          </div>
-          <div
-            class="driverWrapper greyBackground"
-            data-testid="driver-row"
-          >
-            <div
-              class="positionWrapper"
-            >
-              2
-              .
-            </div>
-            <div
-              class="nameWrapper"
-            >
-              <span
-                class="permanentNumber"
-              >
-                14
-              </span>
-               
-              Fernando
-               
-              Alonso
+              Sainz
             </div>
             <div
               class="nationalityWrapper"
@@ -119,25 +73,31 @@ exports[`StandingsModal→ renders 1`] = `
                 class="imageWrapper"
               >
                 <img
-                  alt="alpine"
+                  alt="ferrari"
                   src="/test-file-stub"
                 />
               </span>
               <span
                 class="constructorWrapper"
               >
-                Alpine F1 Team
+                Ferrari
               </span>
+            </div>
+            <div
+              class="votesWrapper"
+            >
+              10
+               votes
             </div>
           </div>
           <div
-            class="driverWrapper "
+            class="driverWrapper greyBackground"
             data-testid="driver-row"
           >
             <div
               class="positionWrapper"
             >
-              3
+              2
               .
             </div>
             <div
@@ -175,6 +135,64 @@ exports[`StandingsModal→ renders 1`] = `
                 Red Bull
               </span>
             </div>
+            <div
+              class="votesWrapper"
+            >
+              4
+               votes
+            </div>
+          </div>
+          <div
+            class="driverWrapper "
+            data-testid="driver-row"
+          >
+            <div
+              class="positionWrapper"
+            >
+              3
+              .
+            </div>
+            <div
+              class="nameWrapper"
+            >
+              <span
+                class="permanentNumber"
+              >
+                14
+              </span>
+               
+              Fernando
+               
+              Alonso
+            </div>
+            <div
+              class="nationalityWrapper"
+            >
+              Spanish
+            </div>
+            <div
+              class="teamWrapper"
+            >
+              <span
+                class="imageWrapper"
+              >
+                <img
+                  alt="alpine"
+                  src="/test-file-stub"
+                />
+              </span>
+              <span
+                class="constructorWrapper"
+              >
+                Alpine F1 Team
+              </span>
+            </div>
+            <div
+              class="votesWrapper"
+            >
+              3
+               votes
+            </div>
           </div>
           <div
             class="driverWrapper greyBackground"
@@ -184,6 +202,58 @@ exports[`StandingsModal→ renders 1`] = `
               class="positionWrapper"
             >
               4
+              .
+            </div>
+            <div
+              class="nameWrapper"
+            >
+              <span
+                class="permanentNumber"
+              >
+                6
+              </span>
+               
+              Nicholas
+               
+              Latifi
+            </div>
+            <div
+              class="nationalityWrapper"
+            >
+              Canadian
+            </div>
+            <div
+              class="teamWrapper"
+            >
+              <span
+                class="imageWrapper"
+              >
+                <img
+                  alt="williams"
+                  src="/test-file-stub"
+                />
+              </span>
+              <span
+                class="constructorWrapper"
+              >
+                Williams
+              </span>
+            </div>
+            <div
+              class="votesWrapper"
+            >
+              2
+               votes
+            </div>
+          </div>
+          <div
+            class="driverWrapper "
+            data-testid="driver-row"
+          >
+            <div
+              class="positionWrapper"
+            >
+              5
               .
             </div>
             <div
@@ -221,51 +291,11 @@ exports[`StandingsModal→ renders 1`] = `
                 Aston Martin
               </span>
             </div>
-          </div>
-          <div
-            class="driverWrapper "
-            data-testid="driver-row"
-          >
             <div
-              class="positionWrapper"
+              class="votesWrapper"
             >
-              5
-              .
-            </div>
-            <div
-              class="nameWrapper"
-            >
-              <span
-                class="permanentNumber"
-              >
-                55
-              </span>
-               
-              Carlos
-               
-              Sainz
-            </div>
-            <div
-              class="nationalityWrapper"
-            >
-              Spanish
-            </div>
-            <div
-              class="teamWrapper"
-            >
-              <span
-                class="imageWrapper"
-              >
-                <img
-                  alt="ferrari"
-                  src="/test-file-stub"
-                />
-              </span>
-              <span
-                class="constructorWrapper"
-              >
-                Ferrari
-              </span>
+              0
+               votes
             </div>
           </div>
         </div>
