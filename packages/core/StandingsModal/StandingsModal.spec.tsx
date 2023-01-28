@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { createMockRouter } from 'test-utils/createMockRouter';
 
-import { StandingsModal, StandingsModalProps } from './StandingsModal';
+import { BlockchainDriverType, StandingsModal, StandingsModalProps } from './StandingsModal';
 
 type ImageProps = {
   src: string;
@@ -14,93 +14,68 @@ const MOCK_PROPS_NO_SHOW = {
   show: false,
   raceName: 'Monaco',
   circuitId: 'monaco',
-  setShowModal: () => {},
+  setShowModal: () => { },
 };
 
 const MOCK_PROPS_SHOW = {
   show: true,
   raceName: 'Monaco',
   circuitId: 'monaco',
-  setShowModal: () => {},
+  setShowModal: () => { },
 };
 
-const MOCK_FETCHED_DATA = {
+const MOCK_FETCHED_DATA: { error: any, drivers: BlockchainDriverType[] } = {
   error: null,
   drivers: [
     {
-      startingPosition: 18,
-      finalPosition: 16,
-      Driver: {
-        permanentNumber: '6',
-        driverId: 'latifi',
-        givenName: 'Nicholas',
-        familyName: 'Latifi',
-        nationality: 'Canadian',
-      },
-      Constructor: {
-        constructorId: 'williams',
-        name: 'Williams',
-      },
+      permanentNumber: '6',
+      driverId: 'latifi',
+      givenName: 'Nicholas',
+      familyName: 'Latifi',
+      nationality: 'Canadian',
+      constructorName: 'Williams',
+      constructorId: 'williams',
+      votes: 2,
     },
     {
-      startingPosition: 10,
-      finalPosition: 17,
-      Driver: {
-        permanentNumber: '14',
-        driverId: 'alonso',
-        givenName: 'Fernando',
-        familyName: 'Alonso',
-        nationality: 'Spanish',
-      },
-      Constructor: {
-        constructorId: 'alpine',
-        name: 'Alpine F1 Team',
-      },
+      permanentNumber: '14',
+      driverId: 'alonso',
+      givenName: 'Fernando',
+      familyName: 'Alonso',
+      nationality: 'Spanish',
+      votes: 3,
+      constructorId: 'alpine',
+      constructorName: 'Alpine F1 Team',
     },
     {
-      startingPosition: 2,
-      finalPosition: null,
-      Driver: {
-        permanentNumber: '33',
-        driverId: 'max_verstappen',
-        givenName: 'Max',
-        familyName: 'Verstappen',
-        nationality: 'Dutch',
-      },
-      Constructor: {
-        constructorId: 'red_bull',
-        name: 'Red Bull',
-      },
+      permanentNumber: '33',
+      driverId: 'max_verstappen',
+      givenName: 'Max',
+      familyName: 'Verstappen',
+      nationality: 'Dutch',
+      constructorId: 'red_bull',
+      constructorName: 'Red Bull',
+      votes: 4
     },
     {
-      startingPosition: 17,
-      finalPosition: null,
-      Driver: {
-        permanentNumber: '5',
-        driverId: 'vettel',
-        givenName: 'Sebastian',
-        familyName: 'Vettel',
-        nationality: 'German',
-      },
-      Constructor: {
-        constructorId: 'aston_martin',
-        name: 'Aston Martin',
-      },
+      permanentNumber: '5',
+      driverId: 'vettel',
+      givenName: 'Sebastian',
+      familyName: 'Vettel',
+      nationality: 'German',
+      constructorId: 'aston_martin',
+      constructorName: 'Aston Martin',
+      votes: 0
     },
     {
-      startingPosition: 9,
-      finalPosition: null,
-      Driver: {
-        permanentNumber: '55',
-        driverId: 'sainz',
-        givenName: 'Carlos',
-        familyName: 'Sainz',
-        nationality: 'Spanish',
-      },
-      Constructor: {
-        constructorId: 'ferrari',
-        name: 'Ferrari',
-      },
+      permanentNumber: '55',
+      driverId: 'sainz',
+      givenName: 'Carlos',
+      familyName: 'Sainz',
+      nationality: 'Spanish',
+      constructorId: 'ferrari',
+      constructorName: 'Ferrari',
+      votes: 10
     },
   ],
 };
@@ -112,6 +87,73 @@ jest.mock(
       return <img src={src} alt={alt} />;
     },
 );
+
+jest.mock('@packages/config/Web3Context', () => ({
+  ...jest.requireActual('@packages/config/Web3Context'),
+  useWeb3: jest
+    .fn()
+    .mockReturnValue({
+      account: 'hello', votingContract: {
+        deployed: jest.fn().mockReturnValue({
+          getRace: jest.fn().mockReturnValue({
+            error: null,
+            drivers: [
+              {
+                permanentNumber: '6',
+                driverId: 'latifi',
+                givenName: 'Nicholas',
+                familyName: 'Latifi',
+                nationality: 'Canadian',
+                constructorName: 'Williams',
+                constructorId: 'williams',
+                votes: 2,
+              },
+              {
+                permanentNumber: '14',
+                driverId: 'alonso',
+                givenName: 'Fernando',
+                familyName: 'Alonso',
+                nationality: 'Spanish',
+                votes: 3,
+                constructorId: 'alpine',
+                constructorName: 'Alpine F1 Team',
+              },
+              {
+                permanentNumber: '33',
+                driverId: 'max_verstappen',
+                givenName: 'Max',
+                familyName: 'Verstappen',
+                nationality: 'Dutch',
+                constructorId: 'red_bull',
+                constructorName: 'Red Bull',
+                votes: 4
+              },
+              {
+                permanentNumber: '5',
+                driverId: 'vettel',
+                givenName: 'Sebastian',
+                familyName: 'Vettel',
+                nationality: 'German',
+                constructorId: 'aston_martin',
+                constructorName: 'Aston Martin',
+                votes: 0
+              },
+              {
+                permanentNumber: '55',
+                driverId: 'sainz',
+                givenName: 'Carlos',
+                familyName: 'Sainz',
+                nationality: 'Spanish',
+                constructorId: 'ferrari',
+                constructorName: 'Ferrari',
+                votes: 10
+              },
+            ],
+          })
+        })
+      }
+    }),
+}));
 
 const setup = (props: StandingsModalProps) => {
   return {
@@ -146,7 +188,7 @@ describe('StandingsModal→', () => {
   it('renders nothing if show is false', async () => {
     const { container, queryByTestId } = setup(MOCK_PROPS_NO_SHOW);
 
-    await waitFor(() => {});
+    await waitFor(() => { });
     expect(queryByTestId('standings-container')).not.toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
@@ -170,7 +212,7 @@ describe('StandingsModal→', () => {
     ) as jest.Mock;
     const { queryByTestId } = setup(MOCK_PROPS_NO_SHOW);
 
-    await waitFor(() => {});
+    await waitFor(() => { });
 
     expect(queryByTestId('standings-container')).not.toBeInTheDocument();
   });

@@ -14,7 +14,7 @@ export type StandingsModalProps = {
   circuitId?: string;
 };
 
-type BlockchainDriverType = {
+export type BlockchainDriverType = {
   driverId: string;
   givenName: string;
   familyName: string;

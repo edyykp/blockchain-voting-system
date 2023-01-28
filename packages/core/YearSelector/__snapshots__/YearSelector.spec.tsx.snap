@@ -63,6 +63,12 @@ exports[`YearSelector→ renders 1`] = `
       >
         Year 2022
       </option>
+      <option
+        class="option"
+        value="2023"
+      >
+        Year 2023
+      </option>
     </select>
     <hr
       class="rightLine"
