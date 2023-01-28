@@ -24,14 +24,14 @@ contract Voting {
     bytes32[] emailsVoted;
   }
 
-  mapping(bytes32 => Race) races;
-  bool reentrancyLock = false;
+  mapping(bytes32 => Race) private races;
+  bool private reentrancyLock = false;
 
   constructor() public payable {}
 
   function getRace(
     uint256 year,
-    string calldata raceId
+    string memory raceId
   ) public view returns (Race memory) {
     uint256 currentYear = _daysToDate(block.timestamp / SECONDS_PER_DAY);
 
@@ -39,7 +39,13 @@ contract Voting {
       year > 2015 && year <= currentYear,
       'This year is not currently supported.'
     );
-    require(bytes(raceId).length > 0, 'raceId cannot be empty.');
+    require(
+      !stringsEquals(raceId, '') &&
+        !stringsEquals(raceId, ' ') &&
+        !stringsEquals(raceId, 'undefined') &&
+        !stringsEquals(raceId, 'null'),
+      'raceId cannot be empty.'
+    );
 
     return races[keccak256(abi.encodePacked(year, raceId))];
   }
@@ -62,7 +68,7 @@ contract Voting {
     return year;
   }
 
-  function stringsEquals(bytes32 s1, bytes32 s2) private pure returns (bool) {
+  function bytes32Equals(bytes32 s1, bytes32 s2) private pure returns (bool) {
     uint256 l1 = s1.length;
 
     if (l1 != s2.length) {
@@ -75,12 +81,30 @@ contract Voting {
     return true;
   }
 
+  function stringsEquals(
+    string memory s1,
+    string memory s2
+  ) private pure returns (bool) {
+    bytes memory b1 = bytes(s1);
+    bytes memory b2 = bytes(s2);
+    uint256 l1 = b1.length;
+
+    if (l1 != b2.length) {
+      return false;
+    }
+
+    for (uint256 i = 0; i < l1; i++) {
+      if (b1[i] != b2[i]) return false;
+    }
+    return true;
+  }
+
   function hasEmailVoted(
     bytes32 email,
     bytes32[] memory emailsVoted
   ) private pure returns (bool) {
     for (uint256 i = 0; i < emailsVoted.length; i++) {
-      if (stringsEquals(emailsVoted[i], email)) {
+      if (bytes32Equals(emailsVoted[i], email)) {
         return true;
       }
     }
@@ -93,7 +117,7 @@ contract Voting {
     bytes32 driverId
   ) private returns (bool) {
     for (uint256 i = 0; i < races[raceId].drivers.length; i++) {
-      if (stringsEquals(races[raceId].drivers[i].driverId, driverId)) {
+      if (bytes32Equals(races[raceId].drivers[i].driverId, driverId)) {
         races[raceId].drivers[i].votes++;
         return true;
       }
@@ -120,7 +144,13 @@ contract Voting {
       year > 2015 && year <= currentYear,
       'This year is not currently supported.'
     );
-    require(bytes(raceId).length > 0, 'raceId cannot be empty.');
+    require(
+      !stringsEquals(raceId, '') &&
+        !stringsEquals(raceId, ' ') &&
+        !stringsEquals(raceId, 'undefined') &&
+        !stringsEquals(raceId, 'null'),
+      'raceId cannot be empty.'
+    );
     require(driver.driverId.length > 0, 'driverId cannot be empty.');
     bytes32 hashedKey = keccak256(abi.encodePacked(year, raceId));
     bytes32 hashedEmail = keccak256(abi.encodePacked(email, hashedKey));
