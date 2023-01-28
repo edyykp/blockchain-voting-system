@@ -6,13 +6,13 @@ import contract from '@truffle/contract';
 const Web3Context = createContext();
 
 export const Web3Wrapper = ({ children }) => {
-  const [account, setAccount] = useState();
+  const [ account, setAccount ] = useState();
 
   const web3 = new Web3(process.env.NEXT_PUBLIC_BLOCKCHAIN_URL);
 
   web3.eth
     .getAccounts()
-    .then((accounts) => setAccount(accounts[0]))
+    .then((accounts) => setAccount(accounts[ 0 ]))
     .catch((error) => console.error(error.message));
 
   const contractArtifact = require('../../../build/contracts/Voting.json');

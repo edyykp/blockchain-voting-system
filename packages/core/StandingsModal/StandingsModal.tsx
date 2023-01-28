@@ -41,14 +41,21 @@ export const StandingsModal = ({
   const getDrivers = async () => {
     const instance = await votingContract.deployed();
 
-    const currentRace = await instance.getRace(
-      `${query.year ?? currentYear}_${circuitId}`,
-      {
-        from: account,
-      },
-    );
+    const raceYear = query.year ? Number(query.year) : currentYear
 
-    setDrivers(currentRace['drivers']);
+    try {
+      const currentRace = await instance.getRace(
+        raceYear,
+        circuitId,
+        {
+          from: account,
+        },
+      );
+      setDrivers(currentRace['drivers']);
+
+    } catch (err: any) {
+      console.error(err)
+    }
   };
 
   useEffect(() => {
@@ -84,9 +91,8 @@ export const StandingsModal = ({
           .sort((driverA, driverB) => driverB.votes - driverA.votes)
           .map((driver, key) => (
             <div
-              className={`${styles.driverWrapper} ${
-                key % 2 === 1 ? styles.greyBackground : ''
-              }`}
+              className={`${styles.driverWrapper} ${key % 2 === 1 ? styles.greyBackground : ''
+                }`}
               key={key}
               data-testid="driver-row"
             >

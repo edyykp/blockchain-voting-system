@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { default as web3 } from 'web3'
 import Image from 'next/image';
 import { useAuthUser } from 'next-firebase-auth';
 
@@ -96,12 +97,14 @@ export const VotingModal = ({
   const sendVote = async () => {
     const instance = await votingContract.deployed();
 
+    const raceYear = query.year ? Number(query.year) : currentYear
+
     instance
       .vote(
-        String(query.year ?? currentYear),
+        raceYear,
         circuitId,
         {
-          driverId: selectedDriver?.Driver.driverId,
+          driverId: web3.utils.padLeft(web3.utils.asciiToHex(selectedDriver?.Driver.driverId!), 64),
           givenName: selectedDriver?.Driver.givenName,
           familyName: selectedDriver?.Driver.familyName,
           nationality: selectedDriver?.Driver.nationality,
@@ -146,12 +149,11 @@ export const VotingModal = ({
           <div className={styles.positionWrapper}>
             {key + 1}.
             <span
-              className={`${styles.arrow} ${
-                driver.startingPosition < driver.finalPosition ||
+              className={`${styles.arrow} ${driver.startingPosition < driver.finalPosition ||
                 !driver.finalPosition
-                  ? styles.redArrow
-                  : styles.greenArrow
-              }`}
+                ? styles.redArrow
+                : styles.greenArrow
+                }`}
             >
               {positionMovement(driver.startingPosition, key + 1)}
             </span>
