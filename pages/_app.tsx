@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import { AuthWrapper, initAuth, EmailModalWrapper } from '@packages/config';
 
 import '../styles/globals.css';
+import { ToastWrapper } from '@packages/config/ToastContext/state';
 
 initAuth();
 
@@ -17,7 +18,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <EmailModalWrapper>
       <AuthWrapper>
-        <Component {...pageProps} />
+        <ToastWrapper>
+          <Component {...pageProps} />
+        </ToastWrapper>
       </AuthWrapper>
     </EmailModalWrapper>
   );

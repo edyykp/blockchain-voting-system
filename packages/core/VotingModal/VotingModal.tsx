@@ -10,6 +10,7 @@ import { CheckModal } from '@packages/core';
 import { useVotedModalContext, useWeb3 } from '@packages/config';
 
 import styles from './VotingModal.module.css';
+import { useToast } from '../../config/ToastContext/state';
 
 export type VotingModalProps = {
   show: boolean;
@@ -26,6 +27,7 @@ export const VotingModal = ({
 }: VotingModalProps) => {
   const [drivers, setDrivers] = useState<DriverType[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const { setToast } = useToast();
   const [showCheckModal, setShowCheckModal] = useState<boolean>(false);
   const user = useAuthUser();
   const { setVotedDriver } = useVotedModalContext();
@@ -46,6 +48,7 @@ export const VotingModal = ({
 
     setDrivers(text.drivers);
     setError(text.error);
+    setToast(text.error);
   };
 
   useEffect(() => {
@@ -55,6 +58,7 @@ export const VotingModal = ({
 
     if (!show) {
       setError(null);
+      setToast(null)
     }
   }, [show]);
 
@@ -88,7 +92,7 @@ export const VotingModal = ({
 
   const setImageSource = (source: string) => {
     try {
-      return require(`public/${source}.jpg`);
+      return require(`public/${source}.jpeg`);
     } catch (error) {
       return require('public/placeholder.png');
     }
@@ -118,8 +122,10 @@ export const VotingModal = ({
           from: account,
         },
       )
-      .then((address: any) => console.log(address))
-      .catch((error: any) => console.error(error));
+      .then((_: any) => setVotedDriver(
+        `${selectedDriver?.Driver.givenName} ${selectedDriver?.Driver.familyName}`,
+      ))
+      .catch((error: any) => setToast(error.message.split('revert')[1]));
   };
 
   const DriversList = (driversList: DriverType[]) => (
@@ -130,9 +136,6 @@ export const VotingModal = ({
         driverName={`${selectedDriver?.Driver.givenName} ${selectedDriver?.Driver.familyName}`}
         voteFinishedCallback={() => {
           setShowModal(false);
-          setVotedDriver(
-            `${selectedDriver?.Driver.givenName} ${selectedDriver?.Driver.familyName}`,
-          );
           sendVote();
         }}
       />
@@ -173,8 +176,8 @@ export const VotingModal = ({
                 src={setImageSource(driver.Constructor.constructorId)}
                 loading="lazy"
                 alt={driver.Constructor.constructorId}
-                width={15}
-                height={20}
+                width={35}
+                height={23}
                 className={styles.img}
               />
             </span>

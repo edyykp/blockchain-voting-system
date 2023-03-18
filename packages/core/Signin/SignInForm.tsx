@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import firebase from 'firebase';
 
 import { Button, Input } from '@packages/components';
 import {

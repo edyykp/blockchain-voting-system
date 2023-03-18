@@ -6,6 +6,7 @@ import { Modal } from '@packages/components';
 import { useWeb3 } from '@packages/config';
 
 import styles from './StandingsModal.module.css';
+import { useToast } from '../../config/ToastContext/state';
 
 export type StandingsModalProps = {
   show: boolean;
@@ -34,6 +35,7 @@ export const StandingsModal = ({
   const [drivers, setDrivers] = useState<BlockchainDriverType[]>([]);
   const [error, setError] = useState<string | null>(null);
   const { query } = useRouter();
+  const { setToast } = useToast()
   const { account, votingContract } = useWeb3();
   const currentYear = new Date().getFullYear();
   const renderedYear = query.year ?? currentYear;
@@ -54,7 +56,7 @@ export const StandingsModal = ({
       setDrivers(currentRace['drivers']);
 
     } catch (err: any) {
-      console.error(err)
+      setToast(err.message.split('revert')[1])
     }
   };
 
@@ -65,6 +67,7 @@ export const StandingsModal = ({
 
     if (!show) {
       setError(null);
+      setToast(null);
     }
   }, [show]);
 
@@ -76,7 +79,7 @@ export const StandingsModal = ({
 
   const setImageSource = (source: string) => {
     try {
-      return require(`public/${source}.jpg`);
+      return require(`public/${source}.jpeg`);
     } catch (error) {
       return require('public/placeholder.png');
     }
