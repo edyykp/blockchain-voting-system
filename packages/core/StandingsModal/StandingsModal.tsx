@@ -12,6 +12,7 @@ export type StandingsModalProps = {
   show: boolean;
   setShowModal: (show: boolean) => void;
   raceName?: string;
+  allRaces?: string[];
   circuitId?: string;
 };
 
@@ -31,6 +32,7 @@ export const StandingsModal = ({
   raceName,
   circuitId,
   setShowModal,
+  allRaces
 }: StandingsModalProps) => {
   const [drivers, setDrivers] = useState<BlockchainDriverType[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +42,32 @@ export const StandingsModal = ({
   const currentYear = new Date().getFullYear();
   const renderedYear = query.year ?? currentYear;
 
+  const getStandingsAllYear = async () => {
+    const instance = await votingContract.deployed();
+
+    const year = query.year ? Number(query.year) : currentYear
+
+    try {
+      const response = await instance.getStandingsPerYear(
+        year,
+        allRaces,
+        {
+          from: account
+        }
+      )
+      const filteredDrivers = response.filter((driverResponse: BlockchainDriverType) => driverResponse.constructorId !== "")
+
+      setDrivers(filteredDrivers)
+    } catch (err: any) {
+      setToast(err.message.split('revert')[1])
+    }
+  }
+
   const getDrivers = async () => {
+    if (!circuitId && allRaces) {
+      getStandingsAllYear()
+      return
+    }
     const instance = await votingContract.deployed();
 
     const raceYear = query.year ? Number(query.year) : currentYear

@@ -50,6 +50,49 @@ contract Voting {
     return races[keccak256(abi.encodePacked(year, raceId))];
   }
 
+  function getStandingsPerYear(
+    uint256 year,
+    string[] memory allRaces
+  ) public view returns (Driver[] memory) {
+    uint256 currentYear = _daysToDate(block.timestamp / SECONDS_PER_DAY);
+
+    require(
+      year > 2015 && year <= currentYear,
+      'This year is not currently supported.'
+    );
+    require(allRaces.length > 0, 'There are no votes this year');
+    Driver[] memory driversToReturn = new Driver[](30);
+    uint totalDrivers = 0;
+
+    for (uint i = 0; i < allRaces.length; i++) {
+      Race memory currentRace = races[
+        keccak256(abi.encodePacked(year, allRaces[i]))
+      ];
+      if (currentRace.year == year) {
+        for (uint j = 0; j < currentRace.drivers.length; j++) {
+          uint isDriverFound = 0;
+          for (uint k = 0; k < driversToReturn.length; k++) {
+            if (
+              bytes32Equals(
+                currentRace.drivers[j].driverId,
+                driversToReturn[k].driverId
+              )
+            ) {
+              driversToReturn[k].votes += currentRace.drivers[j].votes;
+              isDriverFound = 1;
+            }
+          }
+
+          if (isDriverFound == 0) {
+            driversToReturn[totalDrivers] = currentRace.drivers[j];
+            totalDrivers++;
+          }
+        }
+      }
+    }
+    return driversToReturn;
+  }
+
   function _daysToDate(uint256 _days) internal pure returns (uint256 year) {
     int256 __days = int256(_days);
 

@@ -44,7 +44,7 @@ const Dashboard: NextPage<DashboardProps> = ({
           <div className={styles.container}>
             <YearSelector year={String(query.year)} />
             <div className={styles.contentWrapper}>
-              <YearStandingsButton year={String(query.year)} />
+              <YearStandingsButton year={String(query.year)} allRaces={races} />
               <CardsList races={races} />
             </div>
           </div>

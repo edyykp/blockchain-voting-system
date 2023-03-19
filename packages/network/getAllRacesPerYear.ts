@@ -32,11 +32,11 @@ export const getAllRacesPerYear = async (year: string | string[]) => {
 
     if (!res.ok) {
       console.error(
-        'Something when wrong when fetching all races from year ' + year,
+        'Something went wrong when fetching all races from year ' + year,
       );
       return {
         races: [],
-        error: `Status returned: ${res.status}`,
+        error: `Something went wrong when fetching all races from year ${year}`,
         status: res.status,
       };
     }
