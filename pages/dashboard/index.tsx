@@ -41,13 +41,15 @@ const Dashboard: NextPage<DashboardProps> = ({
     <Web3Wrapper>
       <VotedModalWrapper>
         <Layout user={user}>
-          <div className={styles.container}>
-            <YearSelector year={String(currentYear)} />
-            <div className={styles.contentWrapper}>
-              <YearStandingsButton year={String(currentYear)} allRaces={races} />
-              <CardsList races={races} />
+          <main id="dashboard">
+            <div className={styles.container}>
+              <YearSelector year={String(currentYear)} />
+              <div className={styles.contentWrapper}>
+                <YearStandingsButton year={String(currentYear)} allRaces={races} />
+                <CardsList races={races} />
+              </div>
             </div>
-          </div>
+          </main>
         </Layout>
       </VotedModalWrapper>
     </Web3Wrapper>

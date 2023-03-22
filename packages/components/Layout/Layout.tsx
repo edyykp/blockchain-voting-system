@@ -31,11 +31,9 @@ export const Layout = ({ children, user }: LayoutProps) => {
         <title>{text.title}</title>
       </Head>
 
-      <main>
-        <Navbar toggle={toggle} user={user} />
-        <Sidebar isOpen={isOpen} toggle={toggle} user={user} />
-        {children}
-      </main>
+      <Navbar toggle={toggle} user={user} />
+      <Sidebar isOpen={isOpen} toggle={toggle} user={user} />
+      {children}
       <Footer />
     </>
   );
